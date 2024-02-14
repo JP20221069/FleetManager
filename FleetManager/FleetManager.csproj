@@ -92,11 +92,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\FleetManagerCommon.csproj">
-      <Project>{484F1A5A-D68A-43C4-8E87-84EF74591C12}</Project>
-      <Name>FleetManagerCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

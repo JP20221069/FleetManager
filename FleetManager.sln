@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManager", "FleetManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManagerServer", "FleetManagerServer\FleetManagerServer.csproj", "{F2878011-D04E-4142-8D3E-D354BFC6CA50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManagerCommon", "Common\FleetManagerCommon.csproj", "{484F1A5A-D68A-43C4-8E87-84EF74591C12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FleetManagerCommon", "FleetManagerCommon\FleetManagerCommon.csproj", "{484F1A5A-D68A-43C4-8E87-84EF74591C12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
