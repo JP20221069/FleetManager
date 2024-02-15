@@ -64,7 +64,7 @@ namespace FleetManagerServer.DB
         public Korisnik Login(Korisnik user)
         {
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='"+user.Username+"' AND Password = '"+user.Password+"' AND LoggedIn=0";
+            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='"+user.Username+"' AND Password = '"+user.Password+"' AND Ulogovan=0 AND Aktivan=1";
             SqlDataReader reader = comm.ExecuteReader();
             bool success = false;
             try
@@ -96,7 +96,7 @@ namespace FleetManagerServer.DB
         public Korisnik Logout(Korisnik user)
         {
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='" + user.Username + "' AND Password = '" + user.Password + "' AND LoggedIn=1";
+            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='" + user.Username + "' AND Password = '" + user.Password + "' AND Ulogovan=1 AND Aktivan=1";
             SqlDataReader reader = comm.ExecuteReader();
             bool success = false;
             try
@@ -124,7 +124,7 @@ namespace FleetManagerServer.DB
         public void SetLoggedIn(Korisnik user,bool logged_in)
         {
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "UPDATE KORISNIK SET LoggedIn="+Convert.ToInt32(logged_in)+" WHERE ID="+user.ID+";";
+            comm.CommandText = "UPDATE KORISNIK SET Ulogovan="+Convert.ToInt32(logged_in)+" WHERE ID="+user.ID+" AND Aktivan=1;";
             try
             {
                 comm.ExecuteNonQuery();
