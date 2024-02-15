@@ -1,7 +1,10 @@
-﻿using Common.Communication;
-using Common.Domain;
+﻿using Common.Exceptions;
+using FleetManagerCommon.Comms;
+using FleetManagerCommon.Communication;
+using FleetManagerCommon.Domain;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -33,7 +36,7 @@ namespace FleetManager.Comms
         public void Connect()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect("127.0.0.1", 2555);
+            socket.Connect(ConfigurationManager.AppSettings["server_ip"], Convert.ToInt32(ConfigurationManager.AppSettings["server_port"]));
             sender = new Sender(socket);
             receiver = new Receiver(socket);
         }
@@ -50,6 +53,16 @@ namespace FleetManager.Comms
             return response;
         }
 
+        internal void Disconnect()
+        {
+            Request req = new Request
+            {
+                Argument = null,
+                Operation = Operation.Disconnect
+            };
+            sender.Send(req);
+        }
+
         /*internal Response CreatePerson(Person person)
         {
             Request request = new Request
@@ -62,17 +75,17 @@ namespace FleetManager.Comms
             return response;
         }*/
 
-       /* internal object GetAllCity()
-        {
-            Request request = new Request
-            {
-                Operation = Operation.GetAllCity
-            };
-            sender.Send(request);
-            Response response = (Response)receiver.Receive();
-            return response.Result;
+        /* internal object GetAllCity()
+         {
+             Request request = new Request
+             {
+                 Operation = Operation.GetAllCity
+             };
+             sender.Send(request);
+             Response response = (Response)receiver.Receive();
+             return response.Result;
 
-        }*/
+         }*/
 
     }
 }

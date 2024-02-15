@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace FleetManagerServer.SysOps
 {
-    public class LoginSO : SystemOperation
+    public class LogoutSO : SystemOperation
     {
         private readonly Korisnik user;
         public Korisnik Result { get; set; }
 
-        public LoginSO(Korisnik user)
+        public LogoutSO(Korisnik user)
         {
             this.user = user;
         }
 
         protected override void ExecuteConcreteOperation()
         {
-            this.Result=broker.Login(user);
+            this.Result = broker.Logout(user);
         }
     }
 }

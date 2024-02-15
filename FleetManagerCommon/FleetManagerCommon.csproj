@@ -45,6 +45,7 @@
     <Compile Include="Comms\MessageType.cs" />
     <Compile Include="Domain\IEntity.cs" />
     <Compile Include="Comms\Operation.cs" />
+    <Compile Include="Exceptions\UnableToDisconnectException.cs" />
     <Compile Include="Exceptions\UserAlreadyLoggedInException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Comms\Receiver.cs" />

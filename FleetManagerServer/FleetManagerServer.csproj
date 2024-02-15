@@ -51,19 +51,33 @@
     <Compile Include="Controller.cs" />
     <Compile Include="DB\DatabaseBroker.cs" />
     <Compile Include="DB\DatabaseConnection.cs" />
+    <Compile Include="FrmLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLog.Designer.cs">
+      <DependentUpon>FrmLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuiController\LogGUIController.cs" />
     <Compile Include="GuiController\MainGUIController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="SysOps\LoginSO.cs" />
+    <Compile Include="SysOps\LogoutSO.cs" />
     <Compile Include="SysOps\SystemOperation.cs" />
+    <Compile Include="Utils\Client.cs" />
+    <Compile Include="Utils\LogEvent.cs" />
+    <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\UtilOps\GetLoggedInUsersUOP.cs" />
+    <EmbeddedResource Include="FrmLog.resx">
+      <DependentUpon>FrmLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +89,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,7 +105,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FleetManagerCommon.csproj" />
+    <None Include="Resources\Copy.png" />
+    <None Include="Resources\x.png" />
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FleetManagerCommon\FleetManagerCommon.csproj">
+      <Project>{484f1a5a-d68a-43c4-8e87-84ef74591c12}</Project>
+      <Name>FleetManagerCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

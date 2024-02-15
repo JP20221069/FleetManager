@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FleetManagerServer.Utils.UtilOps
 {
-    internal class GetLoggedInUsersUOP
+    public class GetLoggedInUsersUOP
     {
     }
 }

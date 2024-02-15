@@ -34,8 +34,27 @@
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.liveConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btStart = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btStop = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblClients = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btCopyPort = new System.Windows.Forms.Button();
+            this.btCopyIP = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.FIELD_PORT = new System.Windows.Forms.TextBox();
+            this.FIELD_IP = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -73,42 +92,229 @@
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
             this.manageToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.manageToolStripMenuItem.Text = "Manage";
+            this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
             // logToolStripMenuItem
             // 
             this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.logToolStripMenuItem.Text = "Log";
+            this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
             // liveConsoleToolStripMenuItem
             // 
             this.liveConsoleToolStripMenuItem.Name = "liveConsoleToolStripMenuItem";
-            this.liveConsoleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.liveConsoleToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.liveConsoleToolStripMenuItem.Text = "Live Console";
+            this.liveConsoleToolStripMenuItem.Click += new System.EventHandler(this.liveConsoleToolStripMenuItem_Click);
             // 
-            // button1
+            // btStart
             // 
-            this.button1.Location = new System.Drawing.Point(80, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btStart.Location = new System.Drawing.Point(44, 37);
+            this.btStart.Name = "btStart";
+            this.btStart.Size = new System.Drawing.Size(137, 95);
+            this.btStart.TabIndex = 2;
+            this.btStart.Text = "START SERVER";
+            this.btStart.UseVisualStyleBackColor = true;
+            this.btStart.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btStop);
+            this.groupBox1.Controls.Add(this.btStart);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Location = new System.Drawing.Point(0, 24);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(394, 509);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Server Controls";
+            // 
+            // btStop
+            // 
+            this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btStop.Location = new System.Drawing.Point(197, 37);
+            this.btStop.Name = "btStop";
+            this.btStop.Size = new System.Drawing.Size(137, 95);
+            this.btStop.TabIndex = 3;
+            this.btStop.Text = "STOP SERVER";
+            this.btStop.UseVisualStyleBackColor = true;
+            this.btStop.Click += new System.EventHandler(this.btStop_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblClients);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.lblStatus);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(394, 24);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(565, 232);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Server Status";
+            // 
+            // lblClients
+            // 
+            this.lblClients.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.lblClients.AutoSize = true;
+            this.lblClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClients.ForeColor = System.Drawing.Color.Navy;
+            this.lblClients.Location = new System.Drawing.Point(323, 111);
+            this.lblClients.Name = "lblClients";
+            this.lblClients.Size = new System.Drawing.Size(34, 13);
+            this.lblClients.TabIndex = 3;
+            this.lblClients.Text = "0/10";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(212, 111);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Currently connected:";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblStatus.Location = new System.Drawing.Point(290, 81);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(30, 13);
+            this.lblStatus.TabIndex = 1;
+            this.lblStatus.Text = "OFF";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(212, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Server status:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btCopyPort);
+            this.groupBox3.Controls.Add(this.btCopyIP);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.FIELD_PORT);
+            this.groupBox3.Controls.Add(this.FIELD_IP);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(394, 256);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(565, 277);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Server Info";
+            // 
+            // btCopyPort
+            // 
+            this.btCopyPort.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
+            this.btCopyPort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCopyPort.Location = new System.Drawing.Point(371, 76);
+            this.btCopyPort.Name = "btCopyPort";
+            this.btCopyPort.Size = new System.Drawing.Size(23, 22);
+            this.btCopyPort.TabIndex = 8;
+            this.btCopyPort.UseVisualStyleBackColor = true;
+            this.btCopyPort.Click += new System.EventHandler(this.btCopyPort_Click);
+            // 
+            // btCopyIP
+            // 
+            this.btCopyIP.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
+            this.btCopyIP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCopyIP.Location = new System.Drawing.Point(371, 44);
+            this.btCopyIP.Name = "btCopyIP";
+            this.btCopyIP.Size = new System.Drawing.Size(23, 22);
+            this.btCopyIP.TabIndex = 7;
+            this.btCopyIP.UseVisualStyleBackColor = true;
+            this.btCopyIP.Click += new System.EventHandler(this.btCopyIP_Click);
+            // 
+            // label6
+            // 
+            this.label6.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Navy;
+            this.label6.Location = new System.Drawing.Point(298, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "0/10";
+            // 
+            // FIELD_PORT
+            // 
+            this.FIELD_PORT.Location = new System.Drawing.Point(218, 78);
+            this.FIELD_PORT.Name = "FIELD_PORT";
+            this.FIELD_PORT.ReadOnly = true;
+            this.FIELD_PORT.Size = new System.Drawing.Size(147, 20);
+            this.FIELD_PORT.TabIndex = 6;
+            // 
+            // FIELD_IP
+            // 
+            this.FIELD_IP.Location = new System.Drawing.Point(218, 46);
+            this.FIELD_IP.Name = "FIELD_IP";
+            this.FIELD_IP.ReadOnly = true;
+            this.FIELD_IP.Size = new System.Drawing.Size(147, 20);
+            this.FIELD_IP.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(158, 110);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(134, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Maximum Clients Available:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(158, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Server Port:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(158, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Server IP:";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 555);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
-            this.Text = "Form1";
+            this.Text = "Fleet Manager Server";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,7 +328,23 @@
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem liveConsoleToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btStart;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btStop;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btCopyIP;
+        private System.Windows.Forms.Button btCopyPort;
+        public System.Windows.Forms.Label lblClients;
+        public System.Windows.Forms.Label lblStatus;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox FIELD_PORT;
+        public System.Windows.Forms.TextBox FIELD_IP;
     }
 }
 

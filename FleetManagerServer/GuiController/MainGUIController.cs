@@ -8,6 +8,22 @@ namespace FleetManagerServer.GuiController
 {
     public class MainGUIController
     {
+        private static MainGUIController instance;
+        public static MainGUIController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MainGUIController();
+                }
+                return instance;
+            }
+        }
 
+        internal void ShowLog()
+        {
+            LogGUIController.Instance.ShowFrmLog();
+        }
     }
 }

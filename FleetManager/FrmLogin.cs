@@ -46,5 +46,10 @@ namespace FleetManager
             }
 
         }
+
+        private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoginGUIController.Instance.DisconnectCl();
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Communication
+namespace FleetManagerCommon.Communication
 {
     public class Sender
     {

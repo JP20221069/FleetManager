@@ -1,5 +1,8 @@
-﻿namespace Common.Comms
+﻿using System;
+
+namespace FleetManagerCommon.Comms
 {
+    [Serializable]
     public enum MessageType
     {
         Text,

@@ -16,5 +16,30 @@ namespace FleetManager
         {
             InitializeComponent();
         }
+
+        private void kryptonPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewAllVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alterRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

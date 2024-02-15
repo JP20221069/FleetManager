@@ -1,5 +1,5 @@
-﻿using Common.Communication;
-using Common.Domain;
+﻿using FleetManagerCommon.Communication;
+using FleetManagerCommon.Domain;
 using FleetManager.Comms;
 using FleetManager.GUIController;
 using System;
@@ -33,12 +33,32 @@ namespace FleetManager.GuiController
 
         internal void ShowFrmLogin()
         {
-            CommunicationManager.Instance.Connect();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            frmLogin = new FrmLogin();
-            frmLogin.AutoSize = true;
-            Application.Run(frmLogin);
+            while (true)
+            {
+                try
+                {
+                    CommunicationManager.Instance.Connect();
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    frmLogin = new FrmLogin();
+                    frmLogin.AutoSize = true;
+                    Application.Run(frmLogin);
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    DialogResult dr = MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    if(dr==DialogResult.Cancel)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        internal void DisconnectCl()
+        {
+            CommunicationManager.Instance.Disconnect();
         }
 
         internal void Login(object sender, EventArgs e)

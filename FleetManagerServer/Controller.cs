@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Domain;
+using FleetManagerCommon.Domain;
 using FleetManagerServer.SysOps;
 
 namespace FleetManagerServer
@@ -30,6 +30,12 @@ namespace FleetManagerServer
             so.ExecuteTemplate();
             return so.Result;
 
+        }
+
+        public void Logout(Korisnik user)
+        {
+            LogoutSO so = new LogoutSO(user);
+            so.ExecuteTemplate();
         }
 
     }

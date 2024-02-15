@@ -6,12 +6,12 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FleetManagerCommon.Exceptions
+namespace Common.Exceptions
 {
     [Serializable]
-    public class UserAlreadyLoggedInException : Exception
+    public class UnableToDisconnectException : Exception
     {
-        public override string Message => "User is already logged in.";
+        public override string Message => "Client was unable to disconnect due to a server error.";
 
         public override IDictionary Data => base.Data;
 
