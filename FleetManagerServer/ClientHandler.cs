@@ -55,7 +55,8 @@ namespace FleetManagerServer
                 sender.Send(res);
                 if(flag_disconnect==true)
                 {
-                    Logger.LogEvent(new LogEvent(EventType.Info, "Client disconnected."));
+                    Logger.LogEvent(new LogEvent(EventType.Info, "Client " +socket.LocalEndPoint.ToString()+" disconnected.",null,true));
+                    Server.active_clients.Remove(client);
                     receiver.Stop();
                     socket.Close();
                     break;
@@ -92,12 +93,18 @@ namespace FleetManagerServer
                     //res.Result = new Message(MessageType.Success);
                     flag_disconnect = true;
                 }
+                else if(req.Operation==Operation.AddUser)
+                {
+                    Korisnik k = (Korisnik)req.Argument;
+                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " added a record to " + k.TableName + "."));
+                    res.Result = Controller.Instance.AddUser(k);
+                }
             }
             catch (Exception ex)
             {
                 res.Exception = ex;
                 Debug.WriteLine(ex.Message);
-                Logger.LogEvent(new LogEvent(EventType.Error, "Erorr handling client: " + ex.Message));
+                Logger.LogEvent(new LogEvent(EventType.Error, "Error handling client (TID: "+client.TID+" Address:"+socket.LocalEndPoint.ToString()+") : " + ex.Message,null,true));
 
             }
             return res;

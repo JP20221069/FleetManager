@@ -44,5 +44,12 @@ namespace FleetManagerCommon.Exceptions
         {
             return base.ToString();
         }
+
+        public UserAlreadyLoggedInException()
+        {
+            
+        }
+        public UserAlreadyLoggedInException(System.Runtime.Serialization.SerializationInfo info,
+        System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
 }

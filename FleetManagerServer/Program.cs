@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FleetManagerServer.GuiController;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,7 @@ namespace FleetManagerServer
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            MainGUIController.Instance.ShowFrmMain();
         }
     }
 }

@@ -49,7 +49,7 @@ namespace FleetManagerServer.Utils
                 }
                 if (!name.IsServerEvent)
                 {
-                    ret += "<Source: TID: " + name.Source.TID + " Client: " + name.Source.IP + "> ";
+                    ret += "<Source: TID: " + name.Source.TID + " Address: " + name.Source.IP + "> ";
                 }
                 else
                 {

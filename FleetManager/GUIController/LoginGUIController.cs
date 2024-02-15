@@ -31,18 +31,28 @@ namespace FleetManager.GuiController
 
         private FrmLogin frmLogin;
 
-        internal void ShowFrmLogin()
+        internal void ShowFrmLogin(bool first=true)
         {
             while (true)
             {
                 try
                 {
-                    CommunicationManager.Instance.Connect();
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
+                    if (first)
+                    {
+                        CommunicationManager.Instance.Connect();
+                        Application.EnableVisualStyles();
+                        Application.SetCompatibleTextRenderingDefault(false);
+                    }
                     frmLogin = new FrmLogin();
                     frmLogin.AutoSize = true;
-                    Application.Run(frmLogin);
+                    if (first)
+                    {
+                        Application.Run(frmLogin);
+                    }
+                    else
+                    {
+                        frmLogin.ShowDialog();
+                    }
                     break;
                 }
                 catch (Exception ex)
@@ -72,11 +82,12 @@ namespace FleetManager.GuiController
             if (response.Exception == null)
             {
                 frmLogin.Visible = false;
-                MainGUIController.Instance.ShowFrmMain();
+                MainGUIController mgc = new MainGUIController((Korisnik)response.Result);
+                mgc.ShowFrmMain();
             }
             else
             {
-                MessageBox.Show(">>>" + response.Exception.ToString());
+                MessageBox.Show(response.Exception.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

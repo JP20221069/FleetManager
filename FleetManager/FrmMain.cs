@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FleetManager.GuiController;
+using FleetManager.GUIController;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,6 +42,11 @@ namespace FleetManager
         private void alterRecordToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void logOffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainGUIController.Instance.Logout();
         }
     }
 }

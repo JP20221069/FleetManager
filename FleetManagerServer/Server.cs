@@ -16,12 +16,24 @@ namespace FleetManagerServer
     public class Server
     {
         Socket socket;
-        public List<Client> active_clients;
+        public static List<Client> active_clients;
+        int max_clients;
+        string ip;
+        int port;
+
         public bool Started { get; set; }
+        public int ClientCount { get { return Server.active_clients.Count; } }
+        public int MaxClients { get { return this.max_clients; } }
+        public string IP { get { return this.ip; } set { this.ip = value; } }
+        public int Port { get { return this.port; } set { this.port = value; } }
+
         public Server()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             active_clients = new List<Client>();
+            max_clients = Convert.ToInt32(ConfigurationManager.AppSettings["iNumMaxClients"]);
+            ip= ConfigurationManager.AppSettings["server_ip"];
+            port = Convert.ToInt32(ConfigurationManager.AppSettings["server_port"]);
         }
 
         public void Start()
@@ -29,9 +41,10 @@ namespace FleetManagerServer
             // IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9999);
             try
             {
-                IPEndPoint ipe = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["ip"]), int.Parse(ConfigurationManager.AppSettings["port"]));
+                Logger.Start();
+                IPEndPoint ipe = new IPEndPoint(IPAddress.Parse(ip),port);
                 socket.Bind(ipe);
-                socket.Listen(Convert.ToInt32(ConfigurationManager.AppSettings["iNumMaxClients"]));
+                socket.Listen(max_clients);
                 Thread thread = new Thread(AcceptClient);
                 thread.Start();
                 this.Started = true;
@@ -50,14 +63,23 @@ namespace FleetManagerServer
                 while (true)
                 {
                     Socket cs = socket.Accept();
-                    Client c = new Client(cs, cs.LocalEndPoint.ToString(), -1);
-                    ClientHandler handler = new ClientHandler();
-                    Thread ct = new Thread(handler.HandleRequest);
-                    c.TID = ct.ManagedThreadId;
-                    handler.client = c;
-                    handler.InitHandler();
-                    ct.Start();
-                    Logger.LogEvent(new LogEvent(EventType.Info, "Successfully connected.", c));
+                    if (active_clients.Count < max_clients)
+                    {
+
+                        Client c = new Client(cs, cs.LocalEndPoint.ToString(), -1);
+                        ClientHandler handler = new ClientHandler();
+                        Thread ct = new Thread(handler.HandleRequest);
+                        c.TID = ct.ManagedThreadId;
+                        handler.client = c;
+                        handler.InitHandler();
+                        ct.Start();
+                        active_clients.Add(c);
+                        Logger.LogEvent(new LogEvent(EventType.Info, "Successfully connected.", c));
+                    }
+                    else
+                    {
+                        Logger.LogEvent(new LogEvent(EventType.Warning, "Unable to connect more clients.", null,true));
+                    }
                 }
             }
             catch (Exception ex)
@@ -71,6 +93,7 @@ namespace FleetManagerServer
         public void Stop()
         {
             Logger.LogEvent(new LogEvent(EventType.Info, "Server stopped.", null, true));
+            Logger.Stop();
             this.Started = false;
             socket.Close();
         }

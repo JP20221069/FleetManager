@@ -23,8 +23,11 @@ namespace FleetManagerServer
         {
             s = new Server();
             s.Start();
+            timer1.Start();
             btStart.Enabled = false;
             btStop.Enabled = true;
+            lblStatus.Text = "ON";
+            lblStatus.ForeColor = Color.ForestGreen;
         }
 
         private void logToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,7 +52,9 @@ namespace FleetManagerServer
 
         private void btStop_Click(object sender, EventArgs e)
         {
-
+            lblStatus.Text = "OFF";
+            lblStatus.ForeColor = Color.Firebrick;
+            timer1.Stop();
             s.Stop();
             btStart.Enabled = true;
             btStop.Enabled = false;
@@ -64,12 +69,35 @@ namespace FleetManagerServer
 
         private void btCopyIP_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(FIELD_IP.Text+":"+FIELD_PORT);
+            Clipboard.SetText(FIELD_IP.Text+":"+FIELD_PORT.Text);
         }
 
         private void btCopyPort_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(FIELD_PORT.Text);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(s!=null)
+            {
+                if(s.Started)
+                {
+                    if(s.ClientCount==s.MaxClients-1)
+                    {
+                        lblClients.ForeColor = Color.Orange;
+                    }
+                    else if(s.ClientCount==s.MaxClients)
+                    {
+                        lblClients.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        lblClients.ForeColor = Color.Navy;
+                    }
+                    lblClients.Text = s.ClientCount + "/" + s.MaxClients;
+                }
+            }
         }
     }
 }

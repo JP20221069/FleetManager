@@ -63,6 +63,18 @@ namespace FleetManager.Comms
             sender.Send(req);
         }
 
+        internal Response Logout(Korisnik current_user)
+        {
+            Request req = new Request
+            {
+                Argument = current_user,
+                Operation = Operation.Logout
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
         /*internal Response CreatePerson(Person person)
         {
             Request request = new Request

@@ -41,7 +41,6 @@ namespace FleetManagerServer.DB
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }
-
         public void CloseConnection()
         {
             connection.CloseConnection();
@@ -64,7 +63,7 @@ namespace FleetManagerServer.DB
         public Korisnik Login(Korisnik user)
         {
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='"+user.Username+"' AND Password = '"+user.Password+"' AND Ulogovan=0 AND Aktivan=1";
+            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='"+user.Username+"' AND Password = '"+user.Password+"' AND Ulogovan=0 AND Aktivan=1;";
             SqlDataReader reader = comm.ExecuteReader();
             bool success = false;
             try
@@ -96,7 +95,7 @@ namespace FleetManagerServer.DB
         public Korisnik Logout(Korisnik user)
         {
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='" + user.Username + "' AND Password = '" + user.Password + "' AND Ulogovan=1 AND Aktivan=1";
+            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='" + user.Username + "' AND Password = '" + user.Password + "' AND Ulogovan=1 AND Aktivan=1;";
             SqlDataReader reader = comm.ExecuteReader();
             bool success = false;
             try
@@ -134,5 +133,112 @@ namespace FleetManagerServer.DB
                 throw ex;
             }
         }
+
+        public Korisnik AddUser(Korisnik user)
+        {
+            if (ChkUsername(user))
+            {
+                Add(user);
+                return GetUserByUsername(user);
+            }
+            else
+            {
+                throw new UserAlreadyExistsException();
+            }
+        }
+
+        public Korisnik GetUserByUsername(Korisnik user)
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='" + user.Username + "' AND Password = '" + user.Password + "';";
+            SqlDataReader reader = comm.ExecuteReader();
+            try
+            {
+
+                if (reader.Read())
+                {
+                    user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    user.Username = reader["Username"].ToString();
+                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.LoggedIn = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
+                    user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
+                }
+                else
+                {
+                    throw new UserNotFoundException();
+                }
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return user;
+        }
+
+        public Korisnik GetUserByID(Korisnik user)
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT * FROM KORISNIK WHERE ID ="+user.ID+";";
+            SqlDataReader reader = comm.ExecuteReader();
+            try
+            {
+
+                if (reader.Read())
+                {
+                    user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    user.Username = reader["Username"].ToString();
+                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.LoggedIn = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
+                    user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
+                }
+                else
+                {
+                    throw new UserNotFoundException();
+                }
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return user;
+        }
+
+        public bool ChkUsername(Korisnik user)
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT COUNT(*) FROM KORISNIK WHERE ID =" + user.ID + ";";
+            int cnt = Convert.ToInt32(comm.ExecuteScalar());
+            if (cnt > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+        public bool ChkLoggedIn(Korisnik user)
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT Ulogovan FROM KORISNIK WHERE ID =" + user.ID + ";";
+            bool ulogovan = Convert.ToBoolean(comm.ExecuteScalar());
+            return ulogovan;
+
+        }
+
+        public Korisnik UpdateUser(Korisnik user)
+        {
+            if(ChkLoggedIn(user))
+            {
+                throw new UpdateDeniedUserLoggedIn();
+            }
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "UPDATE KORISNIK SET Username='" + user.Username + "',Password='" + user.Password + "',Aktivan=" + Convert.ToInt32(user.Aktivan) + ",Ulogovan=" + Convert.ToInt32(user.LoggedIn) + " WHERE ID="+user.ID+";";
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            return GetUserByID(user);
+        }
+
     }
 }

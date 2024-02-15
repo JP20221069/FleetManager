@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FleetManagerCommon.Communication
+namespace Common.Domain
 {
-    public enum Operation
+    public enum Rola
     {
-        Login,
-        Disconnect,
-        Logout,
-        AddUser
+        Korisnik=0,
+        Admin,
+        Moderator
     }
 }

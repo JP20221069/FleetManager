@@ -16,5 +16,15 @@ namespace FleetManager.Controls
         {
             InitializeComponent();
         }
+
+        private void btAccept_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

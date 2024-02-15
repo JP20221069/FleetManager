@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.liveConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -45,12 +45,13 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btCopyPort = new System.Windows.Forms.Button();
             this.btCopyIP = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblmaxClients = new System.Windows.Forms.Label();
             this.FIELD_PORT = new System.Windows.Forms.TextBox();
             this.FIELD_IP = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -87,19 +88,11 @@
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logToolStripMenuItem,
             this.liveConsoleToolStripMenuItem});
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
             this.manageToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
-            // 
-            // logToolStripMenuItem
-            // 
-            this.logToolStripMenuItem.Name = "logToolStripMenuItem";
-            this.logToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.logToolStripMenuItem.Text = "Log";
-            this.logToolStripMenuItem.Click += new System.EventHandler(this.logToolStripMenuItem_Click);
             // 
             // liveConsoleToolStripMenuItem
             // 
@@ -202,7 +195,7 @@
             // 
             this.groupBox3.Controls.Add(this.btCopyPort);
             this.groupBox3.Controls.Add(this.btCopyIP);
-            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.lblmaxClients);
             this.groupBox3.Controls.Add(this.FIELD_PORT);
             this.groupBox3.Controls.Add(this.FIELD_IP);
             this.groupBox3.Controls.Add(this.label5);
@@ -238,17 +231,17 @@
             this.btCopyIP.UseVisualStyleBackColor = true;
             this.btCopyIP.Click += new System.EventHandler(this.btCopyIP_Click);
             // 
-            // label6
+            // lblmaxClients
             // 
-            this.label6.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Navy;
-            this.label6.Location = new System.Drawing.Point(298, 110);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "0/10";
+            this.lblmaxClients.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.lblmaxClients.AutoSize = true;
+            this.lblmaxClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblmaxClients.ForeColor = System.Drawing.Color.Navy;
+            this.lblmaxClients.Location = new System.Drawing.Point(298, 110);
+            this.lblmaxClients.Name = "lblmaxClients";
+            this.lblmaxClients.Size = new System.Drawing.Size(34, 13);
+            this.lblmaxClients.TabIndex = 4;
+            this.lblmaxClients.Text = "0/10";
             // 
             // FIELD_PORT
             // 
@@ -293,6 +286,10 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Server IP:";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,7 +323,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem liveConsoleToolStripMenuItem;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -342,9 +338,10 @@
         private System.Windows.Forms.Button btCopyPort;
         public System.Windows.Forms.Label lblClients;
         public System.Windows.Forms.Label lblStatus;
-        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label lblmaxClients;
         public System.Windows.Forms.TextBox FIELD_PORT;
         public System.Windows.Forms.TextBox FIELD_IP;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

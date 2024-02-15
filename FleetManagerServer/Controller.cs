@@ -38,5 +38,12 @@ namespace FleetManagerServer
             so.ExecuteTemplate();
         }
 
+        public Korisnik AddUser(Korisnik user)
+        {
+            AddUserSO so = new AddUserSO(user);
+            so.ExecuteTemplate();
+            return so.Result;
+        }
+
     }
 }

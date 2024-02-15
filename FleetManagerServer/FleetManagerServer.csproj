@@ -68,6 +68,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
+    <Compile Include="SysOps\AddUserSO.cs" />
     <Compile Include="SysOps\LoginSO.cs" />
     <Compile Include="SysOps\LogoutSO.cs" />
     <Compile Include="SysOps\SystemOperation.cs" />

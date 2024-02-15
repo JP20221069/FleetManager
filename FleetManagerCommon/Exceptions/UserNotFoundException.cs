@@ -6,12 +6,12 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Exceptions
+namespace FleetManagerCommon.Exceptions
 {
     [Serializable]
-    public class UnableToDisconnectException : Exception
+    public class UserNotFoundException : Exception
     {
-        public override string Message => "Client was unable to disconnect due to a server error.";
+        public override string Message => "User not found.";
 
         public override IDictionary Data => base.Data;
 
@@ -44,11 +44,12 @@ namespace Common.Exceptions
         {
             return base.ToString();
         }
-        public UnableToDisconnectException()
+
+        public UserNotFoundException()
         {
-            
+
         }
-        public UnableToDisconnectException(System.Runtime.Serialization.SerializationInfo info,
+        public UserNotFoundException(System.Runtime.Serialization.SerializationInfo info,
         System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
 }

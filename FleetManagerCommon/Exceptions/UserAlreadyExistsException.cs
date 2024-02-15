@@ -6,12 +6,12 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Exceptions
+namespace FleetManagerCommon.Exceptions
 {
     [Serializable]
-    public class UnableToDisconnectException : Exception
+    public class UserAlreadyExistsException : Exception
     {
-        public override string Message => "Client was unable to disconnect due to a server error.";
+        public override string Message => "User with same data already exists.";
 
         public override IDictionary Data => base.Data;
 
@@ -44,11 +44,12 @@ namespace Common.Exceptions
         {
             return base.ToString();
         }
-        public UnableToDisconnectException()
+
+        public UserAlreadyExistsException()
         {
-            
+
         }
-        public UnableToDisconnectException(System.Runtime.Serialization.SerializationInfo info,
+        public UserAlreadyExistsException(System.Runtime.Serialization.SerializationInfo info,
         System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
 }

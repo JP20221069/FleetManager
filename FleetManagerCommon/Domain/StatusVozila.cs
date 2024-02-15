@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FleetManagerCommon.Communication
+namespace Common.Domain
 {
-    public enum Operation
+    public enum StatusVozila
     {
-        Login,
-        Disconnect,
-        Logout,
-        AddUser
+        Aktivno,
+        Neaktivno,
+        Servis
     }
 }
