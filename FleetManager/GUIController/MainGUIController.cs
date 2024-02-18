@@ -15,7 +15,7 @@ namespace FleetManager.GUIController
 {
     public class MainGUIController
     {
-        private static Korisnik current_user;
+        public static Korisnik current_user;
 
         private static FrmMain frmMain;
         private static AddUserGUIController augc;

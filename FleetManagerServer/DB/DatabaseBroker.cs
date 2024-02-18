@@ -405,7 +405,7 @@ namespace FleetManagerServer.DB
                     vehicle.Status = (StatusVozila)reader.GetInt32(reader.GetOrdinal("Status"));
                     vehicle.RegBroj = reader["RegBroj"].ToString();
                     vehicle.Tip = reader["Tip"].ToString();
-                    vehicle.Zaduzenja = GetAllCheckins(vehicle);
+                    vehicle.Zaduzenja = GetAllCheckinsByVehicle(vehicle);
                     vehicle.Servisiranja = GetAllServicings(vehicle);
                     ret.Add(vehicle);
                     count++;
@@ -451,7 +451,7 @@ namespace FleetManagerServer.DB
                     vehicle.Status = (StatusVozila)reader.GetInt32(reader.GetOrdinal("Status"));
                     vehicle.RegBroj = reader["RegBroj"].ToString();
                     vehicle.Tip = reader["Tip"].ToString();
-                    vehicle.Zaduzenja = GetAllCheckins(vehicle);
+                    vehicle.Zaduzenja = GetAllCheckinsByVehicle(vehicle);
                     vehicle.Servisiranja = GetAllServicings(vehicle);
                     ret.Add(vehicle);
 
@@ -483,7 +483,7 @@ namespace FleetManagerServer.DB
                     vehicle.Status = (StatusVozila)reader.GetInt32(reader.GetOrdinal("Status"));
                     vehicle.RegBroj = reader["RegBroj"].ToString();
                     vehicle.Tip = reader["Tip"].ToString();
-                    vehicle.Zaduzenja = GetAllCheckins(vehicle);
+                    vehicle.Zaduzenja = GetAllCheckinsByVehicle(vehicle);
                     vehicle.Servisiranja = GetAllServicings(vehicle);
                     ret.Add(vehicle);
 
@@ -559,7 +559,7 @@ namespace FleetManagerServer.DB
             return ret;
         }
 
-        public List<Zaduzenje> GetAllCheckins(Vozilo v)
+        public List<Zaduzenje> GetAllCheckinsByVehicle(Vozilo v)
         {
             SqlCommand comm = connection.CreateCommand();
             comm.CommandText = "SELECT * FROM ZADUZENJE WHERE VoziloID=" + v.ID + ";";
@@ -648,7 +648,7 @@ namespace FleetManagerServer.DB
         public void UpdateVehicle(Vozilo veh)
         {
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "UPDATE VOZILO SET Naziv='"+veh.Naziv+"',Marka='"+veh.Marka+"',Tip='"+veh.Tip+"',Status="+veh.Status+",Nosivost="+veh.Nosivost+",RegBroj='"+veh.RegBroj+"' WHERE ID="+veh.ID+";";
+            cmd.CommandText = "UPDATE VOZILO SET Naziv='"+veh.Naziv+"',Marka='"+veh.Marka+"',Tip='"+veh.Tip+"',Status="+(int)veh.Status+",Nosivost="+veh.Nosivost+",RegBroj='"+veh.RegBroj+"' WHERE ID="+veh.ID+";";
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }
@@ -672,6 +672,10 @@ namespace FleetManagerServer.DB
             {
                 z.Vozilo.Status = (int)StatusVozila.Aktivno;
                 UpdateVehicle(z.Vozilo);
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "UPDATE ZADUZENJE SET VremeRazduzenja='"+z.VremeRazduzenja.ToString("yyyy-MM-dd")+"', Aktivno=0 WHERE ID="+z.ID;
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
             }
         }
 

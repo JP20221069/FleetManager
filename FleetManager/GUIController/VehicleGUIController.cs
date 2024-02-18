@@ -150,7 +150,7 @@ namespace FleetManager.GUIController
             if (res.Exception == null)
             {
                 MessageBox.Show("Vehicle found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                VehicleViewGUIController.Instance.SetDataSource((List<Vozilo>)res.Result);
+                ViewGUIController.Instance.SetDataSource((List<Vozilo>)res.Result);
             }
             else if(res.Exception.GetType()==typeof(RecordNotFoundException))
             {
@@ -173,7 +173,7 @@ namespace FleetManager.GUIController
             v.Status = (StatusVozila)Convert.ToInt32(awc.CB_STATUS.SelectedValue);
             v.Tip = awc.FIELD_TYPE.Text;
             Response res = CommunicationManager.Instance.AlterVehicle(v);
-            VehicleViewGUIController.Instance.ShowAll();
+            ViewGUIController.Instance.ShowAllVehicles();
             if (res.Exception == null)
             {
                 MessageBox.Show("Successfully updated vehicle.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

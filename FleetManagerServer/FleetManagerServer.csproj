@@ -70,8 +70,11 @@
     <Compile Include="Server.cs" />
     <Compile Include="SysOps\AddUserSO.cs" />
     <Compile Include="SysOps\AddVehicleSO.cs" />
+    <Compile Include="SysOps\CheckinVehicleSO.cs" />
+    <Compile Include="SysOps\CheckoutVehicleSO.cs" />
     <Compile Include="SysOps\DeleteVehicleSO.cs" />
     <Compile Include="SysOps\GetAllVehiclesSO.cs" />
+    <Compile Include="SysOps\GetFreeVehiclesSO.cs" />
     <Compile Include="SysOps\LoginSO.cs" />
     <Compile Include="SysOps\LogoutSO.cs" />
     <Compile Include="SysOps\SearchVehicleSO.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Utils\Client.cs" />
     <Compile Include="Utils\LogEvent.cs" />
     <Compile Include="Utils\Logger.cs" />
+    <Compile Include="SysOps\GetCheckinsByUserSO.cs" />
     <Compile Include="Utils\UtilOps\GetLoggedInUsersUOP.cs" />
     <EmbeddedResource Include="FrmLog.resx">
       <DependentUpon>FrmLog.cs</DependentUpon>

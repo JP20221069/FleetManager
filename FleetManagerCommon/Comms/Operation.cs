@@ -16,6 +16,10 @@ namespace FleetManagerCommon.Communication
         AlterVehicle,
         DeleteVehicle,
         SearchVehicle,
-        GetAllVehicles
+        GetAllVehicles,
+        CheckinVehicle,
+        CheckoutVehicle,
+        GetCheckinsByUser,
+        GetFreeVehicles
     }
 }

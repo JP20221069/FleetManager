@@ -12,33 +12,33 @@ using System.Windows.Forms;
 
 namespace FleetManager
 {
-    public partial class FrmVehicles : Form
+    public partial class FrmView : Form
     {
-        public FrmVehicles()
+        public FrmView()
         {
             InitializeComponent();
-            dgwVehicles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgwVehicles.MultiSelect = false;
-            dgwVehicles.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dgwVehicles_RowPrePaint);
+            dgwView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgwView.MultiSelect = false;
+            dgwView.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dgwView_RowPrePaint);
         }
-        private void dgwVehicles_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        private void dgwView_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             e.PaintParts &= ~DataGridViewPaintParts.Focus;
         }
 
         private void btSearch_Click(object sender, EventArgs e)
         {
-            VehicleViewGUIController.Instance.ShowSearchView();
+            ViewGUIController.Instance.ShowSearchView();
         }
 
         private void FrmVehicles_Load(object sender, EventArgs e)
         {
-            VehicleViewGUIController.Instance.ShowAll();
+            ViewGUIController.Instance.ShowAll();
         }
 
         private void btShowAll_Click(object sender, EventArgs e)
         {
-            VehicleViewGUIController.Instance.ShowAll();
+            ViewGUIController.Instance.ShowAll();
         }
 
         private void btDelete_Click(object sender, EventArgs e)
@@ -46,13 +46,24 @@ namespace FleetManager
             DialogResult dr = MessageBox.Show("Are you sure?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                VehicleViewGUIController.Instance.DeleteVehicle();
+                ViewGUIController.Instance.DeleteVehicle();
             }
         }
 
         private void btAlter_Click(object sender, EventArgs e)
         {
-            VehicleViewGUIController.Instance.ShowAlterView();
+            ViewGUIController.Instance.ShowAlterView();
+        }
+
+        private void btCheckin_Click(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.ShowCheckInView();
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.CheckOutVehicle();
         }
     }
 }

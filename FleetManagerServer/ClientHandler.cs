@@ -127,6 +127,24 @@ namespace FleetManagerServer
                     Controller.Instance.UpdateVehicle((Vozilo)req.Argument);
                     res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
                 }
+                else if(req.Operation==Operation.CheckinVehicle)
+                {
+                    Controller.Instance.CheckinVehicle((Zaduzenje)req.Argument);
+                    res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
+                }
+                else if(req.Operation==Operation.CheckoutVehicle)
+                {
+                    Controller.Instance.CheckoutVehicle((Zaduzenje)req.Argument);
+                    res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
+                }
+                else if(req.Operation==Operation.GetCheckinsByUser)
+                {
+                    res.Result = Controller.Instance.GetCheckinsByUser((Korisnik)req.Argument);
+                }
+                else if(req.Operation==Operation.GetFreeVehicles)
+                {
+                    Controller.Instance.GetFreeVehicles();
+                }
             }
             catch (Exception ex)
             {

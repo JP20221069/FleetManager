@@ -60,5 +60,10 @@ namespace Common.Domain
             this.zaduzenja = zaduzenja;
             this.servisiranja = servisiranja;
         }
+
+        public override string ToString()
+        {
+            return Marka + " " + Naziv;
+        }
     }
 }

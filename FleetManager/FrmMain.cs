@@ -44,7 +44,7 @@ namespace FleetManager
 
         private void viewAllVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VehicleViewGUIController.Instance.ShowFrmVehicles();
+            ViewGUIController.Instance.ShowFrmVehicles();
         }
 
         private void alterRecordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,6 +65,11 @@ namespace FleetManager
         private void newUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MainGUIController.Instance.ShowAddUserControl();
+        }
+
+        private void checkoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.ShowFrmCheckins();
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using FleetManagerCommon.Domain;
 using FleetManagerServer.SysOps;
 using Common.Domain;
+using FleetManagerServer.Utils.UtilOps;
 
 namespace FleetManagerServer
 {
@@ -75,6 +76,31 @@ namespace FleetManagerServer
         {
             DeleteVehicleSO so = new DeleteVehicleSO(veh);
             so.ExecuteTemplate();
+        }
+
+        public void CheckinVehicle(Zaduzenje chk_in)
+        {
+            CheckinVehicleSO so = new CheckinVehicleSO(chk_in);
+            so.ExecuteTemplate();
+        }
+        public void CheckoutVehicle(Zaduzenje chk_out)
+        {
+            CheckoutVehicleSO so = new CheckoutVehicleSO(chk_out);
+            so.ExecuteTemplate();
+        }
+
+        public List<Zaduzenje> GetCheckinsByUser(Korisnik k)
+        {
+            GetCheckinsByUserSO so = new GetCheckinsByUserSO(k);
+            so.ExecuteTemplate();
+            return so.Result;
+        }
+
+        public List<Vozilo> GetFreeVehicles()
+        {
+            GetFreeVehiclesSO so = new GetFreeVehiclesSO();
+            so.ExecuteTemplate();
+            return so.Result;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace FleetManager
 {
-    partial class FrmVehicles
+    partial class FrmView
     {
         /// <summary>
         /// Required designer variable.
@@ -29,19 +29,23 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btCheckin = new System.Windows.Forms.Button();
             this.btShowAll = new System.Windows.Forms.Button();
             this.btAlter = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
             this.btSearch = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgwVehicles = new System.Windows.Forms.DataGridView();
+            this.dgwView = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgwVehicles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btCheckin);
             this.groupBox1.Controls.Add(this.btShowAll);
             this.groupBox1.Controls.Add(this.btAlter);
             this.groupBox1.Controls.Add(this.btDelete);
@@ -53,6 +57,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Controls";
+            // 
+            // btCheckin
+            // 
+            this.btCheckin.Location = new System.Drawing.Point(388, 19);
+            this.btCheckin.Name = "btCheckin";
+            this.btCheckin.Size = new System.Drawing.Size(88, 59);
+            this.btCheckin.TabIndex = 4;
+            this.btCheckin.Text = "Check in";
+            this.btCheckin.UseVisualStyleBackColor = true;
+            this.btCheckin.Click += new System.EventHandler(this.btCheckin_Click);
             // 
             // btShowAll
             // 
@@ -96,7 +110,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dgwVehicles);
+            this.groupBox2.Controls.Add(this.dgwView);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 100);
             this.groupBox2.Name = "groupBox2";
@@ -105,33 +119,43 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View";
             // 
-            // dgwVehicles
+            // dgwView
             // 
-            this.dgwVehicles.AllowUserToAddRows = false;
-            this.dgwVehicles.AllowUserToDeleteRows = false;
-            this.dgwVehicles.AllowUserToOrderColumns = true;
-            this.dgwVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwVehicles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgwVehicles.Location = new System.Drawing.Point(3, 16);
-            this.dgwVehicles.MultiSelect = false;
-            this.dgwVehicles.Name = "dgwVehicles";
-            this.dgwVehicles.ReadOnly = true;
-            this.dgwVehicles.Size = new System.Drawing.Size(794, 331);
-            this.dgwVehicles.TabIndex = 0;
+            this.dgwView.AllowUserToAddRows = false;
+            this.dgwView.AllowUserToDeleteRows = false;
+            this.dgwView.AllowUserToOrderColumns = true;
+            this.dgwView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgwView.Location = new System.Drawing.Point(3, 16);
+            this.dgwView.MultiSelect = false;
+            this.dgwView.Name = "dgwView";
+            this.dgwView.ReadOnly = true;
+            this.dgwView.Size = new System.Drawing.Size(794, 331);
+            this.dgwView.TabIndex = 0;
             // 
-            // FrmVehicles
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(482, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 59);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Check out";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // FrmView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FrmVehicles";
+            this.Name = "FrmView";
             this.Text = "Vehicles View";
             this.Load += new System.EventHandler(this.FrmVehicles_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgwVehicles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -143,7 +167,9 @@
         private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.Button btAlter;
-        public System.Windows.Forms.DataGridView dgwVehicles;
+        public System.Windows.Forms.DataGridView dgwView;
         private System.Windows.Forms.Button btShowAll;
+        private System.Windows.Forms.Button btCheckin;
+        private System.Windows.Forms.Button button1;
     }
 }

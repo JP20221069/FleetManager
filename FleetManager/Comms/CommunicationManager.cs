@@ -148,5 +148,52 @@ namespace FleetManager.Comms
             return response;
         }
 
+        internal Response GetFreeVehicles()
+        {
+            Request req = new Request
+            {
+                Argument = null,
+                Operation = Operation.GetFreeVehicles
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response GetUserCheckins(Korisnik user)
+        {
+            Request req = new Request
+            {
+                Argument = user,
+                Operation = Operation.GetCheckinsByUser
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response CheckinVehicle(Zaduzenje chk_in)
+        {
+            Request req = new Request
+            {
+                Argument = chk_in,
+                Operation = Operation.CheckinVehicle
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response CheckoutVehicle(Zaduzenje chk_out)
+        {
+            Request req = new Request
+            {
+                Argument = chk_out,
+                Operation = Operation.CheckoutVehicle
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }

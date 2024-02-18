@@ -50,5 +50,10 @@ namespace FleetManagerCommon.Domain
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            return username;
+        }
     }
 }
