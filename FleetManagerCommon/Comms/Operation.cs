@@ -11,6 +11,11 @@ namespace FleetManagerCommon.Communication
         Login,
         Disconnect,
         Logout,
-        AddUser
+        AddUser,
+        AddVehicle,
+        AlterVehicle,
+        DeleteVehicle,
+        SearchVehicle,
+        GetAllVehicles
     }
 }

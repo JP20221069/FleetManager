@@ -1,4 +1,5 @@
-﻿using FleetManagerCommon.Comms;
+﻿using Common.Domain;
+using FleetManagerCommon.Comms;
 using FleetManagerCommon.Communication;
 using FleetManagerCommon.Domain;
 using FleetManagerServer.SysOps;
@@ -97,7 +98,34 @@ namespace FleetManagerServer
                 {
                     Korisnik k = (Korisnik)req.Argument;
                     Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " added a record to " + k.TableName + "."));
-                    res.Result = Controller.Instance.AddUser(k);
+                    Controller.Instance.AddUser(k);
+                    res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
+                }
+                else if(req.Operation==Operation.AddVehicle)
+                {
+                    Vozilo v = (Vozilo)req.Argument;
+                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " added a record to " + v.TableName + "."));
+                    Controller.Instance.AddVehicle(v);
+                    res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
+                }
+                else if(req.Operation==Operation.SearchVehicle)
+                {
+                    Vozilo v = (Vozilo)req.Argument;
+                    res.Result = Controller.Instance.SearchVehicle(v);
+                }
+                else if (req.Operation == Operation.GetAllVehicles)
+                {
+                    res.Result = Controller.Instance.GetAllVehicles();
+                }
+                else if(req.Operation==Operation.DeleteVehicle)
+                {
+                    Controller.Instance.DeleteVehicle((Vozilo)req.Argument);
+                    res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
+                }
+                else if(req.Operation==Operation.AlterVehicle)
+                {
+                    Controller.Instance.UpdateVehicle((Vozilo)req.Argument);
+                    res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
                 }
             }
             catch (Exception ex)

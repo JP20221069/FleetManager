@@ -69,9 +69,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="SysOps\AddUserSO.cs" />
+    <Compile Include="SysOps\AddVehicleSO.cs" />
+    <Compile Include="SysOps\DeleteVehicleSO.cs" />
+    <Compile Include="SysOps\GetAllVehiclesSO.cs" />
     <Compile Include="SysOps\LoginSO.cs" />
     <Compile Include="SysOps\LogoutSO.cs" />
+    <Compile Include="SysOps\SearchVehicleSO.cs" />
     <Compile Include="SysOps\SystemOperation.cs" />
+    <Compile Include="SysOps\UpdateVehicleSO.cs" />
     <Compile Include="Utils\Client.cs" />
     <Compile Include="Utils\LogEvent.cs" />
     <Compile Include="Utils\Logger.cs" />

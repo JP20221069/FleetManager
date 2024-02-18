@@ -120,13 +120,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox FIELD_USERNAME;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox FIELD_PASSWORD;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox CB_Role;
         public System.Windows.Forms.Button btAccept;
+        public System.Windows.Forms.TextBox FIELD_USERNAME;
+        public System.Windows.Forms.TextBox FIELD_PASSWORD;
     }
 }

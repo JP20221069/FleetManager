@@ -1,4 +1,6 @@
-﻿using Common.Exceptions;
+﻿using Common.Domain;
+using Common.Exceptions;
+using FleetManager.Controls;
 using FleetManagerCommon.Comms;
 using FleetManagerCommon.Communication;
 using FleetManagerCommon.Domain;
@@ -75,29 +77,76 @@ namespace FleetManager.Comms
             return response;
         }
 
-        /*internal Response CreatePerson(Person person)
+        internal Response AddUser(Korisnik user)
         {
-            Request request = new Request
+            Request req = new Request
             {
-                Argument = person,
-                Operation = Operation.CreatePerson
+                Argument = user,
+                Operation = Operation.AddUser
             };
-            sender.Send(request);
+            sender.Send(req);
             Response response = (Response)receiver.Receive();
             return response;
-        }*/
+        }
 
-        /* internal object GetAllCity()
-         {
-             Request request = new Request
-             {
-                 Operation = Operation.GetAllCity
-             };
-             sender.Send(request);
-             Response response = (Response)receiver.Receive();
-             return response.Result;
+        internal Response AddVehicle(Vozilo veh)
+        {
+            Request req = new Request
+            {
+                Argument = veh,
+                Operation = Operation.AddVehicle
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
 
-         }*/
+        internal Response SearchVehicle(Vozilo veh)
+        {
+            Request req = new Request
+            {
+                Argument = veh,
+                Operation = Operation.SearchVehicle
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response GetAllVehicles()
+        {
+            Request req = new Request
+            {
+                Argument = null,
+                Operation = Operation.GetAllVehicles
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+        internal Response DeleteVehicle(Vozilo veh)
+        {
+            Request req = new Request
+            {
+                Argument = veh,
+                Operation = Operation.DeleteVehicle
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response AlterVehicle(Vozilo veh)
+        {
+            Request req = new Request
+            {
+                Argument = veh,
+                Operation = Operation.AlterVehicle
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
 
     }
 }

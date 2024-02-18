@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace FleetManager.Controls
 {
-    public partial class AddVehicleControl : UserControl
+    public partial class VehicleControl : UserControl
     {
-        public AddVehicleControl()
+        public VehicleControl()
         {
             InitializeComponent();
+        }
+
+        private void btAccept_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

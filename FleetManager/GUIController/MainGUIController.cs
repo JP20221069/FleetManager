@@ -5,6 +5,7 @@ using FleetManagerCommon.Communication;
 using FleetManagerCommon.Domain;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace FleetManager.GUIController
         private static Korisnik current_user;
 
         private static FrmMain frmMain;
+        private static AddUserGUIController augc;
+        private static VehicleGUIController awgc;
 
         private static MainGUIController instance;
         public static MainGUIController Instance
@@ -30,17 +33,22 @@ namespace FleetManager.GUIController
                 return instance;
             }
         }
-
+        private void InstantiateControllers()
+        {
+            augc = new AddUserGUIController();
+            awgc = new VehicleGUIController();
+        }
         private MainGUIController()
         {
-            //personGuiController = new PersonGuiController();
+            InstantiateControllers();
         }
        public MainGUIController(Korisnik user)
         {
             current_user = user;
+            InstantiateControllers();
+
         }
  
-       // private PersonGuiController personGuiController;
 
         internal void ShowFrmMain()
         {
@@ -88,9 +96,14 @@ namespace FleetManager.GUIController
             }
         }
 
-        internal void ShowAddPersonPanel()
+        internal void ShowAddUserControl()
         {
-            //frmMain.ChangePanel(personGuiController.CreateAddPerson());
+            frmMain.ChangePanel(augc.CreateAddUser());
+        }
+
+        internal void ShowAddVehicleControl()
+        {
+            frmMain.ChangePanel(awgc.CreateAddVehicle());
         }
     }
 }

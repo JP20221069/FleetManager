@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using FleetManager.Comms;
 using FleetManager.Controls;
 using FleetManager.Utils;
 using FleetManagerCommon.Communication;
@@ -15,9 +16,9 @@ namespace FleetManager.GUIController
 {
     public class AddUserGUIController
     {
-        private AddUserControl addPerson;
+        private AddUserControl auc;
 
-        internal Control CreateAddPerson()
+        internal Control CreateAddUser()
         {
             AddUserControl c = new AddUserControl();
             c.btAccept.Click += AddUser;
@@ -28,20 +29,25 @@ namespace FleetManager.GUIController
             c.CB_Role.DataSource = cbo;
             c.CB_Role.DisplayMember = "Name";
             c.CB_Role.ValueMember = "Value";
-            return addPerson;
+            auc = c;
+            return auc;
         }
 
         private void AddUser(object sender, EventArgs e)
         {
             Korisnik k = new Korisnik();
-            Response response = Communication.Instance.CreatePerson(person);
-            if (response.Exception == null)
+            k.Username = auc.FIELD_USERNAME.Text;
+            k.Password = auc.FIELD_PASSWORD.Text;
+            k.Aktivan = false;
+            k.LoggedIn = false;
+            Response res = CommunicationManager.Instance.AddUser(k);
+            if (res.Exception == null)
             {
-                MessageBox.Show("Uspesno ste dodali osobu!");
+                MessageBox.Show("Successfully added user.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
-                Debug.WriteLine(response.Exception);
+                MessageBox.Show(res.Exception.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

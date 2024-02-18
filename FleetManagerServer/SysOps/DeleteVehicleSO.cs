@@ -1,4 +1,4 @@
-﻿using FleetManagerCommon.Domain;
+﻿using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace FleetManagerServer.SysOps
 {
-    public class AddUserSO : SystemOperation
+    public class DeleteVehicleSO : SystemOperation
     {
-        private readonly Korisnik user;
-        public Korisnik Result { get; set; }
+        private readonly Vozilo veh;
 
-        public AddUserSO(Korisnik user)
+        public DeleteVehicleSO(Vozilo veh)
         {
-            this.user = user;
+            this.veh = veh;
         }
 
         protected override void ExecuteConcreteOperation()
         {
-            broker.AddUser(user);
+            broker.DeleteVehicle(veh.ID);
         }
     }
 }

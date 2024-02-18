@@ -8,8 +8,9 @@ namespace Common.Domain
 {
     public enum StatusVozila
     {
-        Aktivno,
+        Default=-1,
+        Aktivno=0,
         Neaktivno,
-        Servis
+        Zaduzeno,
     }
 }

@@ -11,7 +11,7 @@ namespace FleetManager.Utils
         object value;
         string name;
 
-        public object Value { get => value; set => value = value; }
+        public object Value { get => value; set => this.value = value; }
         public string Name { get => name; set => name = value; }
 
         public CBObject()

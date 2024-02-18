@@ -14,6 +14,14 @@ namespace FleetManager
 {
     public partial class FrmMain : Form
     {
+        public void ChangePanel(Control control)
+        {
+            pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(control);
+            control.Dock = DockStyle.Fill;
+            pnlMain.AutoSize = true;
+            pnlMain.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
         public FrmMain()
         {
             InitializeComponent();
@@ -36,7 +44,7 @@ namespace FleetManager
 
         private void viewAllVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            VehicleViewGUIController.Instance.ShowFrmVehicles();
         }
 
         private void alterRecordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,6 +55,16 @@ namespace FleetManager
         private void logOffToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MainGUIController.Instance.Logout();
+        }
+
+        private void newVehToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainGUIController.Instance.ShowAddVehicleControl();
+        }
+
+        private void newUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainGUIController.Instance.ShowAddUserControl();
         }
     }
 }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace FleetManagerCommon.Exceptions
 {
     [Serializable]
-    public class UserNotFoundException : Exception
+    public class RecordNotFoundException : Exception
     {
-        public override string Message => "User not found.";
+        public override string Message => "Specified record not found.";
 
         public override IDictionary Data => base.Data;
 
@@ -45,11 +45,11 @@ namespace FleetManagerCommon.Exceptions
             return base.ToString();
         }
 
-        public UserNotFoundException()
+        public RecordNotFoundException()
         {
 
         }
-        public UserNotFoundException(System.Runtime.Serialization.SerializationInfo info,
+        public RecordNotFoundException(System.Runtime.Serialization.SerializationInfo info,
         System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
 }

@@ -34,7 +34,7 @@ namespace Common.Domain
             
         }
 
-        public StavkaServisiranja(int id, Servis servis,Vozilo vozilo, string Naziv,string Opis)
+        public StavkaServisiranja(int id, Servis servis,Vozilo vozilo, string naziv,string opis)
         {
             this.id = id;
             this.servis = servis;
