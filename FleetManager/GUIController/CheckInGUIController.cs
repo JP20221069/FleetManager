@@ -15,8 +15,8 @@ namespace FleetManager.GUIController
     public class CheckInGUIController
     {
         private CheckInControl chc;
-        private Vozilo veh;
-        private Korisnik usr;
+        public Vozilo veh { get; set; }
+        public Korisnik usr { get; set; }
         private static CheckInGUIController instance;
         public static CheckInGUIController Instance
         {
@@ -33,12 +33,6 @@ namespace FleetManager.GUIController
         public CheckInGUIController()
         {
 
-        }
-
-        public CheckInGUIController(Vozilo v,Korisnik k)
-        {
-            veh = v;
-            usr = k;
         }
 
         internal Control CreateCheckIn()

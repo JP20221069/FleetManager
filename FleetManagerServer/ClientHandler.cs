@@ -145,6 +145,15 @@ namespace FleetManagerServer
                 {
                     Controller.Instance.GetFreeVehicles();
                 }
+                else if(req.Operation==Operation.GetAllServices)
+                {
+                    res.Result = Controller.Instance.GetAllServices();
+                }
+                else if (req.Operation == Operation.ServiceVehicle)
+                {
+                    Controller.Instance.ServiceVehicle((Servisiranje)req.Argument);
+                    res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
+                }
             }
             catch (Exception ex)
             {

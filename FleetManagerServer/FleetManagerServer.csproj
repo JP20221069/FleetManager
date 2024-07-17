@@ -73,11 +73,13 @@
     <Compile Include="SysOps\CheckinVehicleSO.cs" />
     <Compile Include="SysOps\CheckoutVehicleSO.cs" />
     <Compile Include="SysOps\DeleteVehicleSO.cs" />
+    <Compile Include="SysOps\GetAllServicesSO.cs" />
     <Compile Include="SysOps\GetAllVehiclesSO.cs" />
     <Compile Include="SysOps\GetFreeVehiclesSO.cs" />
     <Compile Include="SysOps\LoginSO.cs" />
     <Compile Include="SysOps\LogoutSO.cs" />
     <Compile Include="SysOps\SearchVehicleSO.cs" />
+    <Compile Include="SysOps\ServiceVehicleSO.cs" />
     <Compile Include="SysOps\SystemOperation.cs" />
     <Compile Include="SysOps\UpdateVehicleSO.cs" />
     <Compile Include="Utils\Client.cs" />

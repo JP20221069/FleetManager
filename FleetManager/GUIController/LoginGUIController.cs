@@ -82,8 +82,8 @@ namespace FleetManager.GuiController
             if (response.Exception == null)
             {
                 frmLogin.Visible = false;
-                MainGUIController mgc = new MainGUIController((Korisnik)response.Result);
-                mgc.ShowFrmMain();
+                MainGUIController.current_user = (Korisnik)response.Result;
+                MainGUIController.Instance.ShowFrmMain();
             }
             else
             {

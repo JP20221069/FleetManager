@@ -42,12 +42,6 @@ namespace FleetManager.GUIController
         {
             InstantiateControllers();
         }
-       public MainGUIController(Korisnik user)
-        {
-            current_user = user;
-            InstantiateControllers();
-
-        }
  
 
         internal void ShowFrmMain()

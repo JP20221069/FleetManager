@@ -28,93 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btCheckin = new System.Windows.Forms.Button();
-            this.btShowAll = new System.Windows.Forms.Button();
-            this.btAlter = new System.Windows.Forms.Button();
-            this.btDelete = new System.Windows.Forms.Button();
-            this.btSearch = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmView));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgwView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbSearch = new System.Windows.Forms.ToolStripButton();
+            this.tsbShowAll = new System.Windows.Forms.ToolStripButton();
+            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbAlter = new System.Windows.Forms.ToolStripButton();
+            this.tsbCheckin = new System.Windows.Forms.ToolStripButton();
+            this.tsbCheckout = new System.Windows.Forms.ToolStripButton();
+            this.tsbService = new System.Windows.Forms.ToolStripButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwView)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.btCheckin);
-            this.groupBox1.Controls.Add(this.btShowAll);
-            this.groupBox1.Controls.Add(this.btAlter);
-            this.groupBox1.Controls.Add(this.btDelete);
-            this.groupBox1.Controls.Add(this.btSearch);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 100);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Controls";
-            // 
-            // btCheckin
-            // 
-            this.btCheckin.Location = new System.Drawing.Point(388, 19);
-            this.btCheckin.Name = "btCheckin";
-            this.btCheckin.Size = new System.Drawing.Size(88, 59);
-            this.btCheckin.TabIndex = 4;
-            this.btCheckin.Text = "Check in";
-            this.btCheckin.UseVisualStyleBackColor = true;
-            this.btCheckin.Click += new System.EventHandler(this.btCheckin_Click);
-            // 
-            // btShowAll
-            // 
-            this.btShowAll.Location = new System.Drawing.Point(106, 19);
-            this.btShowAll.Name = "btShowAll";
-            this.btShowAll.Size = new System.Drawing.Size(88, 59);
-            this.btShowAll.TabIndex = 3;
-            this.btShowAll.Text = "Show All";
-            this.btShowAll.UseVisualStyleBackColor = true;
-            this.btShowAll.Click += new System.EventHandler(this.btShowAll_Click);
-            // 
-            // btAlter
-            // 
-            this.btAlter.Location = new System.Drawing.Point(294, 19);
-            this.btAlter.Name = "btAlter";
-            this.btAlter.Size = new System.Drawing.Size(88, 59);
-            this.btAlter.TabIndex = 2;
-            this.btAlter.Text = "Alter";
-            this.btAlter.UseVisualStyleBackColor = true;
-            this.btAlter.Click += new System.EventHandler(this.btAlter_Click);
-            // 
-            // btDelete
-            // 
-            this.btDelete.Location = new System.Drawing.Point(200, 19);
-            this.btDelete.Name = "btDelete";
-            this.btDelete.Size = new System.Drawing.Size(88, 59);
-            this.btDelete.TabIndex = 1;
-            this.btDelete.Text = "Delete";
-            this.btDelete.UseVisualStyleBackColor = true;
-            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
-            // 
-            // btSearch
-            // 
-            this.btSearch.Location = new System.Drawing.Point(12, 19);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Size = new System.Drawing.Size(88, 59);
-            this.btSearch.TabIndex = 0;
-            this.btSearch.Text = "Search";
-            this.btSearch.UseVisualStyleBackColor = true;
-            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgwView);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 100);
+            this.groupBox2.Location = new System.Drawing.Point(0, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(800, 350);
+            this.groupBox2.Size = new System.Drawing.Size(800, 425);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View";
@@ -130,18 +66,95 @@
             this.dgwView.MultiSelect = false;
             this.dgwView.Name = "dgwView";
             this.dgwView.ReadOnly = true;
-            this.dgwView.Size = new System.Drawing.Size(794, 331);
+            this.dgwView.Size = new System.Drawing.Size(794, 406);
             this.dgwView.TabIndex = 0;
             // 
-            // button1
+            // toolStrip1
             // 
-            this.button1.Location = new System.Drawing.Point(482, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 59);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Check out";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSearch,
+            this.tsbShowAll,
+            this.tsbDelete,
+            this.tsbAlter,
+            this.tsbCheckin,
+            this.tsbCheckout,
+            this.tsbService});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbSearch
+            // 
+            this.tsbSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsbSearch.Image")));
+            this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSearch.Name = "tsbSearch";
+            this.tsbSearch.Size = new System.Drawing.Size(23, 22);
+            this.tsbSearch.Text = "toolStripButton1";
+            this.tsbSearch.Click += new System.EventHandler(this.tsbSearch_Click);
+            // 
+            // tsbShowAll
+            // 
+            this.tsbShowAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbShowAll.Image = global::FleetManager.Properties.Resources.WMS_Playlist;
+            this.tsbShowAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbShowAll.Name = "tsbShowAll";
+            this.tsbShowAll.Size = new System.Drawing.Size(23, 22);
+            this.tsbShowAll.Text = "toolStripButton2";
+            this.tsbShowAll.Click += new System.EventHandler(this.tsbShowAll_Click);
+            // 
+            // tsbDelete
+            // 
+            this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDelete.Image = global::FleetManager.Properties.Resources.Delete;
+            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsbDelete.Text = "toolStripButton3";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
+            // 
+            // tsbAlter
+            // 
+            this.tsbAlter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAlter.Image = global::FleetManager.Properties.Resources.Write_Files_to_Disc;
+            this.tsbAlter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAlter.Name = "tsbAlter";
+            this.tsbAlter.Size = new System.Drawing.Size(23, 22);
+            this.tsbAlter.Text = "toolStripButton4";
+            // 
+            // tsbCheckin
+            // 
+            this.tsbCheckin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCheckin.Image = ((System.Drawing.Image)(resources.GetObject("tsbCheckin.Image")));
+            this.tsbCheckin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCheckin.Name = "tsbCheckin";
+            this.tsbCheckin.Size = new System.Drawing.Size(23, 22);
+            this.tsbCheckin.Text = "toolStripButton5";
+            this.tsbCheckin.Click += new System.EventHandler(this.tsbCheckin_Click);
+            // 
+            // tsbCheckout
+            // 
+            this.tsbCheckout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCheckout.Image = global::FleetManager.Properties.Resources.OE_Outbox;
+            this.tsbCheckout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCheckout.Name = "tsbCheckout";
+            this.tsbCheckout.Size = new System.Drawing.Size(23, 22);
+            this.tsbCheckout.Text = "toolStripButton6";
+            this.tsbCheckout.Click += new System.EventHandler(this.tsbCheckout_Click);
+            // 
+            // tsbService
+            // 
+            this.tsbService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbService.Image = global::FleetManager.Properties.Resources.Services;
+            this.tsbService.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbService.Name = "tsbService";
+            this.tsbService.Size = new System.Drawing.Size(23, 22);
+            this.tsbService.Text = "toolStripButton1";
+            this.tsbService.Click += new System.EventHandler(this.tsbService_Click);
             // 
             // FrmView
             // 
@@ -149,27 +162,29 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.toolStrip1);
             this.Name = "FrmView";
             this.Text = "Vehicles View";
             this.Load += new System.EventHandler(this.FrmVehicles_Load);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwView)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btDelete;
-        private System.Windows.Forms.Button btSearch;
-        private System.Windows.Forms.Button btAlter;
         public System.Windows.Forms.DataGridView dgwView;
-        private System.Windows.Forms.Button btShowAll;
-        private System.Windows.Forms.Button btCheckin;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsbSearch;
+        private System.Windows.Forms.ToolStripButton tsbShowAll;
+        private System.Windows.Forms.ToolStripButton tsbDelete;
+        private System.Windows.Forms.ToolStripButton tsbAlter;
+        private System.Windows.Forms.ToolStripButton tsbCheckin;
+        private System.Windows.Forms.ToolStripButton tsbCheckout;
+        private System.Windows.Forms.ToolStripButton tsbService;
     }
 }

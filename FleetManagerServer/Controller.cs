@@ -102,5 +102,18 @@ namespace FleetManagerServer
             so.ExecuteTemplate();
             return so.Result;
         }
+
+        public List<Servis> GetAllServices()
+        {
+            GetAllServicesSO so = new GetAllServicesSO();
+            so.ExecuteTemplate();
+            return so.Result;
+        }
+
+        public void ServiceVehicle(Servisiranje s)
+        {
+            ServiceVehicleSO so = new ServiceVehicleSO(s);
+            so.ExecuteTemplate();
+        }
     }
 }

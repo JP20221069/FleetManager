@@ -80,9 +80,24 @@ namespace FleetManager.GUIController
                 t.Text = "Check in Vehicle";
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
-                CheckInGUIController cgc = new CheckInGUIController(v, MainGUIController.current_user);
-                t.ChangePanel(cgc.CreateCheckIn());
+                CheckInGUIController.Instance.veh = v;
+                CheckInGUIController.Instance.veh = v;
+                t.ChangePanel(CheckInGUIController.Instance.CreateCheckIn());
                 t.ShowDialog();
+            }
+        }
+
+        public void ShowFrmService()
+        {
+            Vozilo v = ViewGUIController.Instance.GetSelectedRowVehicle();
+            if (v == null)
+            {
+                MessageBox.Show("No vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                ServiceGUIController.Instance.veh = new Vozilo(v.ID,v.Tip,v.Marka,v.Status,v.RegBroj,v.Naziv,v.Nosivost,v.Zaduzenja,v.Servisiranja);
+                ServiceGUIController.Instance.ShowFrmService();
             }
         }
 

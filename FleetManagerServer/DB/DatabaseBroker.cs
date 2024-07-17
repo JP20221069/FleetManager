@@ -679,6 +679,32 @@ namespace FleetManagerServer.DB
             }
         }
 
+        public List<Servis> GetAllServices()
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT * FROM SERVIS;";
+            SqlDataReader reader = comm.ExecuteReader();
+            List<Servis> ret = new List<Servis>();
+            try
+            {
+
+                while (reader.Read())
+                {
+                    Servis s = new Servis();
+                    s.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    s.Naziv = reader["Naziv"].ToString();
+                    s.Adresa = reader["Adresa"].ToString();
+                    ret.Add(s);
+
+                }
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return ret;
+        }
+
 
 
     }

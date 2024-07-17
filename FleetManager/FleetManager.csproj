@@ -61,6 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comms\CommunicationManager.cs" />
+    <Compile Include="Controls\AddServiceItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AddServiceItemControl.Designer.cs">
+      <DependentUpon>AddServiceItemControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AddUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmService.Designer.cs">
+      <DependentUpon>FrmService.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,8 +127,10 @@
     <Compile Include="FrmView.Designer.cs">
       <DependentUpon>FrmView.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUIController\AddServiceGUIController.cs" />
     <Compile Include="GUIController\AddUserGUIController.cs" />
     <Compile Include="GUIController\CheckInGUIController.cs" />
+    <Compile Include="GUIController\ServiceGUIController.cs" />
     <Compile Include="GUIController\VehicleGUIController.cs" />
     <Compile Include="GUIController\LoginGUIController.cs" />
     <Compile Include="GUIController\MainGUIController.cs" />
@@ -124,6 +138,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CBObject.cs" />
+    <EmbeddedResource Include="Controls\AddServiceItemControl.resx">
+      <DependentUpon>AddServiceItemControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\AddUserControl.resx">
       <DependentUpon>AddUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmService.resx">
+      <DependentUpon>FrmService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTool.resx">
       <DependentUpon>FrmTool.cs</DependentUpon>
@@ -179,6 +199,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WMS Playlist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Write Files to Disc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OE Outbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Services.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

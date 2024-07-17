@@ -195,5 +195,29 @@ namespace FleetManager.Comms
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal Response GetAllServices()
+        {
+            Request req = new Request
+            {
+                Argument = null,
+                Operation = Operation.GetAllServices
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response ServiceVehicle(Servisiranje s)
+        {
+            Request req = new Request
+            {
+                Argument = s,
+                Operation = Operation.ServiceVehicle
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }
