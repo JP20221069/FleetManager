@@ -43,8 +43,6 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btCopyPort = new System.Windows.Forms.Button();
-            this.btCopyIP = new System.Windows.Forms.Button();
             this.lblmaxClients = new System.Windows.Forms.Label();
             this.FIELD_PORT = new System.Windows.Forms.TextBox();
             this.FIELD_IP = new System.Windows.Forms.TextBox();
@@ -52,6 +50,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btCopyPort = new System.Windows.Forms.Button();
+            this.btCopyIP = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,7 +89,8 @@
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.liveConsoleToolStripMenuItem});
+            this.liveConsoleToolStripMenuItem,
+            this.connectionToolStripMenuItem});
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
             this.manageToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.manageToolStripMenuItem.Text = "Manage";
@@ -97,7 +99,7 @@
             // liveConsoleToolStripMenuItem
             // 
             this.liveConsoleToolStripMenuItem.Name = "liveConsoleToolStripMenuItem";
-            this.liveConsoleToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.liveConsoleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.liveConsoleToolStripMenuItem.Text = "Live Console";
             this.liveConsoleToolStripMenuItem.Click += new System.EventHandler(this.liveConsoleToolStripMenuItem_Click);
             // 
@@ -209,28 +211,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Server Info";
             // 
-            // btCopyPort
-            // 
-            this.btCopyPort.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
-            this.btCopyPort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btCopyPort.Location = new System.Drawing.Point(371, 76);
-            this.btCopyPort.Name = "btCopyPort";
-            this.btCopyPort.Size = new System.Drawing.Size(23, 22);
-            this.btCopyPort.TabIndex = 8;
-            this.btCopyPort.UseVisualStyleBackColor = true;
-            this.btCopyPort.Click += new System.EventHandler(this.btCopyPort_Click);
-            // 
-            // btCopyIP
-            // 
-            this.btCopyIP.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
-            this.btCopyIP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btCopyIP.Location = new System.Drawing.Point(371, 44);
-            this.btCopyIP.Name = "btCopyIP";
-            this.btCopyIP.Size = new System.Drawing.Size(23, 22);
-            this.btCopyIP.TabIndex = 7;
-            this.btCopyIP.UseVisualStyleBackColor = true;
-            this.btCopyIP.Click += new System.EventHandler(this.btCopyIP_Click);
-            // 
             // lblmaxClients
             // 
             this.lblmaxClients.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -290,6 +270,35 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // connectionToolStripMenuItem
+            // 
+            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectionToolStripMenuItem.Text = "Connection";
+            this.connectionToolStripMenuItem.Click += new System.EventHandler(this.connectionToolStripMenuItem_Click);
+            // 
+            // btCopyPort
+            // 
+            this.btCopyPort.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
+            this.btCopyPort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCopyPort.Location = new System.Drawing.Point(371, 76);
+            this.btCopyPort.Name = "btCopyPort";
+            this.btCopyPort.Size = new System.Drawing.Size(23, 22);
+            this.btCopyPort.TabIndex = 8;
+            this.btCopyPort.UseVisualStyleBackColor = true;
+            this.btCopyPort.Click += new System.EventHandler(this.btCopyPort_Click);
+            // 
+            // btCopyIP
+            // 
+            this.btCopyIP.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
+            this.btCopyIP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCopyIP.Location = new System.Drawing.Point(371, 44);
+            this.btCopyIP.Name = "btCopyIP";
+            this.btCopyIP.Size = new System.Drawing.Size(23, 22);
+            this.btCopyIP.TabIndex = 7;
+            this.btCopyIP.UseVisualStyleBackColor = true;
+            this.btCopyIP.Click += new System.EventHandler(this.btCopyIP_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +351,7 @@
         public System.Windows.Forms.TextBox FIELD_PORT;
         public System.Windows.Forms.TextBox FIELD_IP;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
     }
 }
 

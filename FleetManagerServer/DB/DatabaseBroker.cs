@@ -679,6 +679,14 @@ namespace FleetManagerServer.DB
             }
         }
 
+       /* public void TestConnection()
+        {
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_CATALOG='FleetManager';";
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+        }*/
+
         public List<Servis> GetAllServices()
         {
             SqlCommand comm = connection.CreateCommand();

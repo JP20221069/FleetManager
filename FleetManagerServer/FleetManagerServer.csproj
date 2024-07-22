@@ -51,6 +51,12 @@
     <Compile Include="Controller.cs" />
     <Compile Include="DB\DatabaseBroker.cs" />
     <Compile Include="DB\DatabaseConnection.cs" />
+    <Compile Include="FrmConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConnection.Designer.cs">
+      <DependentUpon>FrmConnection.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,7 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuiController\ConnectionGUIController.cs" />
     <Compile Include="GuiController\LogGUIController.cs" />
     <Compile Include="GuiController\MainGUIController.cs" />
     <Compile Include="Program.cs" />
@@ -87,6 +94,11 @@
     <Compile Include="Utils\Logger.cs" />
     <Compile Include="SysOps\GetCheckinsByUserSO.cs" />
     <Compile Include="Utils\UtilOps\GetLoggedInUsersUOP.cs" />
+    <Compile Include="Utils\UtilOps\TestConnectionUOP.cs" />
+    <Compile Include="Utils\UtilOps\UtilityOperation.cs" />
+    <EmbeddedResource Include="FrmConnection.resx">
+      <DependentUpon>FrmConnection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLog.resx">
       <DependentUpon>FrmLog.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +138,10 @@
       <Project>{484f1a5a-d68a-43c4-8e87-84ef74591c12}</Project>
       <Name>FleetManagerCommon</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\data_yellow.png" />
+    <None Include="Resources\data_yellow1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

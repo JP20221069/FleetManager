@@ -38,7 +38,7 @@ namespace FleetManagerServer.DB
         }
         public void Rollback()
         {
-            transaction.Rollback();
+            transaction?.Rollback();
         }
         public SqlCommand CreateCommand()
         {

@@ -99,5 +99,10 @@ namespace FleetManagerServer
                 }
             }
         }
+
+        private void connectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConnectionGUIController.Instance.ShowFrmConnection();
+        }
     }
 }

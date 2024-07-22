@@ -8,6 +8,8 @@ using FleetManagerCommon.Domain;
 using FleetManagerServer.SysOps;
 using Common.Domain;
 using FleetManagerServer.Utils.UtilOps;
+using System.Windows.Forms;
+using FleetManagerCommon.Comms;
 
 namespace FleetManagerServer
 {
@@ -115,5 +117,21 @@ namespace FleetManagerServer
             ServiceVehicleSO so = new ServiceVehicleSO(s);
             so.ExecuteTemplate();
         }
+
+        public FleetManagerCommon.Comms.Message TestConnection()
+        {
+            TestConnectionUOP uo = new TestConnectionUOP();
+            try
+            {
+                uo.ExecuteTemplate();
+            }
+            catch(Exception ex)
+            {
+                return new FleetManagerCommon.Comms.Message(MessageType.Error, ex.Message);
+            }
+            return new FleetManagerCommon.Comms.Message(MessageType.Success);
+            
+        }
+
     }
 }
