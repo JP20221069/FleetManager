@@ -27,6 +27,8 @@ namespace Common.Domain
 
         string IEntity.TableName => "STAVKA_SERVISIRANJA";
 
+        string IEntity.ColumnNames => "ServisiranjeID,ServisID,Naziv,Opis";
+
         string IEntity.Values => Servisiranje.ID+","+Servis.ID + $",'{naziv}'" + $",'{opis}'";
 
         public StavkaServisiranja()

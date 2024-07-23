@@ -19,6 +19,8 @@ namespace Common.Domain
 
 
         string IEntity.TableName => "Servisiranje";
+
+        string IEntity.ColumnNames => "VoziloID,Napomena,Datum";
         string IEntity.Values => $"{Vozilo.ID}" +$",'{Napomena}'" +$",'{Datum.ToString("yyyy-MM-dd")}'";
         public DateTime Datum { get => datum; set => datum = value; }
         public Vozilo Vozilo { get => vozilo; set => vozilo = value; }

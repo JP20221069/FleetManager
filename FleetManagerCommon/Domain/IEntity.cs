@@ -12,6 +12,7 @@ namespace FleetManagerCommon.Domain
         string TableName { get; }
         string Values { get; }
 
+        string ColumnNames { get; }
         List<IEntity> GetReaderList(SqlDataReader reader);
 
     }

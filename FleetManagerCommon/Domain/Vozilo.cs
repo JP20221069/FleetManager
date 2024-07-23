@@ -36,6 +36,8 @@ namespace Common.Domain
 
         public string TableName => "VOZILO";
 
+        public string ColumnNames => "Tip,Marka,Status,RegBroj,Naziv,Nosivost";
+
         public string Values => $"'{Tip}'" + $",'{Marka}'" + $",{(int)Status}" + $",'{RegBroj}'" + $",'{Naziv}'" + $",{Nosivost}";
 
         List<IEntity> IEntity.GetReaderList(SqlDataReader reader)

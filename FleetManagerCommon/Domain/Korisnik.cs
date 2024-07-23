@@ -28,6 +28,8 @@ namespace FleetManagerCommon.Domain
 
         public string TableName =>  "KORISNIK";
 
+        public string ColumnNames => "Username,Password,Rola,Ulogovan,Aktivan";
+
         public string Values => $"'{Username}',"+$"'{Password}'," + $"{Rola}," + $"{Convert.ToInt32(LoggedIn)}," + $"{Convert.ToInt32(Aktivan)}";
 
         public Korisnik()

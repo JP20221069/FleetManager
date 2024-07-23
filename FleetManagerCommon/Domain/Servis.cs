@@ -21,6 +21,8 @@ namespace Common.Domain
 
         string IEntity.TableName => "Servis";
 
+        string IEntity.ColumnNames => "Naziv,Adresa";
+
         string IEntity.Values => $"'{Naziv}'," + $"'{Adresa}'";
 
         public Servis()

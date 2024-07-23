@@ -22,7 +22,7 @@ namespace Common.Domain
         string napomena;
 
         public string TableName => "ZADUZENJE";
-
+        public string ColumnNames => "Aktivno,VoziloID,KorisnikID,RelacijaOd,RelacijaDo,VremeZaduzenja,VremeRazduzenja,Napomena";
         public string Values => Convert.ToInt32(Aktivno) + "," + Vozilo.ID + "," + Korisnik.ID + $",'{RelacijaOd}'" + $",'{RelacijaDo}'" + $",'{VremeZaduzenja.ToString("yyyy-MM-dd")}'" + (Aktivno == true ? $",'{VremeRazduzenja.ToString("yyyy-MM-dd")}'" : ",NULL") + $",'{Napomena}'";
 
         public int ID { get => id; set => id = value; }

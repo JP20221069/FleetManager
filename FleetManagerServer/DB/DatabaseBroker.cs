@@ -40,7 +40,7 @@ namespace FleetManagerServer.DB
         public void Add(IEntity obj)
         {
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"INSERT INTO {obj.TableName} VALUES({obj.Values} )";
+            cmd.CommandText = $"INSERT INTO {obj.TableName}({obj.ColumnNames}) VALUES({obj.Values} )";
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }
@@ -575,10 +575,10 @@ namespace FleetManagerServer.DB
                     z.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     z.Vozilo = v;
                     z.Korisnik = GetUserByID(reader.GetInt32(reader.GetOrdinal("KorisnikID")));
-                    z.Napomena = reader["Napomena"].ToString();
+                    z.Napomena = reader.IsDBNull(reader.GetOrdinal("Napomena"))? " " : reader["Napomena"].ToString();
                     z.Aktivno = reader.GetBoolean(reader.GetOrdinal("Aktivno"));
                     z.VremeZaduzenja = reader.GetDateTime(reader.GetOrdinal("VremeZaduzenja"));
-                    z.VremeRazduzenja = reader.GetDateTime(reader.GetOrdinal("VremeRazduzenja"));
+                    z.VremeRazduzenja = reader.IsDBNull(reader.GetOrdinal("VremeRazduzenja")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("VremeRazduzenja"));
                     z.RelacijaOd = reader["RelacijaOd"].ToString();
                     z.RelacijaOd = reader["RelacijaDo"].ToString();
 
@@ -613,10 +613,10 @@ namespace FleetManagerServer.DB
                     z.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     z.Vozilo = GetVehicleByID(reader.GetInt32(reader.GetOrdinal("VoziloID")));
                     z.Korisnik = k;
-                    z.Napomena = reader["Napomena"].ToString();
+                    z.Napomena = reader.IsDBNull(reader.GetOrdinal("Napomena"))? "" : reader["Napomena"].ToString();
                     z.Aktivno = reader.GetBoolean(reader.GetOrdinal("Aktivno"));
                     z.VremeZaduzenja = reader.GetDateTime(reader.GetOrdinal("VremeZaduzenja"));
-                    z.VremeRazduzenja = reader.GetDateTime(reader.GetOrdinal("VremeRazduzenja"));
+                    z.VremeRazduzenja = reader.IsDBNull(reader.GetOrdinal("VremeRazduzenja")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("VremeRazduzenja"));
                     z.RelacijaOd = reader["RelacijaOd"].ToString();
                     z.RelacijaOd = reader["RelacijaDo"].ToString();
 
