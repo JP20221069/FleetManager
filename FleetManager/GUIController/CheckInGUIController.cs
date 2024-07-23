@@ -45,15 +45,16 @@ namespace FleetManager.GUIController
 
         private void CheckinVehicle(object sender,EventArgs e)
         {
-            string relacijaod = chc.FIELD_FINISH.Text;
-            string relacijado = chc.FIELD_START.Text;
+            string relacijaod = chc.FIELD_START.Text;
+            string relacijado = chc.FIELD_FINISH.Text;
             string notes = chc.FIELD_NOTES.Text;
             Zaduzenje z = new Zaduzenje(-1, veh, usr, true,relacijaod,relacijado,DateTime.Now,DateTime.Now,notes);
             Response res = CommunicationManager.Instance.CheckinVehicle(z);
             if (res.Exception == null)
             {
                 MessageBox.Show("Successfully checked in vehicle.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ViewGUIController.Instance.ShowAllVehicles();
+                ViewGUIController.Instance.ShowFreeVehicles();
+                chc.ParentForm.Close();
             }
             else
             {

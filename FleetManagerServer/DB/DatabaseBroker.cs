@@ -580,7 +580,7 @@ namespace FleetManagerServer.DB
                     z.VremeZaduzenja = reader.GetDateTime(reader.GetOrdinal("VremeZaduzenja"));
                     z.VremeRazduzenja = reader.IsDBNull(reader.GetOrdinal("VremeRazduzenja")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("VremeRazduzenja"));
                     z.RelacijaOd = reader["RelacijaOd"].ToString();
-                    z.RelacijaOd = reader["RelacijaDo"].ToString();
+                    z.RelacijaDo = reader["RelacijaDo"].ToString();
 
                     ret.Add(z);
                 }
@@ -618,7 +618,7 @@ namespace FleetManagerServer.DB
                     z.VremeZaduzenja = reader.GetDateTime(reader.GetOrdinal("VremeZaduzenja"));
                     z.VremeRazduzenja = reader.IsDBNull(reader.GetOrdinal("VremeRazduzenja")) ? DateTime.Now : reader.GetDateTime(reader.GetOrdinal("VremeRazduzenja"));
                     z.RelacijaOd = reader["RelacijaOd"].ToString();
-                    z.RelacijaOd = reader["RelacijaDo"].ToString();
+                    z.RelacijaDo = reader["RelacijaDo"].ToString();
 
                     ret.Add(z);
                 }

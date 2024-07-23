@@ -95,6 +95,8 @@
             this.tsbSearch.Name = "tsbSearch";
             this.tsbSearch.Size = new System.Drawing.Size(23, 22);
             this.tsbSearch.Text = "toolStripButton1";
+            this.tsbSearch.ToolTipText = "Search";
+            this.tsbSearch.Visible = false;
             this.tsbSearch.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
             // tsbShowAll
@@ -105,6 +107,7 @@
             this.tsbShowAll.Name = "tsbShowAll";
             this.tsbShowAll.Size = new System.Drawing.Size(23, 22);
             this.tsbShowAll.Text = "toolStripButton2";
+            this.tsbShowAll.Visible = false;
             this.tsbShowAll.Click += new System.EventHandler(this.tsbShowAll_Click);
             // 
             // tsbDelete
@@ -115,6 +118,8 @@
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(23, 22);
             this.tsbDelete.Text = "toolStripButton3";
+            this.tsbDelete.ToolTipText = "Delete";
+            this.tsbDelete.Visible = false;
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // tsbAlter
@@ -125,6 +130,8 @@
             this.tsbAlter.Name = "tsbAlter";
             this.tsbAlter.Size = new System.Drawing.Size(23, 22);
             this.tsbAlter.Text = "toolStripButton4";
+            this.tsbAlter.ToolTipText = "Alter record";
+            this.tsbAlter.Visible = false;
             // 
             // tsbCheckin
             // 
@@ -134,6 +141,8 @@
             this.tsbCheckin.Name = "tsbCheckin";
             this.tsbCheckin.Size = new System.Drawing.Size(23, 22);
             this.tsbCheckin.Text = "toolStripButton5";
+            this.tsbCheckin.ToolTipText = "Check in";
+            this.tsbCheckin.Visible = false;
             this.tsbCheckin.Click += new System.EventHandler(this.tsbCheckin_Click);
             // 
             // tsbCheckout
@@ -144,6 +153,8 @@
             this.tsbCheckout.Name = "tsbCheckout";
             this.tsbCheckout.Size = new System.Drawing.Size(23, 22);
             this.tsbCheckout.Text = "toolStripButton6";
+            this.tsbCheckout.ToolTipText = "Check out";
+            this.tsbCheckout.Visible = false;
             this.tsbCheckout.Click += new System.EventHandler(this.tsbCheckout_Click);
             // 
             // tsbService
@@ -154,6 +165,8 @@
             this.tsbService.Name = "tsbService";
             this.tsbService.Size = new System.Drawing.Size(23, 22);
             this.tsbService.Text = "toolStripButton1";
+            this.tsbService.ToolTipText = "Service";
+            this.tsbService.Visible = false;
             this.tsbService.Click += new System.EventHandler(this.tsbService_Click);
             // 
             // FrmView
@@ -165,7 +178,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "FrmView";
             this.Text = "Vehicles View";
-            this.Load += new System.EventHandler(this.FrmVehicles_Load);
+            this.Load += new System.EventHandler(this.FrmView_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwView)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -178,13 +191,13 @@
         #endregion
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dgwView;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbSearch;
-        private System.Windows.Forms.ToolStripButton tsbShowAll;
-        private System.Windows.Forms.ToolStripButton tsbDelete;
-        private System.Windows.Forms.ToolStripButton tsbAlter;
-        private System.Windows.Forms.ToolStripButton tsbCheckin;
-        private System.Windows.Forms.ToolStripButton tsbCheckout;
-        private System.Windows.Forms.ToolStripButton tsbService;
+        public System.Windows.Forms.ToolStrip toolStrip1;
+        public System.Windows.Forms.ToolStripButton tsbSearch;
+        public System.Windows.Forms.ToolStripButton tsbShowAll;
+        public System.Windows.Forms.ToolStripButton tsbDelete;
+        public System.Windows.Forms.ToolStripButton tsbAlter;
+        public System.Windows.Forms.ToolStripButton tsbCheckin;
+        public System.Windows.Forms.ToolStripButton tsbCheckout;
+        public System.Windows.Forms.ToolStripButton tsbService;
     }
 }

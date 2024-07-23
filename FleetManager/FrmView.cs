@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace FleetManager
 {
@@ -33,7 +34,7 @@ namespace FleetManager
 
         private void FrmVehicles_Load(object sender, EventArgs e)
         {
-            ViewGUIController.Instance.ShowAll();
+           
         }
 
 
@@ -90,6 +91,11 @@ namespace FleetManager
         private void tsbService_Click(object sender, EventArgs e)
         {
             ViewGUIController.Instance.ShowFrmService();
+        }
+
+        private void FrmView_Load(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.ShowAll();
         }
     }
 }

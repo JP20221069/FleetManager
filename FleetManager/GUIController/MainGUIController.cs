@@ -52,7 +52,7 @@ namespace FleetManager.GUIController
                 frmMain.serviceToolStripMenuItem.Visible = true;
                 frmMain.checkInToolStripMenuItem.Visible = true;
                 frmMain.checkoutToolStripMenuItem.Visible = true;
-                frmMain.viewAllVehiclesToolStripMenuItem.Visible = true;
+                frmMain.viewAllVehiclesToolStripMenuItem.Visible = false;
 
             }
             if(current_user.Rola==(int)Rola.Moderator)

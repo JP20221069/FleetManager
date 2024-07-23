@@ -39,7 +39,7 @@ namespace FleetManager
 
         private void checkInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ViewGUIController.Instance.ShowFrmFreeVehs();
         }
 
         private void viewAllVehiclesToolStripMenuItem_Click(object sender, EventArgs e)
