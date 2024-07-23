@@ -143,7 +143,7 @@ namespace FleetManagerServer
                 }
                 else if(req.Operation==Operation.GetFreeVehicles)
                 {
-                    Controller.Instance.GetFreeVehicles();
+                    res.Result = Controller.Instance.GetFreeVehicles();
                 }
                 else if(req.Operation==Operation.GetAllServices)
                 {
