@@ -71,5 +71,15 @@ namespace FleetManager
         {
             ViewGUIController.Instance.ShowFrmCheckins();
         }
+
+        private void serviceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.ShowFrmVehiclesService();
+        }
+
+        private void viewAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.ShowFrmUsers();
+        }
     }
 }

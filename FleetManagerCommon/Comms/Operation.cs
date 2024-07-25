@@ -22,6 +22,9 @@ namespace FleetManagerCommon.Communication
         GetCheckinsByUser,
         GetFreeVehicles,
         GetAllServices,
-        ServiceVehicle
+        ServiceVehicle,
+        GetAllUsers,
+        SearchUsers,
+        UpdateUser,
     }
 }

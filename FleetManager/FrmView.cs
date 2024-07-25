@@ -45,7 +45,7 @@ namespace FleetManager
 
         private void btAlter_Click(object sender, EventArgs e)
         {
-            ViewGUIController.Instance.ShowAlterView();
+            
         }
 
         private void btCheckin_Click(object sender, EventArgs e)
@@ -61,37 +61,9 @@ namespace FleetManager
 
         private void tsbSearch_Click(object sender, EventArgs e)
         {
-            ViewGUIController.Instance.ShowSearchView();
+            
         }
 
-        private void tsbShowAll_Click(object sender, EventArgs e)
-        {
-            ViewGUIController.Instance.ShowAll();
-        }
-
-        private void tsbDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult dr = MessageBox.Show("Are you sure?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
-            {
-                ViewGUIController.Instance.DeleteVehicle();
-            }
-        }
-
-        private void tsbCheckin_Click(object sender, EventArgs e)
-        {
-            ViewGUIController.Instance.ShowCheckInView();
-        }
-
-        private void tsbCheckout_Click(object sender, EventArgs e)
-        {
-            ViewGUIController.Instance.CheckOutVehicle();
-        }
-
-        private void tsbService_Click(object sender, EventArgs e)
-        {
-            ViewGUIController.Instance.ShowFrmService();
-        }
 
         private void FrmView_Load(object sender, EventArgs e)
         {

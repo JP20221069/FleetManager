@@ -18,7 +18,7 @@ namespace FleetManager.GUIController
         public static Korisnik current_user;
 
         private static FrmMain frmMain;
-        private static AddUserGUIController augc;
+        private static UserDetailsGUIController udc;
         private static VehicleGUIController awgc;
 
         private static MainGUIController instance;
@@ -33,14 +33,14 @@ namespace FleetManager.GUIController
                 return instance;
             }
         }
-        private void InstantiateControllers()
+/*        private void InstantiateControllers()
         {
-            augc = new AddUserGUIController();
+            udc = new AddUserGUIController();
             awgc = new VehicleGUIController();
-        }
+        }*/
         private MainGUIController()
         {
-            InstantiateControllers();
+            //InstantiateControllers();
         }
  
 
@@ -70,6 +70,7 @@ namespace FleetManager.GUIController
                 frmMain.newUserToolStripMenuItem.Visible = true;
                 frmMain.recordVehicleToolStripMenuItem.Visible = true;
                 frmMain.recordUserToolStripMenuItem.Visible = true;
+                frmMain.viewAllToolStripMenuItem.Visible = true;
 
             }
             frmMain.AutoSize = true;
@@ -92,12 +93,12 @@ namespace FleetManager.GUIController
 
         internal void ShowAddUserControl()
         {
-            frmMain.ChangePanel(augc.CreateAddUser());
+            frmMain.ChangePanel(UserDetailsGUIController.Instance.CreateAddUser());
         }
 
         internal void ShowAddVehicleControl()
         {
-            frmMain.ChangePanel(awgc.CreateAddVehicle());
+            frmMain.ChangePanel(VehicleGUIController.Instance.CreateAddVehicle());
         }
     }
 }

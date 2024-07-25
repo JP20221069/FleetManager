@@ -219,5 +219,29 @@ namespace FleetManager.Comms
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal Response GetAllUsers()
+        {
+            Request req = new Request
+            {
+                Argument = null,
+                Operation = Operation.GetAllUsers
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
+
+        internal Response AlterUser(Korisnik k)
+        {
+            Request req = new Request
+            {
+                Argument = k,
+                Operation = Operation.UpdateUser
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }

@@ -154,6 +154,14 @@ namespace FleetManagerServer
                     Controller.Instance.ServiceVehicle((Servisiranje)req.Argument);
                     res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
                 }
+                else if(req.Operation==Operation.GetAllUsers)
+                {
+                   res.Result = Controller.Instance.GetAllUsers();
+                }
+                else if(req.Operation==Operation.UpdateUser)
+                {
+                    Controller.Instance.UpdateUser((Korisnik)req.Argument);
+                }
             }
             catch (Exception ex)
             {

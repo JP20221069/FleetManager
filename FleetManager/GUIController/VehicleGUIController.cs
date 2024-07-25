@@ -48,7 +48,8 @@ namespace FleetManager.GUIController
         internal Control CreateVehicleDetails(Vozilo v)
         {
             VehicleControl c = new VehicleControl();
-            //c.btAccept.Click += AddVehicle;
+            c.btAccept.Click += (o,e)=> { c.ParentForm.Close(); };
+            c.btAccept.Text = "CLOSE";
             c.CB_STATUS.Items.Add(v.Status.ToString());
             c.FIELD_Brand.Text = v.Marka;
             c.FIELD_NAME.Text = v.Naziv;
@@ -62,7 +63,6 @@ namespace FleetManager.GUIController
             c.FIELD_LICENSE.ReadOnly = true;
             c.FIELD_CARRYWEIGHT.ReadOnly = true;
 
-            c.btAccept.Visible = false;
             c.CB_STATUS.Enabled = false;
 
             awc = c;

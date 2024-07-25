@@ -273,6 +273,18 @@ namespace FleetManagerServer.DB
             return GetUserByID(user.ID);
         }
 
+        public void DeleteKorisnik(Korisnik user)
+        {
+            if (ChkLoggedIn(user))
+            {
+                throw new UpdateDeniedUserLoggedIn();
+            }
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "DELETE FROM KORISNIK WHERE ID=" + user.ID + ";";
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+        }
+
         public void AddVehicle(Vozilo vehicle)
         {
             Add(vehicle);

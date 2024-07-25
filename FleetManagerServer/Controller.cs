@@ -133,5 +133,18 @@ namespace FleetManagerServer
             
         }
 
+        public List<Korisnik> GetAllUsers()
+        {
+            GetAllUsersSO so = new GetAllUsersSO();
+            so.ExecuteTemplate();
+            return so.Result;
+        }
+
+        public void UpdateUser(Korisnik k)
+        {
+            UpdateUserSO so = new UpdateUserSO(k);
+            so.ExecuteTemplate();
+        }
+
     }
 }

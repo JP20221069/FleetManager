@@ -39,6 +39,8 @@
             this.tsbCheckin = new System.Windows.Forms.ToolStripButton();
             this.tsbCheckout = new System.Windows.Forms.ToolStripButton();
             this.tsbService = new System.Windows.Forms.ToolStripButton();
+            this.tsbNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbInspect = new System.Windows.Forms.ToolStripButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwView)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -48,9 +50,9 @@
             // 
             this.groupBox2.Controls.Add(this.dgwView);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 25);
+            this.groupBox2.Location = new System.Drawing.Point(0, 32);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(800, 425);
+            this.groupBox2.Size = new System.Drawing.Size(800, 418);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View";
@@ -66,108 +68,119 @@
             this.dgwView.MultiSelect = false;
             this.dgwView.Name = "dgwView";
             this.dgwView.ReadOnly = true;
-            this.dgwView.Size = new System.Drawing.Size(794, 406);
+            this.dgwView.Size = new System.Drawing.Size(794, 399);
             this.dgwView.TabIndex = 0;
             // 
             // toolStrip1
             // 
+            this.toolStrip1.AutoSize = false;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSearch,
             this.tsbShowAll,
-            this.tsbDelete,
+            this.tsbNew,
             this.tsbAlter,
+            this.tsbInspect,
+            this.tsbDelete,
             this.tsbCheckin,
             this.tsbCheckout,
             this.tsbService});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 32);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // tsbSearch
             // 
-            this.tsbSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tsbSearch.Image = ((System.Drawing.Image)(resources.GetObject("tsbSearch.Image")));
             this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSearch.Name = "tsbSearch";
-            this.tsbSearch.Size = new System.Drawing.Size(23, 22);
-            this.tsbSearch.Text = "toolStripButton1";
+            this.tsbSearch.Size = new System.Drawing.Size(64, 29);
+            this.tsbSearch.Text = "Search";
             this.tsbSearch.ToolTipText = "Search";
             this.tsbSearch.Visible = false;
             this.tsbSearch.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
             // tsbShowAll
             // 
-            this.tsbShowAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbShowAll.Image = global::FleetManager.Properties.Resources.WMS_Playlist;
             this.tsbShowAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbShowAll.Name = "tsbShowAll";
-            this.tsbShowAll.Size = new System.Drawing.Size(23, 22);
-            this.tsbShowAll.Text = "toolStripButton2";
+            this.tsbShowAll.Size = new System.Drawing.Size(73, 29);
+            this.tsbShowAll.Text = "Show all";
             this.tsbShowAll.Visible = false;
-            this.tsbShowAll.Click += new System.EventHandler(this.tsbShowAll_Click);
             // 
             // tsbDelete
             // 
-            this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbDelete.Image = global::FleetManager.Properties.Resources.Delete;
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbDelete.Text = "toolStripButton3";
+            this.tsbDelete.Size = new System.Drawing.Size(62, 29);
+            this.tsbDelete.Text = "Delete";
             this.tsbDelete.ToolTipText = "Delete";
             this.tsbDelete.Visible = false;
-            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // tsbAlter
             // 
-            this.tsbAlter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbAlter.Image = global::FleetManager.Properties.Resources.Write_Files_to_Disc;
             this.tsbAlter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAlter.Name = "tsbAlter";
-            this.tsbAlter.Size = new System.Drawing.Size(23, 22);
-            this.tsbAlter.Text = "toolStripButton4";
+            this.tsbAlter.Size = new System.Drawing.Size(54, 29);
+            this.tsbAlter.Text = "Alter";
             this.tsbAlter.ToolTipText = "Alter record";
             this.tsbAlter.Visible = false;
             // 
             // tsbCheckin
             // 
-            this.tsbCheckin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbCheckin.Image = ((System.Drawing.Image)(resources.GetObject("tsbCheckin.Image")));
             this.tsbCheckin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCheckin.Name = "tsbCheckin";
-            this.tsbCheckin.Size = new System.Drawing.Size(23, 22);
-            this.tsbCheckin.Text = "toolStripButton5";
+            this.tsbCheckin.Size = new System.Drawing.Size(75, 29);
+            this.tsbCheckin.Text = "Check in";
             this.tsbCheckin.ToolTipText = "Check in";
             this.tsbCheckin.Visible = false;
-            this.tsbCheckin.Click += new System.EventHandler(this.tsbCheckin_Click);
             // 
             // tsbCheckout
             // 
-            this.tsbCheckout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbCheckout.Image = global::FleetManager.Properties.Resources.OE_Outbox;
             this.tsbCheckout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCheckout.Name = "tsbCheckout";
-            this.tsbCheckout.Size = new System.Drawing.Size(23, 22);
-            this.tsbCheckout.Text = "toolStripButton6";
+            this.tsbCheckout.Size = new System.Drawing.Size(83, 29);
+            this.tsbCheckout.Text = "Check out";
             this.tsbCheckout.ToolTipText = "Check out";
             this.tsbCheckout.Visible = false;
-            this.tsbCheckout.Click += new System.EventHandler(this.tsbCheckout_Click);
             // 
             // tsbService
             // 
-            this.tsbService.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbService.Image = global::FleetManager.Properties.Resources.Services;
             this.tsbService.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbService.Name = "tsbService";
-            this.tsbService.Size = new System.Drawing.Size(23, 22);
-            this.tsbService.Text = "toolStripButton1";
+            this.tsbService.Size = new System.Drawing.Size(66, 29);
+            this.tsbService.Text = "Service";
             this.tsbService.ToolTipText = "Service";
             this.tsbService.Visible = false;
-            this.tsbService.Click += new System.EventHandler(this.tsbService_Click);
+            // 
+            // tsbNew
+            // 
+            this.tsbNew.Image = global::FleetManager.Properties.Resources.Single_Click;
+            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNew.Name = "tsbNew";
+            this.tsbNew.Size = new System.Drawing.Size(53, 29);
+            this.tsbNew.Text = "New";
+            this.tsbNew.Visible = false;
+            // 
+            // tsbInspect
+            // 
+            this.tsbInspect.Image = global::FleetManager.Properties.Resources.hand_properties_old_64;
+            this.tsbInspect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbInspect.Name = "tsbInspect";
+            this.tsbInspect.Size = new System.Drawing.Size(79, 29);
+            this.tsbInspect.Text = "Inspect ...";
+            this.tsbInspect.Visible = false;
             // 
             // FrmView
             // 
@@ -184,7 +197,6 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -199,5 +211,7 @@
         public System.Windows.Forms.ToolStripButton tsbCheckin;
         public System.Windows.Forms.ToolStripButton tsbCheckout;
         public System.Windows.Forms.ToolStripButton tsbService;
+        public System.Windows.Forms.ToolStripButton tsbNew;
+        public System.Windows.Forms.ToolStripButton tsbInspect;
     }
 }
