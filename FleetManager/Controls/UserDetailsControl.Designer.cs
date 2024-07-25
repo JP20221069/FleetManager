@@ -34,9 +34,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.CB_Role = new System.Windows.Forms.ComboBox();
             this.FIELD_PASSWORD = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LB_PASSWORD = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.FIELD_USERNAME = new System.Windows.Forms.TextBox();
+            this.chkLoggedin = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,14 +98,14 @@
             this.FIELD_PASSWORD.Size = new System.Drawing.Size(190, 20);
             this.FIELD_PASSWORD.TabIndex = 12;
             // 
-            // label2
+            // LB_PASSWORD
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(139, 133);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Password";
+            this.LB_PASSWORD.AutoSize = true;
+            this.LB_PASSWORD.Location = new System.Drawing.Point(139, 133);
+            this.LB_PASSWORD.Name = "LB_PASSWORD";
+            this.LB_PASSWORD.Size = new System.Drawing.Size(53, 13);
+            this.LB_PASSWORD.TabIndex = 11;
+            this.LB_PASSWORD.Text = "Password";
             // 
             // label1
             // 
@@ -122,17 +123,29 @@
             this.FIELD_USERNAME.Size = new System.Drawing.Size(190, 20);
             this.FIELD_USERNAME.TabIndex = 9;
             // 
+            // chkLoggedin
+            // 
+            this.chkLoggedin.AutoSize = true;
+            this.chkLoggedin.Enabled = false;
+            this.chkLoggedin.Location = new System.Drawing.Point(312, 212);
+            this.chkLoggedin.Name = "chkLoggedin";
+            this.chkLoggedin.Size = new System.Drawing.Size(73, 17);
+            this.chkLoggedin.TabIndex = 18;
+            this.chkLoggedin.Text = "Logged in";
+            this.chkLoggedin.UseVisualStyleBackColor = true;
+            // 
             // UserDetailsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkLoggedin);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.chkActive);
             this.Controls.Add(this.btAccept);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CB_Role);
             this.Controls.Add(this.FIELD_PASSWORD);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LB_PASSWORD);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.FIELD_USERNAME);
             this.Name = "UserDetailsControl";
@@ -151,8 +164,9 @@
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox CB_Role;
         public System.Windows.Forms.TextBox FIELD_PASSWORD;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox FIELD_USERNAME;
+        public System.Windows.Forms.CheckBox chkLoggedin;
+        public System.Windows.Forms.Label LB_PASSWORD;
     }
 }

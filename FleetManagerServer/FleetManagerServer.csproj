@@ -86,6 +86,7 @@
     <Compile Include="SysOps\GetFreeVehiclesSO.cs" />
     <Compile Include="SysOps\LoginSO.cs" />
     <Compile Include="SysOps\LogoutSO.cs" />
+    <Compile Include="SysOps\SearchUserSO.cs" />
     <Compile Include="SysOps\SearchVehicleSO.cs" />
     <Compile Include="SysOps\ServiceVehicleSO.cs" />
     <Compile Include="SysOps\SystemOperation.cs" />

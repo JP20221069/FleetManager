@@ -15,22 +15,22 @@ namespace FleetManagerCommon.Domain
         string username;
         string password;
         int rola;
-        bool logged_in;
-        bool aktivan;
+        bool ? logged_in;
+        bool? aktivan;
 
         public int ID { get => id; set => id = value; }
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public int Rola { get => rola; set => rola = value; }
-        public bool LoggedIn { get => logged_in; set => logged_in = value; }
+        public bool ?Ulogovan { get => logged_in; set => logged_in = value; }
 
-        public bool Aktivan { get => aktivan; set => aktivan = value; }
+        public bool ?Aktivan { get => aktivan; set => aktivan = value; }
 
         public string TableName =>  "KORISNIK";
 
         public string ColumnNames => "Username,Password,Rola,Ulogovan,Aktivan";
 
-        public string Values => $"'{Username}',"+$"'{Password}'," + $"{Rola}," + $"{Convert.ToInt32(LoggedIn)}," + $"{Convert.ToInt32(Aktivan)}";
+        public string Values => $"'{Username}',"+$"'{Password}'," + $"{Rola}," + $"{Convert.ToInt32(Ulogovan)}," + $"{Convert.ToInt32(Aktivan)}";
 
         public Korisnik()
         {

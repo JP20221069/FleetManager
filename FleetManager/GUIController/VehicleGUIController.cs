@@ -50,7 +50,14 @@ namespace FleetManager.GUIController
             VehicleControl c = new VehicleControl();
             c.btAccept.Click += (o,e)=> { c.ParentForm.Close(); };
             c.btAccept.Text = "CLOSE";
-            c.CB_STATUS.Items.Add(v.Status.ToString());
+            List<CBObject> cbo = new List<CBObject>();
+            cbo.Add(new CBObject(0, "Active"));
+            cbo.Add(new CBObject(1, "Inactive"));
+            cbo.Add(new CBObject(2, "Checked in"));
+            c.CB_STATUS.DataSource = cbo;
+            c.CB_STATUS.DisplayMember = "Name";
+            c.CB_STATUS.ValueMember = "Value";
+            c.CB_STATUS.SelectedItem = c.CB_STATUS.Items[cbo.FindIndex(x => (int)x.Value == (int)v.Status)];
             c.FIELD_Brand.Text = v.Marka;
             c.FIELD_NAME.Text = v.Naziv;
             c.FIELD_TYPE.Text = v.Tip;
@@ -69,7 +76,7 @@ namespace FleetManager.GUIController
             return awc;
         }
 
-        internal Control CreateSearchVehicle()
+        internal Control CreateSearchVehicle(bool activeonly=false)
         {
             VehicleControl c = new VehicleControl();
             c.btAccept.Click += SearchVehicle;
@@ -81,9 +88,33 @@ namespace FleetManager.GUIController
             c.CB_STATUS.DataSource = cbo;
             c.CB_STATUS.DisplayMember = "Name";
             c.CB_STATUS.ValueMember = "Value";
+            if(activeonly)
+            {
+                c.CB_STATUS.SelectedIndex = 0;
+                c.CB_STATUS.Enabled = false;
+            }
             awc = c;
             return awc;
         }
+
+        internal Control CreateSearchVehicleCheckins()
+        {
+            VehicleControl c = new VehicleControl();
+            c.btAccept.Click += SearchVehicleCheckins;
+            List<CBObject> cbo = new List<CBObject>();
+            cbo.Add(new CBObject(-1, "N/A"));
+            cbo.Add(new CBObject(0, "Active"));
+            cbo.Add(new CBObject(1, "Inactive"));
+            cbo.Add(new CBObject(2, "Checked in"));
+            c.CB_STATUS.DataSource = cbo;
+            c.CB_STATUS.DisplayMember = "Name";
+            c.CB_STATUS.ValueMember = "Value";
+            c.CB_STATUS.SelectedIndex = 3;
+            c.CB_STATUS.Enabled = false;
+            awc = c;
+            return awc;
+        }
+
 
         internal Control CreateAlterVehicle(Vozilo v)
         {
@@ -153,6 +184,45 @@ namespace FleetManager.GUIController
                 ViewGUIController.Instance.SetDataSource((List<Vozilo>)res.Result);
             }
             else if(res.Exception.GetType()==typeof(RecordNotFoundException))
+            {
+                MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SearchVehicleCheckins(object sender, EventArgs e)
+        {
+            Vozilo v = new Vozilo();
+            v.ID = -1;
+            v.Naziv = awc.FIELD_NAME.Text;
+            v.Marka = awc.FIELD_Brand.Text;
+            v.RegBroj = awc.FIELD_LICENSE.Text;
+            if (!string.IsNullOrEmpty(awc.FIELD_CARRYWEIGHT.Text))
+            {
+                v.Nosivost = (float)Convert.ToDouble(awc.FIELD_CARRYWEIGHT.Text);
+            }
+            else
+            {
+                v.Nosivost = 0;
+            }
+            v.Status = (StatusVozila)Convert.ToInt32(awc.CB_STATUS.SelectedValue);
+            v.Tip = awc.FIELD_TYPE.Text;
+            Response res = CommunicationManager.Instance.SearchVehicle(v);
+            if (res.Exception == null)
+            {
+                MessageBox.Show("Vehicle found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //ViewGUIController.Instance.SetDataSource((List<Vozilo>)res.Result);
+                List<Zaduzenje> datasource = new List<Zaduzenje>();
+                foreach(Vozilo name in (List<Vozilo>)res.Result)
+                {
+                    datasource.AddRange(name.Zaduzenja.FindAll(x => x.Aktivno == true));
+                }
+                ViewGUIController.Instance.SetDataSource(datasource);
+            }
+            else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {
                 MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

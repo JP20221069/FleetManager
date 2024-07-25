@@ -42,7 +42,8 @@ namespace FleetManager.GUIController
         {
             if(type=="CHECKINS")
             {
-                frmView.tsbSearch.Click += (o,e) => { };
+                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowCheckinSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowUserCheckins(); };
                 frmView.tsbCheckout.Click += (o, e) =>
                 {
                     ViewGUIController.Instance.CheckOutVehicle();
@@ -50,7 +51,9 @@ namespace FleetManager.GUIController
             }
             else if(type=="FREEVEHICLES")
             {
-                frmView.tsbSearch.Click += (o, e) => { };
+                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(true); }; 
+                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowFreeVehicles(); };
+                frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowVehDetailsView(); };
                 frmView.tsbCheckin.Click += (o, e) =>
                 {
                     ViewGUIController.Instance.ShowCheckInView();
@@ -58,7 +61,9 @@ namespace FleetManager.GUIController
             }
             else if(type=="SERVICE")
             {
-                frmView.tsbSearch.Click += (o, e) => { };
+                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllVehicles(); };
+                frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowVehDetailsView(); };
                 frmView.tsbService.Click += (o, e) =>
                 {
                     ViewGUIController.Instance.ShowFrmService();
@@ -66,7 +71,8 @@ namespace FleetManager.GUIController
             }
             else if(type=="VEHICLES")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowSearchView(); };
+                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllVehicles(); };
                 //ViewGUIController.Instance.ShowAll();
                 frmView.tsbDelete.Click += (o, e) => {
                     DialogResult dr = MessageBox.Show("Are you sure?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
@@ -81,9 +87,10 @@ namespace FleetManager.GUIController
             }
             else if(type=="USERS")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowSearchView(); };
+                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowUserSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllUsers(); };
                 frmView.tsbAlter.Click += (o, e) => { ViewGUIController.Instance.ShowUserAlterView(); };
-                frmView.tsbNew.Click += (o, e) => { ViewGUIController.Instance.ShowUserDetailsView(); };
+                frmView.tsbNew.Click += (o, e) => { ViewGUIController.Instance.ShowNewUserView(); };
                 frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowUserDetailsView(); };
             }
         }
@@ -91,6 +98,7 @@ namespace FleetManager.GUIController
         private void ShowHideButtons()
         {
             frmView.tsbSearch.Visible = true;
+            frmView.tsbShowAll.Visible = true;
             if(MainGUIController.current_user.Rola==(int)Rola.Korisnik)
             {
                 if (type == "CHECKINS")
@@ -176,7 +184,7 @@ namespace FleetManager.GUIController
         {
             frmView = new FrmView();
             frmView.AutoSize = true;
-            frmView.Text = "Available vehicles";
+            frmView.Text = "Users";
             type = "USERS";
             ShowHideButtons();
             SetupButtonActions();
@@ -188,14 +196,33 @@ namespace FleetManager.GUIController
 
         }
 
-        public void ShowSearchView()
+        public void ShowVehSearchView(bool activeonly=false)
         {
             FrmTool t = new FrmTool();
             t.Text = "Search";
             t.AutoSize=true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
-            VehicleGUIController vgc = new VehicleGUIController();
-            t.ChangePanel(vgc.CreateSearchVehicle());
+            t.ChangePanel(VehicleGUIController.Instance.CreateSearchVehicle(true));
+            t.ShowDialog();
+        }
+
+        public void ShowUserSearchView()
+        {
+            FrmTool t = new FrmTool();
+            t.Text = "Search";
+            t.AutoSize = true;
+            t.AutoSizeMode = AutoSizeMode.GrowOnly;
+            t.ChangePanel(UserDetailsGUIController.Instance.CreateSearchUser());
+            t.ShowDialog();
+        }
+
+        public void ShowCheckinSearchView()
+        {
+            FrmTool t = new FrmTool();
+            t.Text = "Search";
+            t.AutoSize = true;
+            t.AutoSizeMode = AutoSizeMode.GrowOnly;
+            t.ChangePanel(VehicleGUIController.Instance.CreateSearchVehicleCheckins());
             t.ShowDialog();
         }
 

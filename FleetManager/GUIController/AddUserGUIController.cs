@@ -39,7 +39,7 @@ namespace FleetManager.GUIController
             k.Username = auc.FIELD_USERNAME.Text;
             k.Password = auc.FIELD_PASSWORD.Text;
             k.Aktivan = false;
-            k.LoggedIn = false;
+            k.Ulogovan = false;
             Response res = CommunicationManager.Instance.AddUser(k);
             if (res.Exception == null)
             {

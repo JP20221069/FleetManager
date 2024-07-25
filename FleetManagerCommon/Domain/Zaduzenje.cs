@@ -34,6 +34,10 @@ namespace Common.Domain
         public DateTime VremeZaduzenja { get => vremezaduzenja; set => vremezaduzenja = value; }
         public DateTime VremeRazduzenja { get => vremerazduzenja; set => vremerazduzenja = value; }
         public string Napomena { get => napomena; set => napomena = value; }
+
+        public string RegistarskiBroj { get => vozilo.RegBroj; }
+        public string Tip { get => vozilo.Tip; }
+        public string Marka { get => vozilo.Marka; }
         public Zaduzenje()
         {
 

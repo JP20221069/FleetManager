@@ -162,6 +162,10 @@ namespace FleetManagerServer
                 {
                     Controller.Instance.UpdateUser((Korisnik)req.Argument);
                 }
+                else if(req.Operation==Operation.SearchUsers)
+                {
+                    res.Result = Controller.Instance.SearchUser((Korisnik)req.Argument);
+                }
             }
             catch (Exception ex)
             {

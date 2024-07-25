@@ -146,5 +146,12 @@ namespace FleetManagerServer
             so.ExecuteTemplate();
         }
 
+        public List<Korisnik> SearchUser(Korisnik k)
+        {
+            SearchUserSO so = new SearchUserSO(k);
+            so.ExecuteTemplate();
+            return so.Result;
+        }
+
     }
 }

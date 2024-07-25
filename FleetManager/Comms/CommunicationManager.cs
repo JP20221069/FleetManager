@@ -243,5 +243,17 @@ namespace FleetManager.Comms
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal Response SearchUser(Korisnik k)
+        {
+            Request req = new Request
+            {
+                Argument = k,
+                Operation = Operation.SearchUsers
+            };
+            sender.Send(req);
+            Response response = (Response)receiver.Receive();
+            return response;
+        }
     }
 }
