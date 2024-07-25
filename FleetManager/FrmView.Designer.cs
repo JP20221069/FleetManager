@@ -34,13 +34,13 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
             this.tsbShowAll = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.tsbAlter = new System.Windows.Forms.ToolStripButton();
+            this.tsbInspect = new System.Windows.Forms.ToolStripButton();
+            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbCheckin = new System.Windows.Forms.ToolStripButton();
             this.tsbCheckout = new System.Windows.Forms.ToolStripButton();
             this.tsbService = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbInspect = new System.Windows.Forms.ToolStripButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwView)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -114,15 +114,14 @@
             this.tsbShowAll.Text = "Show all";
             this.tsbShowAll.Visible = false;
             // 
-            // tsbDelete
+            // tsbNew
             // 
-            this.tsbDelete.Image = global::FleetManager.Properties.Resources.Delete;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(62, 29);
-            this.tsbDelete.Text = "Delete";
-            this.tsbDelete.ToolTipText = "Delete";
-            this.tsbDelete.Visible = false;
+            this.tsbNew.Image = global::FleetManager.Properties.Resources.Single_Click;
+            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNew.Name = "tsbNew";
+            this.tsbNew.Size = new System.Drawing.Size(53, 29);
+            this.tsbNew.Text = "New";
+            this.tsbNew.Visible = false;
             // 
             // tsbAlter
             // 
@@ -133,6 +132,25 @@
             this.tsbAlter.Text = "Alter";
             this.tsbAlter.ToolTipText = "Alter record";
             this.tsbAlter.Visible = false;
+            // 
+            // tsbInspect
+            // 
+            this.tsbInspect.Image = global::FleetManager.Properties.Resources.hand_properties_old_64;
+            this.tsbInspect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbInspect.Name = "tsbInspect";
+            this.tsbInspect.Size = new System.Drawing.Size(79, 29);
+            this.tsbInspect.Text = "Inspect ...";
+            this.tsbInspect.Visible = false;
+            // 
+            // tsbDelete
+            // 
+            this.tsbDelete.Image = global::FleetManager.Properties.Resources.Delete;
+            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.Size = new System.Drawing.Size(62, 29);
+            this.tsbDelete.Text = "Delete";
+            this.tsbDelete.ToolTipText = "Delete";
+            this.tsbDelete.Visible = false;
             // 
             // tsbCheckin
             // 
@@ -163,24 +181,6 @@
             this.tsbService.Text = "Service";
             this.tsbService.ToolTipText = "Service";
             this.tsbService.Visible = false;
-            // 
-            // tsbNew
-            // 
-            this.tsbNew.Image = global::FleetManager.Properties.Resources.Single_Click;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(53, 29);
-            this.tsbNew.Text = "New";
-            this.tsbNew.Visible = false;
-            // 
-            // tsbInspect
-            // 
-            this.tsbInspect.Image = global::FleetManager.Properties.Resources.hand_properties_old_64;
-            this.tsbInspect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbInspect.Name = "tsbInspect";
-            this.tsbInspect.Size = new System.Drawing.Size(79, 29);
-            this.tsbInspect.Text = "Inspect ...";
-            this.tsbInspect.Visible = false;
             // 
             // FrmView
             // 

@@ -162,9 +162,10 @@ namespace FleetManagerServer.DB
                 {
 
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    user.Password = reader.GetString(reader.GetOrdinal("Password"));
                     user.Username = reader["Username"].ToString();
                     user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
-                    user.LoggedIn = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
+                    user.Ulogovan = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
                     user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
                 }
                 else
@@ -192,9 +193,10 @@ namespace FleetManagerServer.DB
                 {
 
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    user.Password = reader.GetString(reader.GetOrdinal("Password"));
                     user.Username = reader["Username"].ToString();
                     user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
-                    user.LoggedIn = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
+                    user.Ulogovan = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
                     user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
                 }
                 else
@@ -222,9 +224,10 @@ namespace FleetManagerServer.DB
                 {
                     Korisnik user = new Korisnik();
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    user.Password = reader.GetString(reader.GetOrdinal("Password"));
                     user.Username = reader["Username"].ToString();
                     user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
-                    user.LoggedIn = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
+                    user.Ulogovan = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
                     user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
                     ret.Add(user);
                 }
@@ -267,7 +270,7 @@ namespace FleetManagerServer.DB
                 throw new UpdateDeniedUserLoggedIn();
             }
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "UPDATE KORISNIK SET Username='" + user.Username + "',Password='" + user.Password + "',Aktivan=" + Convert.ToInt32(user.Aktivan) + ",Ulogovan=" + Convert.ToInt32(user.LoggedIn) + " WHERE ID="+user.ID+";";
+            cmd.CommandText = "UPDATE KORISNIK SET Username='" + user.Username + "',Password='" + user.Password + "',Aktivan=" + Convert.ToInt32(user.Aktivan) + ",Ulogovan=" + Convert.ToInt32(user.Ulogovan) + " WHERE ID="+user.ID+";";
             cmd.ExecuteNonQuery();
             cmd.Dispose();
             return GetUserByID(user.ID);
@@ -374,7 +377,7 @@ namespace FleetManagerServer.DB
             }
             if(v.Status!=StatusVozila.Default)
             {
-                search_options.Add("Status = " + v.Status);
+                search_options.Add("Status = " + (int)v.Status);
             }
             if(v.Nosivost>0)
             {
@@ -424,6 +427,76 @@ namespace FleetManagerServer.DB
 
                 }
                 if(count==0)
+                {
+                    throw new RecordNotFoundException();
+                }
+
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return ret;
+        }
+
+        public List<Korisnik> SearchUserBy(Korisnik k)
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT * FROM KORISNIK";
+            List<string> search_options = new List<string>();
+            if (!string.IsNullOrEmpty(k.Username))
+            {
+                search_options.Add("Username LIKE '%" + k.Username + "%'");
+            }
+            if (k.Rola!=3)
+            {
+                search_options.Add("Rola="+k.Rola);
+            }
+            if(k.Aktivan!=null)
+            {
+                search_options.Add("Aktivan=" + Convert.ToInt32(k.Aktivan));
+            }
+            if(k.Ulogovan!=null)
+            {
+                search_options.Add("Ulogovan=" + Convert.ToInt32(k.Aktivan));
+            }    
+
+            if (search_options.Count > 0)
+            {
+                comm.CommandText += " WHERE ";
+                foreach (string name in search_options)
+                {
+                    comm.CommandText += name;
+                    if (name != search_options.Last())
+                    {
+                        comm.CommandText += " AND ";
+                    }
+                    else
+                    {
+                        comm.CommandText += ";";
+                    }
+                }
+            }
+            SqlDataReader reader = comm.ExecuteReader();
+            List<Korisnik> ret = new List<Korisnik>();
+            int count = 0;
+            try
+            {
+
+                while (reader.Read())
+                {
+                    Korisnik user = new Korisnik();
+                    user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    user.Password = reader.GetString(reader.GetOrdinal("Password"));
+                    user.Username = reader["Username"].ToString();
+                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.Ulogovan = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
+                    user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
+                    ret.Add(user);
+                    count++;
+
+                }
+                if (count == 0)
                 {
                     throw new RecordNotFoundException();
                 }

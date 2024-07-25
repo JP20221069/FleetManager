@@ -13,7 +13,7 @@ namespace FleetManagerCommon.Communication
 
         private NetworkStream stream;
         private BinaryFormatter formatter;
-        private Socket socket;
+        private Socket socket; 
 
         public Receiver(Socket socket)
         {
