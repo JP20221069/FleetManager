@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.liveConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btStop = new System.Windows.Forms.Button();
@@ -43,6 +45,8 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btCopyPort = new System.Windows.Forms.Button();
+            this.btCopyIP = new System.Windows.Forms.Button();
             this.lblmaxClients = new System.Windows.Forms.Label();
             this.FIELD_PORT = new System.Windows.Forms.TextBox();
             this.FIELD_IP = new System.Windows.Forms.TextBox();
@@ -50,9 +54,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.connectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btCopyPort = new System.Windows.Forms.Button();
-            this.btCopyIP = new System.Windows.Forms.Button();
+            this.saveLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveLogOnExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,6 +87,10 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveLogToolStripMenuItem,
+            this.saveLogOnExitToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -102,6 +111,13 @@
             this.liveConsoleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.liveConsoleToolStripMenuItem.Text = "Live Console";
             this.liveConsoleToolStripMenuItem.Click += new System.EventHandler(this.liveConsoleToolStripMenuItem_Click);
+            // 
+            // connectionToolStripMenuItem
+            // 
+            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
+            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectionToolStripMenuItem.Text = "Connection";
+            this.connectionToolStripMenuItem.Click += new System.EventHandler(this.connectionToolStripMenuItem_Click);
             // 
             // btStart
             // 
@@ -211,6 +227,28 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Server Info";
             // 
+            // btCopyPort
+            // 
+            this.btCopyPort.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
+            this.btCopyPort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCopyPort.Location = new System.Drawing.Point(371, 76);
+            this.btCopyPort.Name = "btCopyPort";
+            this.btCopyPort.Size = new System.Drawing.Size(23, 22);
+            this.btCopyPort.TabIndex = 8;
+            this.btCopyPort.UseVisualStyleBackColor = true;
+            this.btCopyPort.Click += new System.EventHandler(this.btCopyPort_Click);
+            // 
+            // btCopyIP
+            // 
+            this.btCopyIP.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
+            this.btCopyIP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btCopyIP.Location = new System.Drawing.Point(371, 44);
+            this.btCopyIP.Name = "btCopyIP";
+            this.btCopyIP.Size = new System.Drawing.Size(23, 22);
+            this.btCopyIP.TabIndex = 7;
+            this.btCopyIP.UseVisualStyleBackColor = true;
+            this.btCopyIP.Click += new System.EventHandler(this.btCopyIP_Click);
+            // 
             // lblmaxClients
             // 
             this.lblmaxClients.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -270,34 +308,26 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // connectionToolStripMenuItem
+            // saveLogToolStripMenuItem
             // 
-            this.connectionToolStripMenuItem.Name = "connectionToolStripMenuItem";
-            this.connectionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.connectionToolStripMenuItem.Text = "Connection";
-            this.connectionToolStripMenuItem.Click += new System.EventHandler(this.connectionToolStripMenuItem_Click);
+            this.saveLogToolStripMenuItem.Name = "saveLogToolStripMenuItem";
+            this.saveLogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveLogToolStripMenuItem.Text = "Save log";
+            this.saveLogToolStripMenuItem.Click += new System.EventHandler(this.saveLogToolStripMenuItem_Click);
             // 
-            // btCopyPort
+            // exitToolStripMenuItem
             // 
-            this.btCopyPort.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
-            this.btCopyPort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btCopyPort.Location = new System.Drawing.Point(371, 76);
-            this.btCopyPort.Name = "btCopyPort";
-            this.btCopyPort.Size = new System.Drawing.Size(23, 22);
-            this.btCopyPort.TabIndex = 8;
-            this.btCopyPort.UseVisualStyleBackColor = true;
-            this.btCopyPort.Click += new System.EventHandler(this.btCopyPort_Click);
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // btCopyIP
+            // saveLogOnExitToolStripMenuItem
             // 
-            this.btCopyIP.BackgroundImage = global::FleetManagerServer.Properties.Resources.Copy;
-            this.btCopyIP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btCopyIP.Location = new System.Drawing.Point(371, 44);
-            this.btCopyIP.Name = "btCopyIP";
-            this.btCopyIP.Size = new System.Drawing.Size(23, 22);
-            this.btCopyIP.TabIndex = 7;
-            this.btCopyIP.UseVisualStyleBackColor = true;
-            this.btCopyIP.Click += new System.EventHandler(this.btCopyIP_Click);
+            this.saveLogOnExitToolStripMenuItem.CheckOnClick = true;
+            this.saveLogOnExitToolStripMenuItem.Name = "saveLogOnExitToolStripMenuItem";
+            this.saveLogOnExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveLogOnExitToolStripMenuItem.Text = "Save log on exit";
             // 
             // FrmMain
             // 
@@ -309,6 +339,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.Text = "Fleet Manager Server";
@@ -352,6 +383,10 @@
         public System.Windows.Forms.TextBox FIELD_IP;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveLogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveLogOnExitToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

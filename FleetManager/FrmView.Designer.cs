@@ -189,6 +189,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.toolStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmView";
             this.Text = "Vehicles View";
             this.Load += new System.EventHandler(this.FrmView_Load);

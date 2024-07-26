@@ -1,5 +1,7 @@
-﻿using FleetManager.GuiController;
+﻿using FleetManager.Comms;
+using FleetManager.GuiController;
 using FleetManager.GUIController;
+using FleetManager.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,6 +82,39 @@ namespace FleetManager
         private void viewAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ViewGUIController.Instance.ShowFrmUsers();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainGUIController.Instance.LogoutAndExit();
+            Application.Exit();
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainGUIController.Instance.ShowSearchUserControl();
+        }
+
+        private void vehicleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MainGUIController.Instance.ShowSearchVehicleControl();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                MainGUIController.Instance.LogoutAndExit();
+            }
         }
     }
 }

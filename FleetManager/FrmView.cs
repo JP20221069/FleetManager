@@ -67,7 +67,7 @@ namespace FleetManager
 
         private void FrmView_Load(object sender, EventArgs e)
         {
-            ViewGUIController.Instance.ShowAll();
+            //ViewGUIController.Instance.ShowAll();
         }
     }
 }

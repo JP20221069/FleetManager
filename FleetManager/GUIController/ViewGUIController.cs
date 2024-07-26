@@ -40,7 +40,7 @@ namespace FleetManager.GUIController
 
         private void SetupButtonActions()
         {
-            if(type=="CHECKINS")
+            if (type == "CHECKINS")
             {
                 frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowCheckinSearchView(); };
                 frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowUserCheckins(); };
@@ -49,9 +49,9 @@ namespace FleetManager.GUIController
                     ViewGUIController.Instance.CheckOutVehicle();
                 };
             }
-            else if(type=="FREEVEHICLES")
+            else if (type == "FREEVEHICLES")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(true); }; 
+                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(true); };
                 frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowFreeVehicles(); };
                 frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowVehDetailsView(); };
                 frmView.tsbCheckin.Click += (o, e) =>
@@ -59,7 +59,7 @@ namespace FleetManager.GUIController
                     ViewGUIController.Instance.ShowCheckInView();
                 };
             }
-            else if(type=="SERVICE")
+            else if (type == "SERVICE")
             {
                 frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(); };
                 frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllVehicles(); };
@@ -69,12 +69,12 @@ namespace FleetManager.GUIController
                     ViewGUIController.Instance.ShowFrmService();
                 };
             }
-            else if(type=="VEHICLES")
+            else if (type == "VEHICLES")
             {
                 frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(); };
                 frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllVehicles(); };
-                //ViewGUIController.Instance.ShowAll();
-                frmView.tsbDelete.Click += (o, e) => {
+                frmView.tsbDelete.Click += (o, e) =>
+                {
                     DialogResult dr = MessageBox.Show("Are you sure?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (dr == DialogResult.Yes)
                     {
@@ -85,7 +85,7 @@ namespace FleetManager.GUIController
                 frmView.tsbNew.Click += (o, e) => { ViewGUIController.Instance.ShowNewVehView(); };
                 frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowVehDetailsView(); };
             }
-            else if(type=="USERS")
+            else if (type == "USERS")
             {
                 frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowUserSearchView(); };
                 frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllUsers(); };
@@ -99,35 +99,36 @@ namespace FleetManager.GUIController
         {
             frmView.tsbSearch.Visible = true;
             frmView.tsbShowAll.Visible = true;
-            if(MainGUIController.current_user.Rola==(int)Rola.Korisnik)
+            frmView.tsbInspect.Visible = true;
+            if (MainGUIController.current_user.Rola == (int)Rola.Korisnik)
             {
                 if (type == "CHECKINS")
                 {
                     frmView.tsbCheckout.Visible = true;
                 }
-                else if(type=="FREEVEHICLES")
+                else if (type == "FREEVEHICLES")
                 {
                     frmView.tsbCheckin.Visible = true;
                 }
-                else if(type=="SERVICE")
+                else if (type == "SERVICE")
                 {
                     frmView.tsbService.Visible = true;
                 }
             }
-            else if(MainGUIController.current_user.Rola==(int)Rola.Moderator)
+            else if (MainGUIController.current_user.Rola == (int)Rola.Moderator)
             {
                 frmView.tsbAlter.Visible = true;
                 frmView.tsbNew.Visible = true;
                 frmView.tsbInspect.Visible = true;
                 frmView.tsbDelete.Visible = true;
             }
-            else if(MainGUIController.current_user.Rola==(int)Rola.Admin)
+            else if (MainGUIController.current_user.Rola == (int)Rola.Admin)
             {
                 if (type == "VEHICLES")
                 {
                     frmView.tsbDelete.Visible = true;
                 }
-                else if(type=="USERS")
+                else if (type == "USERS")
                 {
                     frmView.tsbAlter.Visible = true;
                     frmView.tsbNew.Visible = true;
@@ -144,6 +145,7 @@ namespace FleetManager.GUIController
             type = "VEHICLES";
             ShowHideButtons();
             SetupButtonActions();
+            ShowAll();
             frmView.ShowDialog();
         }
 
@@ -155,6 +157,7 @@ namespace FleetManager.GUIController
             type = "SERVICE";
             ShowHideButtons();
             SetupButtonActions();
+            ShowAll();
             frmView.ShowDialog();
         }
 
@@ -166,6 +169,7 @@ namespace FleetManager.GUIController
             type = "CHECKINS";
             ShowHideButtons();
             SetupButtonActions();
+            ShowAll();
             frmView.ShowDialog();
         }
 
@@ -177,6 +181,7 @@ namespace FleetManager.GUIController
             type = "FREEVEHICLES";
             ShowHideButtons();
             SetupButtonActions();
+            ShowAll();
             frmView.ShowDialog();
         }
 
@@ -188,6 +193,31 @@ namespace FleetManager.GUIController
             type = "USERS";
             ShowHideButtons();
             SetupButtonActions();
+            ShowAll();
+            frmView.ShowDialog();
+        }
+
+        internal void ShowFrmUsersWithList(List<Korisnik> result)
+        {
+            frmView = new FrmView();
+            frmView.AutoSize = true;
+            frmView.Text = "Users View";
+            type = "USERS";
+            ShowHideButtons();
+            SetupButtonActions();
+            SetDataSource(result);
+            frmView.ShowDialog();
+        }
+
+        internal void ShowFrmVehiclesWithList(List<Vozilo> result)
+        {
+            frmView = new FrmView();
+            frmView.AutoSize = true;
+            frmView.Text = "Vehicles View";
+            type = "VEHICLES";
+            ShowHideButtons();
+            SetupButtonActions();
+            SetDataSource(result);
             frmView.ShowDialog();
         }
 
@@ -196,11 +226,11 @@ namespace FleetManager.GUIController
 
         }
 
-        public void ShowVehSearchView(bool activeonly=false)
+        public void ShowVehSearchView(bool activeonly = false)
         {
             FrmTool t = new FrmTool();
             t.Text = "Search";
-            t.AutoSize=true;
+            t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
             t.ChangePanel(VehicleGUIController.Instance.CreateSearchVehicle(true));
             t.ShowDialog();
@@ -233,6 +263,10 @@ namespace FleetManager.GUIController
             {
                 MessageBox.Show("No vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if(v.Zaduzenja.Find(x=>x.Aktivno==true)!=null)
+            {
+                MessageBox.Show("Vehicle already checked in.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             else
             {
                 FrmTool t = new FrmTool();
@@ -256,7 +290,7 @@ namespace FleetManager.GUIController
             }
             else
             {
-                ServiceGUIController.Instance.veh = new Vozilo(v.ID,v.Tip,v.Marka,v.Status,v.RegBroj,v.Naziv,v.Nosivost,v.Zaduzenja,v.Servisiranja);
+                ServiceGUIController.Instance.veh = new Vozilo(v.ID, v.Tip, v.Marka, v.Status, v.RegBroj, v.Naziv, v.Nosivost, v.Zaduzenja, v.Servisiranja);
                 ServiceGUIController.Instance.ShowFrmService();
             }
         }
@@ -360,16 +394,16 @@ namespace FleetManager.GUIController
         public void SetDataSource(object l)
         {
             var source = new BindingSource();
-            if (type == "VEHICLES" || type=="SERVICE")
+            if (type == "VEHICLES" || type == "SERVICE")
             {
-                this.source= (List<Vozilo>)l;
+                this.source = (List<Vozilo>)l;
                 source.DataSource = (List<Vozilo>)l;
                 frmView.dgwView.DataSource = source;
                 frmView.dgwView.Columns["TableName"].Visible = false;
                 frmView.dgwView.Columns["ColumnNames"].Visible = false;
                 frmView.dgwView.Columns["Values"].Visible = false;
             }
-            else if(type=="FREEVEHICLES")
+            else if (type == "FREEVEHICLES")
             {
                 this.source = (List<Vozilo>)l;
                 source.DataSource = (List<Vozilo>)l;
@@ -378,7 +412,7 @@ namespace FleetManager.GUIController
                 frmView.dgwView.Columns["Values"].Visible = false;
                 frmView.dgwView.Columns["ColumnNames"].Visible = false;
             }
-            else if(type=="USERS")
+            else if (type == "USERS")
             {
                 this.source = (List<Korisnik>)l;
                 source.DataSource = (List<Korisnik>)l;
@@ -387,13 +421,13 @@ namespace FleetManager.GUIController
                 frmView.dgwView.Columns["Values"].Visible = false;
                 frmView.dgwView.Columns["ColumnNames"].Visible = false;
             }
-            else if(type=="CHECKINS")
+            else if (type == "CHECKINS")
             {
-                this.source= (List<Zaduzenje>)l;
+                this.source = (List<Zaduzenje>)l;
                 source.DataSource = (List<Zaduzenje>)l;
                 frmView.dgwView.DataSource = source;
                 frmView.dgwView.Columns["TableName"].Visible = false;
-               frmView.dgwView.Columns["Values"].Visible = false;
+                frmView.dgwView.Columns["Values"].Visible = false;
                 frmView.dgwView.Columns["ColumnNames"].Visible = false;
                 frmView.dgwView.Columns["VremeRazduzenja"].Visible = false;
                 frmView.dgwView.Columns["Aktivno"].Visible = false;
@@ -404,19 +438,19 @@ namespace FleetManager.GUIController
 
         public void ShowAll()
         {
-            if(type=="VEHICLES" || type=="SERVICE")
+            if (type == "VEHICLES" || type == "SERVICE")
             {
                 ShowAllVehicles();
             }
-            else if(type=="FREEVEHICLES")
+            else if (type == "FREEVEHICLES")
             {
                 ShowFreeVehicles();
             }
-            else if(type=="CHECKINS")
+            else if (type == "CHECKINS")
             {
                 ShowUserCheckins();
             }
-            else if(type=="USERS")
+            else if (type == "USERS")
             {
                 ShowAllUsers();
             }
@@ -482,7 +516,7 @@ namespace FleetManager.GUIController
         public void ShowAllUsers()
         {
             Response res = CommunicationManager.Instance.GetAllUsers();
-            if(res.Exception==null)
+            if (res.Exception == null)
             {
                 SetDataSource(res.Result);
             }
@@ -519,11 +553,12 @@ namespace FleetManager.GUIController
 
         public void CheckOutVehicle()
         {
-            Zaduzenje z = GetSelectedRowCheckin();
+
+            Zaduzenje z = ViewGUIController.Instance.GetSelectedRowCheckin();
             z.VremeRazduzenja = DateTime.Now;
             if (z == null)
             {
-                MessageBox.Show("No check-in selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No check-in or vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -539,6 +574,7 @@ namespace FleetManager.GUIController
                 }
             }
         }
-
     }
+
+
 }

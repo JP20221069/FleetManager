@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FleetManager_Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Docking">
       <HintPath>E:\SOURCE\Krypton\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
@@ -236,6 +239,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hand_properties_old_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FleetManager_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FleetManager_Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

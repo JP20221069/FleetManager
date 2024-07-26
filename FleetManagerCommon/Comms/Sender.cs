@@ -14,7 +14,7 @@ namespace FleetManagerCommon.Communication
 
         private NetworkStream stream;
         private BinaryFormatter formatter;
-        private Socket socket;
+        public Socket socket;
 
         public Sender(Socket socket)
         {

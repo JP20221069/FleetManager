@@ -76,10 +76,17 @@ namespace FleetManager.GUIController
             return awc;
         }
 
-        internal Control CreateSearchVehicle(bool activeonly=false)
+        internal Control CreateSearchVehicle(bool activeonly=false,bool mainform=false)
         {
             VehicleControl c = new VehicleControl();
-            c.btAccept.Click += SearchVehicle;
+            if (mainform == true)
+            {
+                c.btAccept.Click += SearchVehicleForMainForm;
+            }
+            else
+            {
+                c.btAccept.Click += SearchVehicle;
+            }
             List<CBObject> cbo = new List<CBObject>();
             cbo.Add(new CBObject(-1, "N/A"));
             cbo.Add(new CBObject(0, "Active"));
@@ -193,6 +200,44 @@ namespace FleetManager.GUIController
             }
         }
 
+        private void ExecSearchVehicle(bool openform=false)
+        {
+
+        }
+
+        private void SearchVehicleForMainForm(object sender, EventArgs e)
+        {
+            Vozilo v = new Vozilo();
+            v.ID = -1;
+            v.Naziv = awc.FIELD_NAME.Text;
+            v.Marka = awc.FIELD_Brand.Text;
+            v.RegBroj = awc.FIELD_LICENSE.Text;
+            if (!string.IsNullOrEmpty(awc.FIELD_CARRYWEIGHT.Text))
+            {
+                v.Nosivost = (float)Convert.ToDouble(awc.FIELD_CARRYWEIGHT.Text);
+            }
+            else
+            {
+                v.Nosivost = 0;
+            }
+            v.Status = (StatusVozila)Convert.ToInt32(awc.CB_STATUS.SelectedValue);
+            v.Tip = awc.FIELD_TYPE.Text;
+            Response res = CommunicationManager.Instance.SearchVehicle(v);
+            if (res.Exception == null)
+            {
+                MessageBox.Show("Vehicle found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ViewGUIController.Instance.ShowFrmVehiclesWithList((List<Vozilo>)res.Result);
+               
+            }
+            else if (res.Exception.GetType() == typeof(RecordNotFoundException))
+            {
+                MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void SearchVehicleCheckins(object sender, EventArgs e)
         {
             Vozilo v = new Vozilo();

@@ -65,7 +65,7 @@ namespace FleetManagerServer
             }
         }
 
-        private Response ProcessRequest(Request req)
+        public Response ProcessRequest(Request req)
         {
             Response res = new Response();
             try

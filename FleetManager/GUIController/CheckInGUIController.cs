@@ -40,15 +40,16 @@ namespace FleetManager.GUIController
             CheckInControl c = new CheckInControl();
             chc = c;
             c.btAccept.Click += CheckinVehicle;
+
             return chc;
         }
 
-        private void CheckinVehicle(object sender,EventArgs e)
+        private void CheckinVehicle(object sender, EventArgs e)
         {
             string relacijaod = chc.FIELD_START.Text;
             string relacijado = chc.FIELD_FINISH.Text;
             string notes = chc.FIELD_NOTES.Text;
-            Zaduzenje z = new Zaduzenje(-1, veh, usr, true,relacijaod,relacijado,DateTime.Now,DateTime.Now,notes);
+            Zaduzenje z = new Zaduzenje(-1, veh, usr, true, relacijaod, relacijado, DateTime.Now, DateTime.Now, notes);
             Response res = CommunicationManager.Instance.CheckinVehicle(z);
             if (res.Exception == null)
             {

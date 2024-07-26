@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConnection));
             this.label1 = new System.Windows.Forms.Label();
             this.FIELD_CONNECTION_STRING = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,6 +77,7 @@
             this.btTestConnection.TabIndex = 14;
             this.btTestConnection.Text = "TEST CONNECTION";
             this.btTestConnection.UseVisualStyleBackColor = true;
+            this.btTestConnection.Click += new System.EventHandler(this.btTestConnection_Click);
             // 
             // btCopyCS
             // 
@@ -130,6 +132,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmConnection";

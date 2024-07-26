@@ -38,6 +38,7 @@ namespace FleetManagerServer.GuiController
             Application.Run(frmMain);
         }
 
+
         internal void ShowLog()
         {
             LogGUIController.Instance.ShowFrmLog();

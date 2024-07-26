@@ -21,5 +21,10 @@ namespace FleetManagerServer
         {
             Clipboard.SetText(FIELD_CONNECTION_STRING.Text);
         }
+
+        private void btTestConnection_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

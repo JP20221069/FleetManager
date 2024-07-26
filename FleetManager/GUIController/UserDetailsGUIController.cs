@@ -91,11 +91,18 @@ namespace FleetManager.GUIController
             return udc;
         }
 
-        public Control CreateSearchUser()
+        public Control CreateSearchUser(bool mainform=false)
         {
             UserDetailsControl c = new UserDetailsControl();
             c.btAccept.Text = "ACCEPT";
-            c.btAccept.Click += SearchUser;
+            if (mainform == true)
+            {
+                c.btAccept.Click += SearchUserForMainForm;
+            }
+            else
+            {
+                c.btAccept.Click += SearchUser;
+            }
             List<CBObject> cbo = new List<CBObject>();
             cbo.Add(new CBObject(0, "Korisnik"));
             cbo.Add(new CBObject(1, "Admin"));
@@ -185,6 +192,50 @@ namespace FleetManager.GUIController
             {
                 MessageBox.Show("User found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ViewGUIController.Instance.SetDataSource((List<Korisnik>)res.Result);
+            }
+            else if (res.Exception.GetType() == typeof(RecordNotFoundException))
+            {
+                MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SearchUserForMainForm(object sender, EventArgs e)
+        {
+            Korisnik k = new Korisnik();
+            if (udc.chkActive.CheckState == CheckState.Indeterminate)
+            {
+                k.Aktivan = null;
+            }
+            else
+            {
+                k.Aktivan = udc.chkActive.Checked;
+            }
+            if (udc.chkLoggedin.CheckState == CheckState.Indeterminate)
+            {
+                k.Ulogovan = null;
+            }
+            else
+            {
+                k.Ulogovan = udc.chkLoggedin.Checked;
+            }
+            if (!string.IsNullOrEmpty(udc.FIELD_USERNAME.Text))
+            {
+                k.Username = udc.FIELD_USERNAME.Text;
+            }
+            else
+            {
+                k.Username = null;
+            }
+            k.Rola = (int)udc.CB_Role.SelectedValue;
+            Response res = CommunicationManager.Instance.SearchUser(k);
+            if (res.Exception == null)
+            {
+                MessageBox.Show("User found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ViewGUIController.Instance.ShowFrmUsersWithList((List<Korisnik>)res.Result);
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {

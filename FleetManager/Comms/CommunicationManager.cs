@@ -255,5 +255,15 @@ namespace FleetManager.Comms
             Response response = (Response)receiver.Receive();
             return response;
         }
+
+        internal bool SocketConnected()
+        {
+            bool part1 = sender.socket.Poll(100,SelectMode.SelectError);
+            bool part2 = (sender.socket.Available == 0);
+            if (part1 && part2)
+                return false;
+            else
+                return true;
+        }
     }
 }

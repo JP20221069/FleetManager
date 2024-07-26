@@ -10,6 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FleetManagerServer.Utils;
 using System.Runtime.InteropServices;
+using FleetManagerServer.GuiController;
+using FleetManagerCommon.Communication;
+using System.Xml.Linq;
 
 namespace FleetManagerServer
 {
@@ -17,6 +20,7 @@ namespace FleetManagerServer
     {
         Socket socket;
         public static List<Client> active_clients;
+        public static List<ClientHandler> active_handlers;
         int max_clients;
         string ip;
         int port;
@@ -31,6 +35,7 @@ namespace FleetManagerServer
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             active_clients = new List<Client>();
+            active_handlers = new List<ClientHandler>();
             max_clients = Convert.ToInt32(ConfigurationManager.AppSettings["iNumMaxClients"]);
             ip= ConfigurationManager.AppSettings["server_ip"];
             port = Convert.ToInt32(ConfigurationManager.AppSettings["server_port"]);
@@ -74,6 +79,7 @@ namespace FleetManagerServer
                         handler.InitHandler();
                         ct.Start();
                         active_clients.Add(c);
+                        active_handlers.Add(handler);
                         Logger.LogEvent(new LogEvent(EventType.Info, "Successfully connected.", c));
                     }
                     else
@@ -96,6 +102,36 @@ namespace FleetManagerServer
             Logger.Stop();
             this.Started = false;
             socket.Close();
+        }
+
+        public void StopAndDisconnect()
+        {
+            Request logout = new Request();
+            logout.Operation = Operation.Logout;
+            Request disconnect = new Request();
+            disconnect.Operation = Operation.Disconnect;
+            foreach(ClientHandler name in active_handlers)
+            {
+                logout.Argument = name.client.user;
+                name.ProcessRequest(logout);
+                name.ProcessRequest(disconnect);
+            }
+            active_handlers.Clear();
+            Logger.LogEvent(new LogEvent(EventType.Info, "Server stopped.", null, true));
+            Logger.Stop();
+            this.Started = false;
+            socket.Close();
+        }
+
+        public void DisconnectAll()
+        {
+            Request req = new Request();
+            req.Operation = Operation.Logout;
+            foreach (ClientHandler name in active_handlers)
+            {
+                name.ProcessRequest(req);
+                active_handlers.Remove(name);
+            }
         }
     }
 }

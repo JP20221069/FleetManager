@@ -30,24 +30,29 @@ namespace FleetManager
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.FIELD_USERNAME = new System.Windows.Forms.TextBox();
             this.FIELD_PASSWORD = new System.Windows.Forms.TextBox();
             this.BT_LOGIN = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // FIELD_USERNAME
             // 
-            this.FIELD_USERNAME.Location = new System.Drawing.Point(73, 58);
+            this.FIELD_USERNAME.Location = new System.Drawing.Point(73, 87);
             this.FIELD_USERNAME.Name = "FIELD_USERNAME";
             this.FIELD_USERNAME.Size = new System.Drawing.Size(237, 20);
             this.FIELD_USERNAME.TabIndex = 0;
             // 
             // FIELD_PASSWORD
             // 
-            this.FIELD_PASSWORD.Location = new System.Drawing.Point(73, 94);
+            this.FIELD_PASSWORD.Location = new System.Drawing.Point(73, 123);
             this.FIELD_PASSWORD.Name = "FIELD_PASSWORD";
+            this.FIELD_PASSWORD.PasswordChar = '*';
             this.FIELD_PASSWORD.Size = new System.Drawing.Size(237, 20);
             this.FIELD_PASSWORD.TabIndex = 1;
             // 
@@ -65,7 +70,7 @@ namespace FleetManager
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 61);
+            this.label1.Location = new System.Drawing.Point(12, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 3;
@@ -74,23 +79,47 @@ namespace FleetManager
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 97);
+            this.label2.Location = new System.Drawing.Point(12, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FleetManager.Properties.Resources.FleetManager_Icon;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 51);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(96, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(219, 29);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Fleet Manager 23";
+            // 
             // FrmLogin
             // 
+            this.AcceptButton = this.BT_LOGIN;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 283);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BT_LOGIN);
             this.Controls.Add(this.FIELD_PASSWORD);
             this.Controls.Add(this.FIELD_USERNAME);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLogin";
@@ -98,6 +127,7 @@ namespace FleetManager
             this.Text = "Fleet Manager - Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogin_FormClosing);
             this.Load += new System.EventHandler(this.FrmLogin_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +139,7 @@ namespace FleetManager
         private System.Windows.Forms.Label label2;
         public TextBox FIELD_USERNAME;
         public TextBox FIELD_PASSWORD;
+        private PictureBox pictureBox1;
+        private Label label3;
     }
 }

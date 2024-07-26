@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace FleetManager.GuiController
 {
@@ -48,12 +49,17 @@ namespace FleetManager.GuiController
                     if (first)
                     {
                         Application.Run(frmLogin);
+                        Application.ApplicationExit += (o, e) => { CommunicationManager.Instance.Disconnect(); };
                     }
                     else
                     {
                         frmLogin.ShowDialog();
                     }
                     break;
+                }
+                catch(IOException ex)
+                {
+                    MainGUIController.Instance.SetIcon(false);
                 }
                 catch (Exception ex)
                 {
@@ -89,6 +95,11 @@ namespace FleetManager.GuiController
             {
                 MessageBox.Show(response.Exception.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+        }
+
+        internal void CloseFrmLogin()
+        {
+            frmLogin.Close();
         }
     }
 }

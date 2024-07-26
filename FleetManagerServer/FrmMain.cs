@@ -1,9 +1,11 @@
 ﻿using FleetManagerServer.GuiController;
+using FleetManagerServer.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -103,6 +105,48 @@ namespace FleetManagerServer
         private void connectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConnectionGUIController.Instance.ShowFrmConnection();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            s.StopAndDisconnect();
+            if(saveLogOnExitToolStripMenuItem.Checked==true)
+            {
+                string log = Logger.GetLog();
+                StreamWriter mywriter;
+                try
+                {
+                    mywriter = new StreamWriter("Logs/"+DateTime.Now+".txt");
+                    mywriter.Write(log);
+                    mywriter.Close();
+                    //MessageBox.Show("File saved.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            this.Close();
+        }
+
+        private void saveLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() != DialogResult.Cancel)
+            {
+                string path = saveFileDialog1.FileName;
+                string log = Logger.GetLog();
+                StreamWriter mywriter;
+                try
+                {
+                    mywriter = new StreamWriter(path);
+                    mywriter.Write(log);
+                    mywriter.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
