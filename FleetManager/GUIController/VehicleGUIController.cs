@@ -72,6 +72,11 @@ namespace FleetManager.GUIController
 
             c.CB_STATUS.Enabled = false;
 
+            c.btViewCheckins.Visible = true;
+            c.btViewServicings.Visible = true;
+            c.btViewServicings.Click += (o, e) => { ViewGUIController.Instance.ShowFrmServicings(v.Servisiranja); };
+            c.btViewCheckins.Click += (o, e) => { ViewGUIController.Instance.ShowFrmVehicleCheckins(v.Zaduzenja); };
+
             awc = c;
             return awc;
         }

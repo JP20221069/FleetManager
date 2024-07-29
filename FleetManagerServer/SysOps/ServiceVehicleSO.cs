@@ -21,8 +21,20 @@ namespace FleetManagerServer.SysOps
         protected override void ExecuteConcreteOperation()
         {
             broker.AddServisiranje(servisiranje);
+            try
+            {
+                broker.Commit();
+            }
+            catch (Exception ex)
+            {
+                broker.Rollback();
+                throw ex;
+            }
+            Servisiranje se = broker.GetLatestServicing();
+            broker.BeginTransaction();
             foreach(StavkaServisiranja s in servisiranje.Stavke)
             {
+                s.Servisiranje = se;
                 broker.AddStavkaServisiranja(s);
             }
         }

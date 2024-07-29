@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.FIELD_NOTES = new System.Windows.Forms.TextBox();
+            this.chkActive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btAccept
@@ -96,10 +97,23 @@
             this.FIELD_NOTES.Size = new System.Drawing.Size(309, 119);
             this.FIELD_NOTES.TabIndex = 27;
             // 
+            // chkActive
+            // 
+            this.chkActive.AutoSize = true;
+            this.chkActive.Enabled = false;
+            this.chkActive.Location = new System.Drawing.Point(91, 274);
+            this.chkActive.Name = "chkActive";
+            this.chkActive.Size = new System.Drawing.Size(56, 17);
+            this.chkActive.TabIndex = 28;
+            this.chkActive.Text = "Active";
+            this.chkActive.UseVisualStyleBackColor = true;
+            this.chkActive.Visible = false;
+            // 
             // CheckInControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkActive);
             this.Controls.Add(this.FIELD_NOTES);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btAccept);
@@ -123,5 +137,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox FIELD_NOTES;
+        public System.Windows.Forms.CheckBox chkActive;
     }
 }

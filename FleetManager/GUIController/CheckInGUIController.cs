@@ -44,6 +44,24 @@ namespace FleetManager.GUIController
             return chc;
         }
 
+        internal Control CreateCheckInDetails(Zaduzenje z)
+        {
+            CheckInControl c = new CheckInControl();
+            chc = c;
+            c.btAccept.Click += (o,e)=> { c.ParentForm.Close(); };
+            c.btAccept.Text = "CLOSE";
+            c.FIELD_START.Text = z.RelacijaOd;
+            c.FIELD_FINISH.Text = z.RelacijaDo;
+            c.FIELD_NOTES.Text = z.Napomena;
+            c.chkActive.Visible = true;
+            c.chkActive.Checked = z.Aktivno;
+            c.FIELD_START.ReadOnly = true;
+            c.FIELD_FINISH.ReadOnly = true;
+            c.FIELD_NOTES.ReadOnly = true;
+
+            return chc;
+        }
+
         private void CheckinVehicle(object sender, EventArgs e)
         {
             string relacijaod = chc.FIELD_START.Text;

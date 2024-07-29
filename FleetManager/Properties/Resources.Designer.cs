@@ -63,6 +63,16 @@ namespace FleetManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap address_book_0 {
+            get {
+                object obj = ResourceManager.GetObject("address_book-0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Delete {
             get {
                 object obj = ResourceManager.GetObject("Delete", resourceCulture);
@@ -83,6 +93,16 @@ namespace FleetManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gears_tweakui_b {
+            get {
+                object obj = ResourceManager.GetObject("gears_tweakui_b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hand_properties_old_64 {
             get {
                 object obj = ResourceManager.GetObject("hand_properties_old_64", resourceCulture);
@@ -96,6 +116,26 @@ namespace FleetManager.Properties {
         internal static System.Drawing.Bitmap OE_Outbox {
             get {
                 object obj = ResourceManager.GetObject("OE Outbox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap registration_0 {
+            get {
+                object obj = ResourceManager.GetObject("registration-0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap registration_1 {
+            get {
+                object obj = ResourceManager.GetObject("registration-1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -41,6 +41,8 @@
             this.FIELD_CARRYWEIGHT = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btAccept = new System.Windows.Forms.Button();
+            this.btViewCheckins = new System.Windows.Forms.Button();
+            this.btViewServicings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -150,10 +152,32 @@
             this.btAccept.UseVisualStyleBackColor = true;
             this.btAccept.Click += new System.EventHandler(this.btAccept_Click);
             // 
-            // AddVehicleControl
+            // btViewCheckins
+            // 
+            this.btViewCheckins.Image = global::FleetManager.Properties.Resources.address_book_0;
+            this.btViewCheckins.Location = new System.Drawing.Point(165, 261);
+            this.btViewCheckins.Name = "btViewCheckins";
+            this.btViewCheckins.Size = new System.Drawing.Size(41, 38);
+            this.btViewCheckins.TabIndex = 14;
+            this.btViewCheckins.UseVisualStyleBackColor = true;
+            this.btViewCheckins.Visible = false;
+            // 
+            // btViewServicings
+            // 
+            this.btViewServicings.Image = global::FleetManager.Properties.Resources.gears_tweakui_b;
+            this.btViewServicings.Location = new System.Drawing.Point(100, 261);
+            this.btViewServicings.Name = "btViewServicings";
+            this.btViewServicings.Size = new System.Drawing.Size(41, 38);
+            this.btViewServicings.TabIndex = 13;
+            this.btViewServicings.UseVisualStyleBackColor = true;
+            this.btViewServicings.Visible = false;
+            // 
+            // VehicleControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btViewCheckins);
+            this.Controls.Add(this.btViewServicings);
             this.Controls.Add(this.btAccept);
             this.Controls.Add(this.FIELD_CARRYWEIGHT);
             this.Controls.Add(this.label6);
@@ -167,7 +191,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.FIELD_NAME);
             this.Controls.Add(this.label1);
-            this.Name = "AddVehicleControl";
+            this.Name = "VehicleControl";
             this.Size = new System.Drawing.Size(428, 366);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -189,5 +213,7 @@
         public System.Windows.Forms.TextBox FIELD_LICENSE;
         public System.Windows.Forms.ComboBox CB_STATUS;
         public System.Windows.Forms.TextBox FIELD_CARRYWEIGHT;
+        public System.Windows.Forms.Button btViewServicings;
+        public System.Windows.Forms.Button btViewCheckins;
     }
 }

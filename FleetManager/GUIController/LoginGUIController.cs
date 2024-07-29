@@ -53,7 +53,7 @@ namespace FleetManager.GuiController
                     }
                     else
                     {
-                        frmLogin.ShowDialog();
+                        frmLogin.Show();
                     }
                     break;
                 }

@@ -53,7 +53,7 @@ namespace FleetManager.GUIController
                 frmMain.serviceToolStripMenuItem.Visible = true;
                 frmMain.checkInToolStripMenuItem.Visible = true;
                 frmMain.checkoutToolStripMenuItem.Visible = true;
-                frmMain.viewAllVehiclesToolStripMenuItem.Visible = false;
+                frmMain.viewAllVehiclesToolStripMenuItem.Visible = true;
                 frmMain.vehicleSearchToolStripMenuItem.Visible = true;
 
             }
@@ -75,7 +75,7 @@ namespace FleetManager.GUIController
 
             }
             frmMain.AutoSize = true;
-            frmMain.ShowDialog();
+            frmMain.Show();
             SetIcon(true);
         }
 

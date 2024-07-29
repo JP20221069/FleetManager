@@ -58,6 +58,26 @@ namespace FleetManager.GUIController
            
         }
 
+        internal Control CreateServiceItemDetails(StavkaServisiranja s)
+        {
+            AddServiceItemControl c = new AddServiceItemControl();
+            c.btAdd.Click += (o,e)=> { c.ParentForm.Close(); };
+            c.btAdd.Text = "CLOSE";
+            servisi = new List<Servis>();
+            servisi.Add(s.Servis);
+            c.CB_SERVICE.DataSource = servisi;
+            c.CB_SERVICE.DisplayMember = "Naziv";
+            c.CB_SERVICE.ValueMember = "ID";
+            c.CB_SERVICE.SelectedIndex = 0;
+            c.CB_SERVICE.Enabled = false;
+            c.FIELD_DESCRIPTION.Text = s.Opis;
+            c.FIELD_DESCRIPTION.ReadOnly = true;
+            c.FIELD_NAME.Text = s.Naziv;
+            c.FIELD_NAME.ReadOnly = true;
+            asi = c;
+            return c;
+        }
+
         private void AddService(object sender,EventArgs e)
         {
             string naziv = asi.FIELD_NAME.Text;

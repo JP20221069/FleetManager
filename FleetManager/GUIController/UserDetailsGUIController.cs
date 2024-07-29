@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace FleetManager.GUIController
 {
-    internal class UserDetailsGUIController
+    public class UserDetailsGUIController
     {
         UserDetailsControl udc;
         private static UserDetailsGUIController instance;

@@ -605,6 +605,7 @@ namespace FleetManagerServer.DB
                     ss.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     ss.Naziv = reader["Naziv"].ToString();
                     ss.Opis = reader["Opis"].ToString();
+                    ss.Servis = GetServiceByID(Convert.ToInt32(reader["ServisID"]));
                     ss.Servisiranje = s;
                     ret.Add(ss);
 
@@ -632,6 +633,7 @@ namespace FleetManagerServer.DB
                     s.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     s.Napomena = reader["Napomena"].ToString();
                     s.Datum = reader.GetDateTime(reader.GetOrdinal("Datum"));
+                    s.Vozilo = GetVehicleByID(Convert.ToInt32(reader["VoziloID"]));
                     s.Stavke = GetAllServiceItems(s);
                     ret.Add(s);
 
@@ -642,6 +644,59 @@ namespace FleetManagerServer.DB
                 reader.Close();
             }
             return ret;
+        }
+
+        public Servisiranje GetLatestServicing()
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT TOP 1 * FROM SERVISIRANJE ORDER BY ID DESC;";
+            SqlDataReader reader = comm.ExecuteReader();
+            try
+            {
+
+                while (reader.Read())
+                {
+                    Servisiranje s = new Servisiranje();
+                    s.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    s.Napomena = reader["Napomena"].ToString();
+                    s.Datum = reader.GetDateTime(reader.GetOrdinal("Datum"));
+                    s.Stavke = GetAllServiceItems(s);
+                    return s;
+
+                }
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return null;
+        }
+
+        public Servisiranje GetServicingByID(string id)
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT * FROM SERVISIRANJE WHERE ID="+id+";";
+            SqlDataReader reader = comm.ExecuteReader();
+            try
+            {
+
+                while (reader.Read())
+                {
+                    Servisiranje s = new Servisiranje();
+                    s.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    s.Napomena = reader["Napomena"].ToString();
+                    s.Datum = reader.GetDateTime(reader.GetOrdinal("Datum"));
+                    s.Stavke = GetAllServiceItems(s);
+                    s.Vozilo = GetVehicleByID(Convert.ToInt32(reader["VoziloID"]));
+                    return s;
+
+                }
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return null;
         }
 
         public List<Zaduzenje> GetAllCheckinsByVehicle(Vozilo v)
@@ -796,6 +851,31 @@ namespace FleetManagerServer.DB
                 reader.Close();
             }
             return ret;
+        }
+
+        public Servis GetServiceByID(int id)
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT * FROM SERVIS WHERE ID="+id+";";
+            SqlDataReader reader = comm.ExecuteReader();
+            try
+            {
+
+                while (reader.Read())
+                {
+                    Servis s = new Servis();
+                    s.ID = reader.GetInt32(reader.GetOrdinal("ID"));
+                    s.Naziv = reader["Naziv"].ToString();
+                    s.Adresa = reader["Adresa"].ToString();
+                    return s;
+
+                }
+            }
+            finally
+            {
+                reader.Close();
+            }
+            return null;
         }
 
 

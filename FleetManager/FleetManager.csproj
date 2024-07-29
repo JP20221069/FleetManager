@@ -82,6 +82,12 @@
     <Compile Include="Controls\CheckInControl.Designer.cs">
       <DependentUpon>CheckInControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ServiceDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ServiceDetailsControl.Designer.cs">
+      <DependentUpon>ServiceDetailsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UserDetailsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +145,7 @@
     <Compile Include="GUIController\AddServiceGUIController.cs" />
     <Compile Include="GUIController\AddUserGUIController.cs" />
     <Compile Include="GUIController\CheckInGUIController.cs" />
+    <Compile Include="GUIController\ServiceDetailsGUIController.cs" />
     <Compile Include="GUIController\ServiceGUIController.cs" />
     <Compile Include="GUIController\UserDetailsGUIController.cs" />
     <Compile Include="GUIController\VehicleGUIController.cs" />
@@ -156,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CheckInControl.resx">
       <DependentUpon>CheckInControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ServiceDetailsControl.resx">
+      <DependentUpon>ServiceDetailsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserDetailsControl.resx">
       <DependentUpon>UserDetailsControl.cs</DependentUpon>
@@ -245,6 +255,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FleetManager_Icon.ico" />
+    <None Include="Resources\address_book-0.png" />
+    <None Include="Resources\gears_tweakui_b.png" />
+    <None Include="Resources\registration-1.png" />
+    <None Include="Resources\registration-0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

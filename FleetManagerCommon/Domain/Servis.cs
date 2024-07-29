@@ -41,5 +41,10 @@ namespace Common.Domain
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            return this.naziv;
+        }
     }
 }
