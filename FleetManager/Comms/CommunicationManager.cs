@@ -41,6 +41,12 @@ namespace FleetManager.Comms
             socket.Connect(ConfigurationManager.AppSettings["server_ip"], Convert.ToInt32(ConfigurationManager.AppSettings["server_port"]));
             sender = new Sender(socket);
             receiver = new Receiver(socket);
+            Response res = (Response)receiver.Receive();
+            if(res.Exception!=null)
+            {
+                throw res.Exception;
+            }
+
         }
 
         internal Response Login(Korisnik user)

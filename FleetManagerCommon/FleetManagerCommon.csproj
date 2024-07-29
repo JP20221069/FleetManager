@@ -52,6 +52,7 @@
     <Compile Include="Domain\StavkaServisiranja.cs" />
     <Compile Include="Domain\Vozilo.cs" />
     <Compile Include="Domain\Zaduzenje.cs" />
+    <Compile Include="Exceptions\ClientLimitException.cs" />
     <Compile Include="Exceptions\UnableToCheckInException.cs" />
     <Compile Include="Exceptions\UnableToDisconnectException.cs" />
     <Compile Include="Exceptions\UpdateDeniedUserLoggedIn.cs" />

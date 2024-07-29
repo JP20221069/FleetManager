@@ -1,4 +1,5 @@
-﻿using FleetManager.GuiController;
+﻿using FleetManager.Comms;
+using FleetManager.GuiController;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,10 @@ namespace FleetManager
         [STAThread]
         static void Main()
         {
+            Application.ApplicationExit += (o, e) => { CommunicationManager.Instance.Disconnect(); };
             LoginGUIController.Instance.ShowFrmLogin();
         }
+
+        
     }
 }

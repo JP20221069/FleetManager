@@ -86,6 +86,7 @@ namespace FleetManager
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MainGUIController.isexitclose = true;
             MainGUIController.Instance.LogoutAndExit();
             Application.Exit();
         }
@@ -111,10 +112,12 @@ namespace FleetManager
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                MainGUIController.Instance.LogoutAndExit();
+
+            if (MainGUIController.isexitclose==false)
+            { 
+                MainGUIController.Instance.LogoutAndExit(false);
             }
+            MainGUIController.isexitclose = false;
         }
     }
 }

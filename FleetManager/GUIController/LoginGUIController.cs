@@ -43,17 +43,17 @@ namespace FleetManager.GuiController
                         CommunicationManager.Instance.Connect();
                         Application.EnableVisualStyles();
                         Application.SetCompatibleTextRenderingDefault(false);
+
                     }
                     frmLogin = new FrmLogin();
                     frmLogin.AutoSize = true;
                     if (first)
                     {
                         Application.Run(frmLogin);
-                        Application.ApplicationExit += (o, e) => { CommunicationManager.Instance.Disconnect(); };
                     }
                     else
                     {
-                        frmLogin.Show();
+                        frmLogin.ShowDialog();
                     }
                     break;
                 }
@@ -90,6 +90,7 @@ namespace FleetManager.GuiController
                 frmLogin.Visible = false;
                 MainGUIController.current_user = (Korisnik)response.Result;
                 MainGUIController.Instance.ShowFrmMain();
+               // LoginGUIController.instance.CloseFrmLogin();
             }
             else
             {

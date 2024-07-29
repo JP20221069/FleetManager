@@ -13,6 +13,8 @@ using System.Runtime.InteropServices;
 using FleetManagerServer.GuiController;
 using FleetManagerCommon.Communication;
 using System.Xml.Linq;
+using Common.Exceptions;
+using FleetManagerCommon.Comms;
 
 namespace FleetManagerServer
 {
@@ -70,7 +72,10 @@ namespace FleetManagerServer
                     Socket cs = socket.Accept();
                     if (active_clients.Count < max_clients)
                     {
-
+                        Sender s = new Sender(cs);
+                        Response res = new Response();
+                        res.Result = new Message(MessageType.Success);
+                        s.Send(res);
                         Client c = new Client(cs, cs.LocalEndPoint.ToString(), -1);
                         ClientHandler handler = new ClientHandler();
                         Thread ct = new Thread(handler.HandleRequest);
@@ -85,6 +90,11 @@ namespace FleetManagerServer
                     else
                     {
                         Logger.LogEvent(new LogEvent(EventType.Warning, "Unable to connect more clients.", null,true));
+                        Sender s = new Sender(cs);
+                        Response res = new Response();
+                        res.Exception = new ClientLimitException();
+                        s.Send(res);
+                        cs.Disconnect(false);
                     }
                 }
             }

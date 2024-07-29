@@ -20,14 +20,14 @@ namespace FleetManager
 
         public bool ValidateInput()
         {
-            if(string.IsNullOrEmpty(FIELD_PASSWORD.Text) || string.IsNullOrWhiteSpace(FIELD_PASSWORD.Text))
-            {
-                MessageBox.Show("Password required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
             if(string.IsNullOrEmpty(FIELD_USERNAME.Text) || string.IsNullOrWhiteSpace(FIELD_USERNAME.Text))
             {
                 MessageBox.Show("Username required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrEmpty(FIELD_PASSWORD.Text) || string.IsNullOrWhiteSpace(FIELD_PASSWORD.Text))
+            {
+                MessageBox.Show("Password required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -49,7 +49,10 @@ namespace FleetManager
 
         private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            LoginGUIController.Instance.DisconnectCl();
+           /* if (this.DialogResult == DialogResult.Cancel)
+            {
+                LoginGUIController.Instance.DisconnectCl();
+            }*/
         }
     }
 }

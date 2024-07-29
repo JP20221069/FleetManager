@@ -17,6 +17,7 @@ namespace FleetManager.GUIController
     public class MainGUIController
     {
         public static Korisnik current_user;
+        public static bool isexitclose = false;
 
         private static FrmMain frmMain;
         private static UserDetailsGUIController udc;
@@ -84,6 +85,8 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.Logout(current_user);
             if(res.Exception==null)
             {
+                current_user.Ulogovan = false;
+                isexitclose = true;
                 frmMain.Close();
                 LoginGUIController.Instance.ShowFrmLogin(false);
             }
@@ -93,13 +96,16 @@ namespace FleetManager.GUIController
             }
         }
 
-        internal void LogoutAndExit()
+        internal void LogoutAndExit(bool closeform=true)
         {
             Response res = CommunicationManager.Instance.Logout(current_user);
             if (res.Exception == null)
             {
-                frmMain.Close();
-                LoginGUIController.Instance.CloseFrmLogin();
+                if (closeform)
+                {
+                    frmMain.Close();
+                }
+                Application.Exit();
             }
             else
             {
