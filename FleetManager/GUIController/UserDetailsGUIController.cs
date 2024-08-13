@@ -202,7 +202,7 @@ namespace FleetManager.GUIController
             {
                 k.Username = null;
             }
-            k.Rola = (int)udc.CB_Role.SelectedValue;
+            k.Rola = (Rola)Convert.ToInt32(udc.CB_Role.SelectedValue);
             Response res = CommunicationManager.Instance.SearchUser(k);
             if (res.Exception == null)
             {
@@ -246,7 +246,7 @@ namespace FleetManager.GUIController
             {
                 k.Username = null;
             }
-            k.Rola = (int)udc.CB_Role.SelectedValue;
+            k.Rola = (Rola)Convert.ToInt32(udc.CB_Role.SelectedValue);
             Response res = CommunicationManager.Instance.SearchUser(k);
             if (res.Exception == null)
             {

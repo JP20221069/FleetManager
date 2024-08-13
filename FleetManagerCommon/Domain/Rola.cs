@@ -10,6 +10,7 @@ namespace Common.Domain
     {
         Korisnik=0,
         Admin,
-        Moderator
+        Moderator,
+        Default
     }
 }

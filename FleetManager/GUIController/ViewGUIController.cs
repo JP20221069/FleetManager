@@ -171,7 +171,7 @@ namespace FleetManager.GUIController
                     frmView.tsbService.Visible = true;
                 }
             }
-            else if (MainGUIController.current_user.Rola == (int)Rola.Moderator)
+            else if (MainGUIController.current_user.Rola == Rola.Moderator)
             {
                 frmView.tsbInspect.Visible = true;
                 if(action=="ALTER" || action=="ALL")
@@ -187,7 +187,7 @@ namespace FleetManager.GUIController
                     frmView.tsbDelete.Visible = true;
                 }
             }
-            else if (MainGUIController.current_user.Rola == (int)Rola.Admin)
+            else if (MainGUIController.current_user.Rola == Rola.Admin)
             {
                 if (type == "VEHICLES")
                 {

@@ -76,7 +76,7 @@ namespace FleetManagerServer.DB
                 {
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     user.Username = reader["Username"].ToString();
-                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.Rola = (Rola)reader.GetInt32(reader.GetOrdinal("Rola"));
                     success = true;
                 }
                 else
@@ -108,7 +108,7 @@ namespace FleetManagerServer.DB
                 {
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     user.Username = reader["Username"].ToString();
-                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.Rola = (Rola)reader.GetInt32(reader.GetOrdinal("Rola"));
                     success = true;
                 }
             }
@@ -164,7 +164,7 @@ namespace FleetManagerServer.DB
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     user.Password = reader.GetString(reader.GetOrdinal("Password"));
                     user.Username = reader["Username"].ToString();
-                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.Rola = (Rola)reader.GetInt32(reader.GetOrdinal("Rola"));
                     user.Ulogovan = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
                     user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
                 }
@@ -195,7 +195,7 @@ namespace FleetManagerServer.DB
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     user.Password = reader.GetString(reader.GetOrdinal("Password"));
                     user.Username = reader["Username"].ToString();
-                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.Rola = (Rola)reader.GetInt32(reader.GetOrdinal("Rola"));
                     user.Ulogovan = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
                     user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
                 }
@@ -226,7 +226,7 @@ namespace FleetManagerServer.DB
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     user.Password = reader.GetString(reader.GetOrdinal("Password"));
                     user.Username = reader["Username"].ToString();
-                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.Rola = (Rola)reader.GetInt32(reader.GetOrdinal("Rola"));
                     user.Ulogovan = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
                     user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
                     ret.Add(user);
@@ -270,7 +270,7 @@ namespace FleetManagerServer.DB
                 throw new UpdateDeniedUserLoggedIn();
             }
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "UPDATE KORISNIK SET Username='" + user.Username + "',Password='" + user.Password + "',Aktivan=" + Convert.ToInt32(user.Aktivan) + ",Ulogovan=" + Convert.ToInt32(user.Ulogovan) + " WHERE ID="+user.ID+";";
+            cmd.CommandText = "UPDATE KORISNIK SET Username='" + user.Username + "',Password='" + user.Password + "',Aktivan=" + Convert.ToInt32(user.Aktivan) + ",Ulogovan=" + Convert.ToInt32(user.Ulogovan) + ",Rola="+(int)user.Rola+" WHERE ID="+user.ID+";";
             cmd.ExecuteNonQuery();
             cmd.Dispose();
             return GetUserByID(user.ID);
@@ -448,7 +448,7 @@ namespace FleetManagerServer.DB
             {
                 search_options.Add("Username LIKE '%" + k.Username + "%'");
             }
-            if (k.Rola!=3)
+            if (k.Rola!=Rola.Default)
             {
                 search_options.Add("Rola="+k.Rola);
             }
@@ -489,7 +489,7 @@ namespace FleetManagerServer.DB
                     user.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                     user.Password = reader.GetString(reader.GetOrdinal("Password"));
                     user.Username = reader["Username"].ToString();
-                    user.Rola = reader.GetInt32(reader.GetOrdinal("Rola"));
+                    user.Rola = (Rola)reader.GetInt32(reader.GetOrdinal("Rola"));
                     user.Ulogovan = reader.GetBoolean(reader.GetOrdinal("Ulogovan"));
                     user.Aktivan = reader.GetBoolean(reader.GetOrdinal("Aktivan"));
                     ret.Add(user);

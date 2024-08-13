@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Common.Domain;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -14,14 +15,14 @@ namespace FleetManagerCommon.Domain
         int id;
         string username;
         string password;
-        int rola;
+        Rola rola;
         bool ? logged_in;
         bool? aktivan;
 
         public int ID { get => id; set => id = value; }
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
-        public int Rola { get => rola; set => rola = value; }
+        public Rola Rola { get => rola; set => rola = value; }
         public bool ?Ulogovan { get => logged_in; set => logged_in = value; }
 
         public bool ?Aktivan { get => aktivan; set => aktivan = value; }
@@ -30,14 +31,14 @@ namespace FleetManagerCommon.Domain
 
         public string ColumnNames => "Username,Password,Rola,Ulogovan,Aktivan";
 
-        public string Values => $"'{Username}',"+$"'{Password}'," + $"{Rola}," + $"{Convert.ToInt32(Ulogovan)}," + $"{Convert.ToInt32(Aktivan)}";
+        public string Values => $"'{Username}',"+$"'{Password}'," + $"{(int)Rola}," + $"{Convert.ToInt32(Ulogovan)}," + $"{Convert.ToInt32(Aktivan)}";
 
         public Korisnik()
         {
             
         }
 
-        public Korisnik(int id, string username, string password, int rola, bool logged_in, bool aktivan)
+        public Korisnik(int id, string username, string password, Rola rola, bool logged_in, bool aktivan)
         {
             this.id = id;
             this.username = username;

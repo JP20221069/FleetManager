@@ -52,7 +52,7 @@ namespace FleetManager.GUIController
         {
             frmMain = new FrmMain();
             Localize();
-            if(current_user.Rola==(int)Rola.Korisnik)
+            if(current_user.Rola==Rola.Korisnik)
             {
                 frmMain.serviceToolStripMenuItem.Visible = true;
                 frmMain.checkInToolStripMenuItem.Visible = true;
@@ -61,7 +61,7 @@ namespace FleetManager.GUIController
                 frmMain.vehicleSearchToolStripMenuItem.Visible = true;
 
             }
-            if(current_user.Rola==(int)Rola.Moderator)
+            if(current_user.Rola==Rola.Moderator)
             {
                 frmMain.newVehToolStripMenuItem.Visible = true;
                 frmMain.viewAllVehiclesToolStripMenuItem.Visible = true;
@@ -70,7 +70,7 @@ namespace FleetManager.GUIController
                 frmMain.alterVehToolStripMenuItem.Visible = true;
                 frmMain.deleteToolStripMenuItem.Visible = true;
             }
-            if(current_user.Rola==(int)Rola.Admin)
+            if(current_user.Rola==Rola.Admin)
             {
                 frmMain.newUserToolStripMenuItem.Visible = true;
                 frmMain.recordVehicleToolStripMenuItem.Visible = true;
