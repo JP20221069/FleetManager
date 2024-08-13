@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmService));
             this.LBX_ServiceItems = new System.Windows.Forms.ListBox();
             this.FIELD_NOTES = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LB_NOTES = new System.Windows.Forms.Label();
             this.btPlus = new System.Windows.Forms.Button();
             this.btMinus = new System.Windows.Forms.Button();
             this.DP_Date = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LB_DATE = new System.Windows.Forms.Label();
             this.btConfirm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -54,14 +55,14 @@
             this.FIELD_NOTES.Size = new System.Drawing.Size(412, 210);
             this.FIELD_NOTES.TabIndex = 6;
             // 
-            // label3
+            // LB_NOTES
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 102);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Notes";
+            this.LB_NOTES.AutoSize = true;
+            this.LB_NOTES.Location = new System.Drawing.Point(12, 102);
+            this.LB_NOTES.Name = "LB_NOTES";
+            this.LB_NOTES.Size = new System.Drawing.Size(35, 13);
+            this.LB_NOTES.TabIndex = 7;
+            this.LB_NOTES.Text = "Notes";
             // 
             // btPlus
             // 
@@ -90,14 +91,14 @@
             this.DP_Date.Size = new System.Drawing.Size(376, 20);
             this.DP_Date.TabIndex = 10;
             // 
-            // label1
+            // LB_DATE
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Date";
+            this.LB_DATE.AutoSize = true;
+            this.LB_DATE.Location = new System.Drawing.Point(12, 35);
+            this.LB_DATE.Name = "LB_DATE";
+            this.LB_DATE.Size = new System.Drawing.Size(30, 13);
+            this.LB_DATE.TabIndex = 11;
+            this.LB_DATE.Text = "Date";
             // 
             // btConfirm
             // 
@@ -115,13 +116,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 513);
             this.Controls.Add(this.btConfirm);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LB_DATE);
             this.Controls.Add(this.DP_Date);
             this.Controls.Add(this.btMinus);
             this.Controls.Add(this.btPlus);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LB_NOTES);
             this.Controls.Add(this.FIELD_NOTES);
             this.Controls.Add(this.LBX_ServiceItems);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmService";
             this.Text = "Service";
             this.ResumeLayout(false);
@@ -133,11 +135,11 @@
 
         public System.Windows.Forms.ListBox LBX_ServiceItems;
         public System.Windows.Forms.TextBox FIELD_NOTES;
-        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label LB_NOTES;
         public System.Windows.Forms.Button btPlus;
         public System.Windows.Forms.Button btMinus;
         public System.Windows.Forms.DateTimePicker DP_Date;
-        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label LB_DATE;
         public System.Windows.Forms.Button btConfirm;
     }
 }

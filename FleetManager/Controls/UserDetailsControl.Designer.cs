@@ -1,7 +1,9 @@
-﻿namespace FleetManager.Controls
+﻿using Common.Localization;
+
+namespace FleetManager.Controls
 {
     partial class UserDetailsControl
-    {
+    {  
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -31,11 +33,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.chkActive = new System.Windows.Forms.CheckBox();
             this.btAccept = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LABEL_ROLE = new System.Windows.Forms.Label();
             this.CB_Role = new System.Windows.Forms.ComboBox();
             this.FIELD_PASSWORD = new System.Windows.Forms.TextBox();
-            this.LB_PASSWORD = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LABEL_PASSWORD = new System.Windows.Forms.Label();
+            this.LABEL_USERNAME = new System.Windows.Forms.Label();
             this.FIELD_USERNAME = new System.Windows.Forms.TextBox();
             this.chkLoggedin = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -46,7 +48,7 @@
             this.pictureBox1.Image = global::FleetManager.Properties.Resources.user;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 110);
+            this.pictureBox1.Size = new System.Drawing.Size(93, 110);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
@@ -67,25 +69,21 @@
             this.btAccept.Name = "btAccept";
             this.btAccept.Size = new System.Drawing.Size(76, 44);
             this.btAccept.TabIndex = 15;
-            this.btAccept.Text = "ACCEPT";
+            this.btAccept.Text = "Accept";
             this.btAccept.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // LABEL_ROLE
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(139, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Role";
+            this.LABEL_ROLE.AutoSize = true;
+            this.LABEL_ROLE.Location = new System.Drawing.Point(115, 177);
+            this.LABEL_ROLE.Name = "LABEL_ROLE";
+            this.LABEL_ROLE.Size = new System.Drawing.Size(29, 13);
+            this.LABEL_ROLE.TabIndex = 14;
+            this.LABEL_ROLE.Text = "Role";
             // 
             // CB_Role
             // 
             this.CB_Role.FormattingEnabled = true;
-            this.CB_Role.Items.AddRange(new object[] {
-            "Korisnik",
-            "Moderator",
-            "Administrator"});
             this.CB_Role.Location = new System.Drawing.Point(198, 174);
             this.CB_Role.Name = "CB_Role";
             this.CB_Role.Size = new System.Drawing.Size(190, 21);
@@ -98,23 +96,23 @@
             this.FIELD_PASSWORD.Size = new System.Drawing.Size(190, 20);
             this.FIELD_PASSWORD.TabIndex = 12;
             // 
-            // LB_PASSWORD
+            // LABEL_PASSWORD
             // 
-            this.LB_PASSWORD.AutoSize = true;
-            this.LB_PASSWORD.Location = new System.Drawing.Point(139, 133);
-            this.LB_PASSWORD.Name = "LB_PASSWORD";
-            this.LB_PASSWORD.Size = new System.Drawing.Size(53, 13);
-            this.LB_PASSWORD.TabIndex = 11;
-            this.LB_PASSWORD.Text = "Password";
+            this.LABEL_PASSWORD.AutoSize = true;
+            this.LABEL_PASSWORD.Location = new System.Drawing.Point(113, 133);
+            this.LABEL_PASSWORD.Name = "LABEL_PASSWORD";
+            this.LABEL_PASSWORD.Size = new System.Drawing.Size(53, 13);
+            this.LABEL_PASSWORD.TabIndex = 11;
+            this.LABEL_PASSWORD.Text = "Password";
             // 
-            // label1
+            // LABEL_USERNAME
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Username";
+            this.LABEL_USERNAME.AutoSize = true;
+            this.LABEL_USERNAME.Location = new System.Drawing.Point(113, 96);
+            this.LABEL_USERNAME.Name = "LABEL_USERNAME";
+            this.LABEL_USERNAME.Size = new System.Drawing.Size(55, 13);
+            this.LABEL_USERNAME.TabIndex = 10;
+            this.LABEL_USERNAME.Text = "Username";
             // 
             // FIELD_USERNAME
             // 
@@ -142,11 +140,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.chkActive);
             this.Controls.Add(this.btAccept);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LABEL_ROLE);
             this.Controls.Add(this.CB_Role);
             this.Controls.Add(this.FIELD_PASSWORD);
-            this.Controls.Add(this.LB_PASSWORD);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LABEL_PASSWORD);
+            this.Controls.Add(this.LABEL_USERNAME);
             this.Controls.Add(this.FIELD_USERNAME);
             this.Name = "UserDetailsControl";
             this.Size = new System.Drawing.Size(399, 336);
@@ -161,12 +159,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.CheckBox chkActive;
         public System.Windows.Forms.Button btAccept;
-        private System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox CB_Role;
         public System.Windows.Forms.TextBox FIELD_PASSWORD;
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox FIELD_USERNAME;
         public System.Windows.Forms.CheckBox chkLoggedin;
-        public System.Windows.Forms.Label LB_PASSWORD;
+        public System.Windows.Forms.Label LABEL_PASSWORD;
+        public System.Windows.Forms.Label LABEL_ROLE;
+        public System.Windows.Forms.Label LABEL_USERNAME;
     }
 }

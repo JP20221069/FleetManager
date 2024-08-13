@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using Common.Localization;
 using FleetManager.Comms;
 using FleetManager.Controls;
 using FleetManager.Utils;
@@ -17,15 +18,15 @@ namespace FleetManager.GUIController
     public class AddUserGUIController
     {
         private AddUserControl auc;
-
+        Langset l = Program.curr_lang;
         internal Control CreateAddUser()
         {
             AddUserControl c = new AddUserControl();
             c.btAccept.Click += AddUser;
             List<CBObject> cbo = new List<CBObject>();
-            cbo.Add(new CBObject(0, "Korisnik"));
-            cbo.Add(new CBObject(1, "Admin"));
-            cbo.Add(new CBObject(2, "Moderator"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_USER")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_ADMIN")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_MOD")));
             c.CB_Role.DataSource = cbo;
             c.CB_Role.DisplayMember = "Name";
             c.CB_Role.ValueMember = "Value";
@@ -43,11 +44,11 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.AddUser(k);
             if (res.Exception == null)
             {
-                MessageBox.Show("Successfully added user.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_USR_ADD_SUCCESS"), l.GetString("TTL_INFO"),MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message,l.GetString("TTL_ERROR"),MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

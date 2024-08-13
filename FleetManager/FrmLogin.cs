@@ -1,4 +1,5 @@
-﻿using FleetManager.GuiController;
+﻿using Common.Localization;
+using FleetManager.GuiController;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace FleetManager
 {
     public partial class FrmLogin : Form
     {
+        Langset l = Program.curr_lang;
         public FrmLogin()
         {
             InitializeComponent();
@@ -22,12 +24,12 @@ namespace FleetManager
         {
             if(string.IsNullOrEmpty(FIELD_USERNAME.Text) || string.IsNullOrWhiteSpace(FIELD_USERNAME.Text))
             {
-                MessageBox.Show("Username required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(l.GetString("MSG_USERNAMEREQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (string.IsNullOrEmpty(FIELD_PASSWORD.Text) || string.IsNullOrWhiteSpace(FIELD_PASSWORD.Text))
             {
-                MessageBox.Show("Password required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(l.GetString("MSG_PWDREQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;

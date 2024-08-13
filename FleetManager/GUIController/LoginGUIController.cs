@@ -9,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Common.Localization;
 
 namespace FleetManager.GuiController
 {
     public class LoginGUIController
     {
+        Langset l = Program.curr_lang;
         private static LoginGUIController instance;
         public static LoginGUIController Instance
         {
@@ -46,6 +48,7 @@ namespace FleetManager.GuiController
 
                     }
                     frmLogin = new FrmLogin();
+                    Localize();
                     frmLogin.AutoSize = true;
                     if (first)
                     {
@@ -63,13 +66,21 @@ namespace FleetManager.GuiController
                 }
                 catch (Exception ex)
                 {
-                    DialogResult dr = MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show(ex.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                     if(dr==DialogResult.Cancel)
                     {
                         break;
                     }
                 }
             }
+        }
+
+        private void Localize()
+        {
+            
+            frmLogin.LB_PASSWORD.Text = l.GetString("Password");
+            frmLogin.LB_USERNAME.Text = l.GetString("Username");
+            frmLogin.BT_LOGIN.Text = l.GetString("Login");
         }
 
         internal void DisconnectCl()
@@ -94,7 +105,7 @@ namespace FleetManager.GuiController
             }
             else
             {
-                MessageBox.Show(response.Exception.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(response.Exception.Message,l.GetString("TTL_ERROR"),MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

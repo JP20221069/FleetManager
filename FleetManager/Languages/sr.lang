@@ -1,0 +1,112 @@
+﻿$NAME=SR
+#COMMON TEXT
+ACCEPT=PRIHVATI
+ADD=DODAJ
+About=O programu
+Active=Aktivno
+Alter=Izmeni
+Brand=Marka
+CLOSE=ZATVORI
+Carryweight=Nosivost
+Check_in=Zaduženje
+Check_out=Razduženje
+Checkin=Zaduženje
+Checkins=Zaduženja
+Checkout=Razduženje
+Date=Datum
+Delete=Obriši
+Description=Opis
+Exit=Izlaz
+Finish=Kraj
+Help=Pomoć
+Inspect_=Pregledaj ...
+License=Registarski br.
+Logged_in=Ulogovan
+Login=Uloguj se
+Log_off=Izloguj se
+Name=Ime
+New=Novi
+New_=Novi ...
+Notes=Napomena
+Password=Lozinka
+Program=Program
+Record=Zapis
+Role=Rola
+Search=Pretraga
+Service=Servis
+Servicings=Servisiranja
+ServiceItems=Stavke servisiranja
+ShowAll=Prikaži sve
+Start=Relacija od
+Status=Status
+Type=Tip
+User=Korisnik
+Username=Korisničko ime
+Vehicle=Vozilo
+View=Prikaz
+ViewAll=Prikaži sve
+
+
+#MESSAGES
+
+MSG_CHKIN_SEL_FAIL = Niste izabrali zaduženje ili vozilo.
+MSG_ITM_SEL_FAIL=Niste izabrali stavku.
+MSG_SER_ADD_SUCCESS = Uspešno servisirano vozilo.
+MSG_SER_SEL_FAIL=Niste izabrali servisiranje.
+MSG_USR_ADD_SUCCESS=Uspešno dodat korisnik.
+MSG_USR_ALTER_SUCCESS = Uspešno izmenjen korisnik.
+MSG_USR_FND_SUCCESS=Korisnik pronađen.
+MSG_USR_FND_FAIL= Sistem ne može da pronađe korisnika.
+MSG_USR_SEL_FAIL=Niste izabrali korisnika.
+MSG_VEH_ADD_SUCCESS = Uspešno dodato vozilo.
+MSG_VEH_CHKIN_SUCCESS=Uspešno zaduženo vozilo.
+MSG_VEH_CHKIN_FAIL=Vozilo je već zaduženo.
+MSG_VEH_CHKOUT_SUCCESS=Uspešno razduženo vozilo.
+MSG_VEH_DEL_SUCCESSS = Uspešno obrisano vozilo.
+MSG_VEH_FND_SUCCESS = Vozilo pronađeno.
+MSG_VEH_FND_FAIL = Sistem nije mogao da pronađe vozilo.
+MSG_VEH_SEL_FAIL=Niste izabrali vozilo.
+MSG_VEH_UPD_SUCCESS = Uspešno ažurirano vozilo.
+QST_AREYOUSURE=Da li ste sigurni?
+
+MSG_USERNAMEREQUIRED=Korisničko ime je obavezno.
+MSG_PWDREQUIRED=Lozinka je obavezna.
+
+#TOOLTIPS
+
+TTP_CONNECTED = Povezan na server.
+TTP_ERROR = Postoji problem sa vezom.
+
+#TITLES
+TTL_AVVEHS = Slobodna vozila
+TTL_CHKIN_VIEW = Pregled zaduženja
+TTL_ERROR=Greška
+TTL_INFO=Informacija
+TTL_ITM_ADD = Dodaj stavku servisiranja
+TTL_ITM_DETAILS = Detalji stavke
+TTL_ITM_VIEW = Pregled stavki servisiranja
+TTL_LOGIN=Fleet Manager - Login
+TTL_MAIN = Fleet Manager
+TTL_QST = Pitanje
+TTL_SER_DETAILS = Detalji o servisiranju
+TTL_USRS = Korisnici
+TTL_USR_DETAILS = Detalji korisnika
+TTL_USR_NEW = Novi Korisnik
+TTL_USR_VIEW = Pregled korisnika
+TTL_VEH_ALTER = Izmeni zapis vozila
+TTL_VEH_CHKIN = Zaduži vozilo
+TTL_VEH_CHKINS_VIEW = Pregled zaduženja vozila
+TTL_VEH_DETAILS = Detalji vozila
+TTL_VEH_NEW = Novo Vozilo
+TTL_VEH_SER_VIEW = Pregled servisiranja vozila
+TTL_VEH_VIEW = Pregled vozila
+TTL_WARNING=Upozorenje
+
+#LOCALIZED ENUMS
+ENUM_USER=Korisnik
+ENUM_ADMIN=Admin
+ENUM_MOD=Moderator
+
+ENUM_ACTIVE=Aktivno
+ENUM_INACTIVE=Neaktivno
+ENUM_CHECKEDIN=Zaduženo

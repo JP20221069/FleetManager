@@ -1,0 +1,130 @@
+﻿$NAME=EN
+#COMMON TEXT
+ACCEPT=Accept
+ADD=ADD
+About=About
+Active=Active
+Alter=Alter
+Brand=Brand
+CLOSE=CLOSE
+Carryweight=Carryweight
+Check_in=Check in
+Check_out=Check out
+Checkin=Check- in
+Checkins=Check-ins
+Checkout=Check-out
+Date=Date
+Delete=Delete
+Description=Description
+Exit=Exit
+Finish=Finish
+Help=Help
+Inspect_=Inpect ...
+License=License
+Logged_in=Logged in
+Login=Login
+Log_off=Log off
+Name=Name
+New=New
+New_=New...
+Notes=Notes
+Password=Password
+Program=Program
+Record=Record
+Role=Role
+Search=Search
+Service=Service
+Servicings=Servicings
+ServiceItems=Service Items
+ShowAll=Show All
+Start=Start
+Status=Status
+Type=Type
+User=User
+Username=Username
+Vehicle=Vehicle
+View=View
+ViewAll=View All
+
+
+#MESSAGES
+
+MSG_ITM_SEL_FAIL=No item selected.
+MSG_SER_ADD_SUCCESS = Successfully serviced vehicle.
+MSG_SER_SEL_FAIL=No servicing selected.
+MSG_USR_ADD_SUCCESS=Successfully added user.
+MSG_USR_ALTER_SUCCESS = Successfully altered user.
+MSG_USR_FND_SUCCESS=User found.
+MSG_USR_FND_FAIL= Could not find user.
+MSG_USR_SEL_FAIL=No user selected.
+MSG_VEH_ADD_SUCCESS = Successfully added vehicle.
+MSG_VEH_CHKIN_SUCCESS=Successfully checked in vehicle.
+MSG_VEH_CHKOUT_SUCCESS=Successfully checked out vehicle.
+MSG_VEH_DEL_SUCCESSS = Successfully deleted vehicle.
+MSG_VEH_FND_SUCCESS = Vehicle found.
+MSG_VEH_FND_FAIL = Could not find vehicle.
+MSG_VEH_SEL_FAIL=No vehicle selected.
+MSG_VEH_UPD_SUCCESS = Successfully updated vehicle.
+
+#TOOLTIPS
+
+TTP_CONNECTED = Connected to the server.
+TTP_ERROR = There has been an error.
+
+#TITLES
+TTL_AVVEHS = Available vehicles
+TTL_CHKIN_VIEW = Check in View
+TTL_ERROR=Error
+TTL_INFO=Information
+TTL_ITM_ADD = Add service item
+TTL_ITM_DETAILS = Item details
+TTL_ITM_VIEW = Service items View
+TTL_LOGIN=Fleet Manager - Login
+TTL_MAIN = Fleet Manager
+TTL_SER_DETAILS = Service details
+TTL_USRS = Users
+TTL_USR_DETAILS = User details
+TTL_USR_NEW = New User
+TTL_USR_VIEW = Users View
+TTL_VEH_ALTER = Alter Vehicle record
+TTL_VEH_CHKIN = Check in Vehicle
+TTL_VEH_CHKINS_VIEW = Vehicle check-ins View
+TTL_VEH_DETAILS = Vehicle details
+TTL_VEH_NEW = New Vehicle
+TTL_VEH_SER_VIEW = Vehicle servicings View
+TTL_VEH_VIEW = Vehicles View
+TTL_WARNING=Warning
+
+#LOCALIZED ENUMS
+ENUM_USER=User
+ENUM_ADMIN=Admin
+ENUM_MOD=Moderator
+
+ENUM_ACTIVE=Active
+ENUM_INACTIVE=Inactive
+ENUM_CHECKEDIN=Checked in
+
+#DATA GRID VIEW COLUMNS
+#VOZILO
+ID=ID
+Tip=Type
+Marka=Brand
+#Status already defined.
+RegBroj=License plate
+Naziv=Name
+Nosivost=Carryweight
+#Korisnik
+Ulogovan=Logged in
+Aktivan=Active
+#Servisiranje
+Datum=Date
+Vozilo=Vehicle
+Napomena=Notes
+#Zaduzenje
+Korisnik=User
+Aktivno=Active
+RelacijaOd=Start
+RelacijaDo=Finish
+VremeZaduzenja=Check-out time
+VremeRazduzenja=Check-in time
+RegistarskiBroj=License plate

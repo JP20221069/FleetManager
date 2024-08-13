@@ -78,17 +78,18 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSearch,
-            this.tsbShowAll,
             this.tsbNew,
+            this.tsbShowAll,
             this.tsbAlter,
             this.tsbInspect,
             this.tsbDelete,
             this.tsbCheckin,
-            this.tsbCheckout,
-            this.tsbService});
+            this.tsbService,
+            this.tsbCheckout});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.ShowItemToolTips = false;
             this.toolStrip1.Size = new System.Drawing.Size(800, 32);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
@@ -202,7 +203,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dgwView;
         public System.Windows.Forms.ToolStrip toolStrip1;
         public System.Windows.Forms.ToolStripButton tsbSearch;
@@ -214,5 +214,6 @@
         public System.Windows.Forms.ToolStripButton tsbService;
         public System.Windows.Forms.ToolStripButton tsbNew;
         public System.Windows.Forms.ToolStripButton tsbInspect;
+        public System.Windows.Forms.GroupBox groupBox2;
     }
 }

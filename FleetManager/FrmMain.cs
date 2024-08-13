@@ -119,5 +119,20 @@ namespace FleetManager
             }
             MainGUIController.isexitclose = false;
         }
+
+        private void alterVehToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.ShowFrmVehicles("ALTER");
+        }
+
+        private void deleteToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.ShowFrmVehicles("DELETE");
+        }
+
+        private void alterUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewGUIController.Instance.ShowFrmUsers("ALTER");
+        }
     }
 }

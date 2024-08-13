@@ -1,4 +1,6 @@
-﻿namespace FleetManager.Controls
+﻿using Common.Localization;
+
+namespace FleetManager.Controls
 {
     partial class VehicleControl
     {
@@ -28,103 +30,106 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.LABEL_NAME = new System.Windows.Forms.Label();
             this.FIELD_NAME = new System.Windows.Forms.TextBox();
             this.FIELD_Brand = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LABEL_BRAND = new System.Windows.Forms.Label();
             this.FIELD_TYPE = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LABEL_TYPE = new System.Windows.Forms.Label();
             this.FIELD_LICENSE = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LABEL_LICENSE = new System.Windows.Forms.Label();
             this.CB_STATUS = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LABEL_STATUS = new System.Windows.Forms.Label();
             this.FIELD_CARRYWEIGHT = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.LABEL_CARRYWEIGHT = new System.Windows.Forms.Label();
             this.btAccept = new System.Windows.Forms.Button();
             this.btViewCheckins = new System.Windows.Forms.Button();
             this.btViewServicings = new System.Windows.Forms.Button();
+            this.ttService = new System.Windows.Forms.ToolTip(this.components);
+            this.ttCheckins = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // label1
+            // LABEL_NAME
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(97, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.LABEL_NAME.AutoSize = true;
+            this.LABEL_NAME.Location = new System.Drawing.Point(97, 54);
+            this.LABEL_NAME.Name = "LABEL_NAME";
+            this.LABEL_NAME.Size = new System.Drawing.Size(35, 13);
+            this.LABEL_NAME.TabIndex = 0;
+            this.LABEL_NAME.Text = "Name";
             // 
             // FIELD_NAME
             // 
-            this.FIELD_NAME.Location = new System.Drawing.Point(147, 51);
+            this.FIELD_NAME.Location = new System.Drawing.Point(177, 51);
             this.FIELD_NAME.Name = "FIELD_NAME";
-            this.FIELD_NAME.Size = new System.Drawing.Size(262, 20);
+            this.FIELD_NAME.Size = new System.Drawing.Size(232, 20);
             this.FIELD_NAME.TabIndex = 1;
             // 
             // FIELD_Brand
             // 
-            this.FIELD_Brand.Location = new System.Drawing.Point(147, 86);
+            this.FIELD_Brand.Location = new System.Drawing.Point(177, 86);
             this.FIELD_Brand.Name = "FIELD_Brand";
-            this.FIELD_Brand.Size = new System.Drawing.Size(262, 20);
+            this.FIELD_Brand.Size = new System.Drawing.Size(232, 20);
             this.FIELD_Brand.TabIndex = 3;
             // 
-            // label2
+            // LABEL_BRAND
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(97, 89);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Brand";
+            this.LABEL_BRAND.AutoSize = true;
+            this.LABEL_BRAND.Location = new System.Drawing.Point(97, 89);
+            this.LABEL_BRAND.Name = "LABEL_BRAND";
+            this.LABEL_BRAND.Size = new System.Drawing.Size(35, 13);
+            this.LABEL_BRAND.TabIndex = 2;
+            this.LABEL_BRAND.Text = "Brand";
             // 
             // FIELD_TYPE
             // 
-            this.FIELD_TYPE.Location = new System.Drawing.Point(147, 121);
+            this.FIELD_TYPE.Location = new System.Drawing.Point(177, 121);
             this.FIELD_TYPE.Name = "FIELD_TYPE";
-            this.FIELD_TYPE.Size = new System.Drawing.Size(262, 20);
+            this.FIELD_TYPE.Size = new System.Drawing.Size(232, 20);
             this.FIELD_TYPE.TabIndex = 5;
             // 
-            // label3
+            // LABEL_TYPE
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(97, 124);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Type";
+            this.LABEL_TYPE.AutoSize = true;
+            this.LABEL_TYPE.Location = new System.Drawing.Point(97, 124);
+            this.LABEL_TYPE.Name = "LABEL_TYPE";
+            this.LABEL_TYPE.Size = new System.Drawing.Size(31, 13);
+            this.LABEL_TYPE.TabIndex = 4;
+            this.LABEL_TYPE.Text = "Type";
             // 
             // FIELD_LICENSE
             // 
-            this.FIELD_LICENSE.Location = new System.Drawing.Point(147, 155);
+            this.FIELD_LICENSE.Location = new System.Drawing.Point(177, 155);
             this.FIELD_LICENSE.Name = "FIELD_LICENSE";
-            this.FIELD_LICENSE.Size = new System.Drawing.Size(262, 20);
+            this.FIELD_LICENSE.Size = new System.Drawing.Size(232, 20);
             this.FIELD_LICENSE.TabIndex = 7;
             // 
-            // label4
+            // LABEL_LICENSE
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(97, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "License";
+            this.LABEL_LICENSE.AutoSize = true;
+            this.LABEL_LICENSE.Location = new System.Drawing.Point(97, 158);
+            this.LABEL_LICENSE.Name = "LABEL_LICENSE";
+            this.LABEL_LICENSE.Size = new System.Drawing.Size(44, 13);
+            this.LABEL_LICENSE.TabIndex = 6;
+            this.LABEL_LICENSE.Text = "License";
             // 
             // CB_STATUS
             // 
             this.CB_STATUS.FormattingEnabled = true;
-            this.CB_STATUS.Location = new System.Drawing.Point(147, 192);
+            this.CB_STATUS.Location = new System.Drawing.Point(177, 192);
             this.CB_STATUS.Name = "CB_STATUS";
-            this.CB_STATUS.Size = new System.Drawing.Size(262, 21);
+            this.CB_STATUS.Size = new System.Drawing.Size(232, 21);
             this.CB_STATUS.TabIndex = 8;
             // 
-            // label5
+            // LABEL_STATUS
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(97, 195);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Status";
+            this.LABEL_STATUS.AutoSize = true;
+            this.LABEL_STATUS.Location = new System.Drawing.Point(97, 195);
+            this.LABEL_STATUS.Name = "LABEL_STATUS";
+            this.LABEL_STATUS.Size = new System.Drawing.Size(37, 13);
+            this.LABEL_STATUS.TabIndex = 9;
+            this.LABEL_STATUS.Text = "Status";
             // 
             // FIELD_CARRYWEIGHT
             // 
@@ -133,14 +138,14 @@
             this.FIELD_CARRYWEIGHT.Size = new System.Drawing.Size(244, 20);
             this.FIELD_CARRYWEIGHT.TabIndex = 11;
             // 
-            // label6
+            // LABEL_CARRYWEIGHT
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(97, 231);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Carryweight";
+            this.LABEL_CARRYWEIGHT.AutoSize = true;
+            this.LABEL_CARRYWEIGHT.Location = new System.Drawing.Point(97, 231);
+            this.LABEL_CARRYWEIGHT.Name = "LABEL_CARRYWEIGHT";
+            this.LABEL_CARRYWEIGHT.Size = new System.Drawing.Size(62, 13);
+            this.LABEL_CARRYWEIGHT.TabIndex = 10;
+            this.LABEL_CARRYWEIGHT.Text = "Carryweight";
             // 
             // btAccept
             // 
@@ -180,17 +185,17 @@
             this.Controls.Add(this.btViewServicings);
             this.Controls.Add(this.btAccept);
             this.Controls.Add(this.FIELD_CARRYWEIGHT);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.LABEL_CARRYWEIGHT);
+            this.Controls.Add(this.LABEL_STATUS);
             this.Controls.Add(this.CB_STATUS);
             this.Controls.Add(this.FIELD_LICENSE);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.LABEL_LICENSE);
             this.Controls.Add(this.FIELD_TYPE);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LABEL_TYPE);
             this.Controls.Add(this.FIELD_Brand);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LABEL_BRAND);
             this.Controls.Add(this.FIELD_NAME);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LABEL_NAME);
             this.Name = "VehicleControl";
             this.Size = new System.Drawing.Size(428, 366);
             this.ResumeLayout(false);
@@ -199,13 +204,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         public System.Windows.Forms.Button btAccept;
         public System.Windows.Forms.TextBox FIELD_NAME;
         public System.Windows.Forms.TextBox FIELD_Brand;
@@ -215,5 +213,13 @@
         public System.Windows.Forms.TextBox FIELD_CARRYWEIGHT;
         public System.Windows.Forms.Button btViewServicings;
         public System.Windows.Forms.Button btViewCheckins;
+        public System.Windows.Forms.Label LABEL_NAME;
+        public System.Windows.Forms.Label LABEL_BRAND;
+        public System.Windows.Forms.Label LABEL_TYPE;
+        public System.Windows.Forms.Label LABEL_LICENSE;
+        public System.Windows.Forms.Label LABEL_STATUS;
+        public System.Windows.Forms.Label LABEL_CARRYWEIGHT;
+        public System.Windows.Forms.ToolTip ttService;
+        public System.Windows.Forms.ToolTip ttCheckins;
     }
 }

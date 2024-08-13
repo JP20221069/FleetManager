@@ -148,6 +148,7 @@
   <ItemGroup>
     <Content Include="FleetManagerServer_Icon.ico" />
     <Content Include="Resources\data_yellow.png" />
+    <Content Include="Resources\gears_tweakui_a-0.ico" />
     <None Include="Resources\data_yellow1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

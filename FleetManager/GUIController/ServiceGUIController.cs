@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using Common.Localization;
 using FleetManager.Comms;
 using FleetManager.Controls;
 using FleetManagerCommon.Communication;
@@ -14,6 +15,7 @@ namespace FleetManager.GUIController
 {
     public class ServiceGUIController
     {
+        Langset l = Program.curr_lang;
         FrmService frmService;
         private FrmTool t;
         private AddServiceItemControl asc;
@@ -52,7 +54,7 @@ namespace FleetManager.GUIController
         public DialogResult ShowAddServiceItem()
         {
             t = new FrmTool();
-            t.Text = "Add Service Item";
+            t.Text = l.GetString("TTL_ITM_ADD");
             t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
             AddServiceGUIController.Instance.veh = veh;
@@ -82,11 +84,11 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.ServiceVehicle(Servisiranje);
             if (res.Exception == null)
             {
-                MessageBox.Show("Successfully serviced vehicle.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_SER_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

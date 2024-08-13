@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using Common.Localization;
 using FleetManager.Comms;
 using FleetManager.Controls;
 using FleetManager.Utils;
@@ -14,9 +15,11 @@ namespace FleetManager.GUIController
 {
     public class AddServiceGUIController
     {
+
         private AddServiceItemControl asi;
         private List<Servis> servisi;
         public Vozilo veh;
+        Langset l = Program.curr_lang;
         private static AddServiceGUIController instance;
         public static AddServiceGUIController Instance
         {
@@ -48,21 +51,29 @@ namespace FleetManager.GUIController
                 c.CB_SERVICE.DisplayMember = "Naziv";
                 c.CB_SERVICE.ValueMember = "ID";
                 asi = c;
+                Localize();
                 return c;
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
            
+        }
+
+        void Localize()
+        {
+            asi.FIELD_DESCRIPTION.Text = l.GetString("DESCRIPTION");
+            asi.FIELD_NAME.Text = l.GetString("NAME");
+            asi.btAdd.Text = l.GetString("ADD");
         }
 
         internal Control CreateServiceItemDetails(StavkaServisiranja s)
         {
             AddServiceItemControl c = new AddServiceItemControl();
             c.btAdd.Click += (o,e)=> { c.ParentForm.Close(); };
-            c.btAdd.Text = "CLOSE";
+            c.btAdd.Text = l.GetString("CLOSE");
             servisi = new List<Servis>();
             servisi.Add(s.Servis);
             c.CB_SERVICE.DataSource = servisi;

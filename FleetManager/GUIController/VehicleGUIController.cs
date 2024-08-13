@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using Common.Localization;
 using FleetManager.Comms;
 using FleetManager.Controls;
 using FleetManager.Utils;
@@ -16,6 +17,7 @@ namespace FleetManager.GUIController
 {
     public class VehicleGUIController
     {
+        Langset l = Program.curr_lang;
         private VehicleControl awc;
         private Vozilo veh;
         private static VehicleGUIController instance;
@@ -30,18 +32,31 @@ namespace FleetManager.GUIController
                 return instance;
             }
         }
+
+        void Localize()
+        {
+            awc.LABEL_BRAND.Text = l.GetString("Brand");
+            awc.LABEL_CARRYWEIGHT.Text = l.GetString("Carryweight");
+            awc.LABEL_LICENSE.Text = l.GetString("License");
+            awc.LABEL_NAME.Text = l.GetString("Name");
+            awc.LABEL_STATUS.Text = l.GetString("Status");
+            awc.LABEL_TYPE.Text = l.GetString("Type");
+            awc.btAccept.Text = l.GetString("ACCEPT");
+        }
+
         internal Control CreateAddVehicle()
         {
             VehicleControl c = new VehicleControl();
             c.btAccept.Click += AddVehicle;
             List<CBObject> cbo = new List<CBObject>();
-            cbo.Add(new CBObject(0, "Active"));
-            cbo.Add(new CBObject(1, "Inactive"));
-            cbo.Add(new CBObject(2, "Checked in"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_ACTIVE")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_INACTIVE")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_CHECKEDIN")));
             c.CB_STATUS.DataSource = cbo;
             c.CB_STATUS.DisplayMember = "Name";
             c.CB_STATUS.ValueMember = "Value";
             awc = c;
+            Localize();
             return awc;
         }
 
@@ -49,11 +64,11 @@ namespace FleetManager.GUIController
         {
             VehicleControl c = new VehicleControl();
             c.btAccept.Click += (o,e)=> { c.ParentForm.Close(); };
-            c.btAccept.Text = "CLOSE";
+            c.btAccept.Text = l.GetString("CLOSE");
             List<CBObject> cbo = new List<CBObject>();
-            cbo.Add(new CBObject(0, "Active"));
-            cbo.Add(new CBObject(1, "Inactive"));
-            cbo.Add(new CBObject(2, "Checked in"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_ACTIVE")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_INACTIVE")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_CHECKEDIN")));
             c.CB_STATUS.DataSource = cbo;
             c.CB_STATUS.DisplayMember = "Name";
             c.CB_STATUS.ValueMember = "Value";
@@ -76,8 +91,12 @@ namespace FleetManager.GUIController
             c.btViewServicings.Visible = true;
             c.btViewServicings.Click += (o, e) => { ViewGUIController.Instance.ShowFrmServicings(v.Servisiranja); };
             c.btViewCheckins.Click += (o, e) => { ViewGUIController.Instance.ShowFrmVehicleCheckins(v.Zaduzenja); };
+            c.ttCheckins.SetToolTip(c.btViewCheckins, l.GetString("Checkins"));
+            c.ttService.SetToolTip(c.btViewServicings,l.GetString("Servicings"));
 
             awc = c;
+            Localize();
+            c.btAccept.Text = l.GetString("CLOSE");
             return awc;
         }
 
@@ -94,9 +113,9 @@ namespace FleetManager.GUIController
             }
             List<CBObject> cbo = new List<CBObject>();
             cbo.Add(new CBObject(-1, "N/A"));
-            cbo.Add(new CBObject(0, "Active"));
-            cbo.Add(new CBObject(1, "Inactive"));
-            cbo.Add(new CBObject(2, "Checked in"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_ACTIVE")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_INACTIVE")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_CHECKEDIN")));
             c.CB_STATUS.DataSource = cbo;
             c.CB_STATUS.DisplayMember = "Name";
             c.CB_STATUS.ValueMember = "Value";
@@ -106,6 +125,7 @@ namespace FleetManager.GUIController
                 c.CB_STATUS.Enabled = false;
             }
             awc = c;
+            Localize();
             return awc;
         }
 
@@ -115,15 +135,16 @@ namespace FleetManager.GUIController
             c.btAccept.Click += SearchVehicleCheckins;
             List<CBObject> cbo = new List<CBObject>();
             cbo.Add(new CBObject(-1, "N/A"));
-            cbo.Add(new CBObject(0, "Active"));
-            cbo.Add(new CBObject(1, "Inactive"));
-            cbo.Add(new CBObject(2, "Checked in"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_ACTIVE")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_INACTIVE")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_CHECKEDIN")));
             c.CB_STATUS.DataSource = cbo;
             c.CB_STATUS.DisplayMember = "Name";
             c.CB_STATUS.ValueMember = "Value";
             c.CB_STATUS.SelectedIndex = 3;
             c.CB_STATUS.Enabled = false;
             awc = c;
+            Localize();
             return awc;
         }
 
@@ -134,9 +155,9 @@ namespace FleetManager.GUIController
             VehicleControl c = new VehicleControl();
             c.btAccept.Click += UpdateVehicle;
             List<CBObject> cbo = new List<CBObject>();
-            cbo.Add(new CBObject(0, "Active"));
-            cbo.Add(new CBObject(1, "Inactive"));
-            cbo.Add(new CBObject(2, "Checked in"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_ACTIVE")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_INACTIVE")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_CHECKEDIN")));
             c.CB_STATUS.DataSource = cbo;
             c.CB_STATUS.DisplayMember = "Name";
             c.CB_STATUS.ValueMember = "Value";
@@ -148,6 +169,7 @@ namespace FleetManager.GUIController
             c.FIELD_CARRYWEIGHT.Text = v.Nosivost.ToString();
 
             awc = c;
+            Localize();
             return awc;
         }
 
@@ -164,11 +186,11 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.AddVehicle(v);
             if (res.Exception == null)
             {
-                MessageBox.Show("Successfully added vehicle.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("VEH_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -192,22 +214,17 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.SearchVehicle(v);
             if (res.Exception == null)
             {
-                MessageBox.Show("Vehicle found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_VEH_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ViewGUIController.Instance.SetDataSource((List<Vozilo>)res.Result);
             }
             else if(res.Exception.GetType()==typeof(RecordNotFoundException))
             {
-                MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(l.GetString("MSG_VEH_FND_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void ExecSearchVehicle(bool openform=false)
-        {
-
         }
 
         private void SearchVehicleForMainForm(object sender, EventArgs e)
@@ -230,17 +247,17 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.SearchVehicle(v);
             if (res.Exception == null)
             {
-                MessageBox.Show("Vehicle found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_VEH_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ViewGUIController.Instance.ShowFrmVehiclesWithList((List<Vozilo>)res.Result);
                
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {
-                MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(l.GetString("MSG_VEH_FND_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void SearchVehicleCheckins(object sender, EventArgs e)
@@ -263,7 +280,7 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.SearchVehicle(v);
             if (res.Exception == null)
             {
-                MessageBox.Show("Vehicle found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_VEH_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //ViewGUIController.Instance.SetDataSource((List<Vozilo>)res.Result);
                 List<Zaduzenje> datasource = new List<Zaduzenje>();
                 foreach(Vozilo name in (List<Vozilo>)res.Result)
@@ -274,11 +291,11 @@ namespace FleetManager.GUIController
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {
-                MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("MSG_VEH_FND_FAIL", l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -296,13 +313,14 @@ namespace FleetManager.GUIController
             ViewGUIController.Instance.ShowAllVehicles();
             if (res.Exception == null)
             {
-                MessageBox.Show("Successfully updated vehicle.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_VEH_UPD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

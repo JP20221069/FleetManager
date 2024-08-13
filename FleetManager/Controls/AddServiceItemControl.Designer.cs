@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label4 = new System.Windows.Forms.Label();
+            this.LABEL_SERVICE = new System.Windows.Forms.Label();
             this.CB_SERVICE = new System.Windows.Forms.ComboBox();
             this.btAdd = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LABEL_DESCRIPTION = new System.Windows.Forms.Label();
+            this.LABEL_NAME = new System.Windows.Forms.Label();
             this.FIELD_DESCRIPTION = new System.Windows.Forms.TextBox();
             this.FIELD_NAME = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label4
+            // LABEL_SERVICE
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Service";
+            this.LABEL_SERVICE.AutoSize = true;
+            this.LABEL_SERVICE.Location = new System.Drawing.Point(20, 30);
+            this.LABEL_SERVICE.Name = "LABEL_SERVICE";
+            this.LABEL_SERVICE.Size = new System.Drawing.Size(43, 13);
+            this.LABEL_SERVICE.TabIndex = 16;
+            this.LABEL_SERVICE.Text = "Service";
             // 
             // CB_SERVICE
             // 
@@ -64,23 +64,23 @@
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label2
+            // LABEL_DESCRIPTION
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Description";
+            this.LABEL_DESCRIPTION.AutoSize = true;
+            this.LABEL_DESCRIPTION.Location = new System.Drawing.Point(3, 58);
+            this.LABEL_DESCRIPTION.Name = "LABEL_DESCRIPTION";
+            this.LABEL_DESCRIPTION.Size = new System.Drawing.Size(60, 13);
+            this.LABEL_DESCRIPTION.TabIndex = 13;
+            this.LABEL_DESCRIPTION.Text = "Description";
             // 
-            // label1
+            // LABEL_NAME
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Name";
+            this.LABEL_NAME.AutoSize = true;
+            this.LABEL_NAME.Location = new System.Drawing.Point(28, 6);
+            this.LABEL_NAME.Name = "LABEL_NAME";
+            this.LABEL_NAME.Size = new System.Drawing.Size(35, 13);
+            this.LABEL_NAME.TabIndex = 12;
+            this.LABEL_NAME.Text = "Name";
             // 
             // FIELD_DESCRIPTION
             // 
@@ -101,11 +101,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.LABEL_SERVICE);
             this.Controls.Add(this.CB_SERVICE);
             this.Controls.Add(this.btAdd);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LABEL_DESCRIPTION);
+            this.Controls.Add(this.LABEL_NAME);
             this.Controls.Add(this.FIELD_DESCRIPTION);
             this.Controls.Add(this.FIELD_NAME);
             this.Name = "AddServiceItemControl";
@@ -116,13 +116,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox CB_SERVICE;
         public System.Windows.Forms.Button btAdd;
         public System.Windows.Forms.TextBox FIELD_DESCRIPTION;
         public System.Windows.Forms.TextBox FIELD_NAME;
+        public System.Windows.Forms.Label LABEL_SERVICE;
+        public System.Windows.Forms.Label LABEL_DESCRIPTION;
+        public System.Windows.Forms.Label LABEL_NAME;
     }
 }

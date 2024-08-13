@@ -1,4 +1,6 @@
-﻿namespace FleetManager.Controls
+﻿using Common.Localization;
+
+namespace FleetManager.Controls
 {
     partial class ServiceDetailsControl
     {
@@ -28,22 +30,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.LABEL_DATE = new System.Windows.Forms.Label();
             this.DP_Date = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LABEL_NOTES = new System.Windows.Forms.Label();
             this.FIELD_NOTES = new System.Windows.Forms.TextBox();
             this.btAccept = new System.Windows.Forms.Button();
             this.btServiceItems = new System.Windows.Forms.Button();
+            this.ttServiceItems = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // label1
+            // LABEL_DATE
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Date";
+            this.LABEL_DATE.AutoSize = true;
+            this.LABEL_DATE.Location = new System.Drawing.Point(4, 29);
+            this.LABEL_DATE.Name = "LABEL_DATE";
+            this.LABEL_DATE.Size = new System.Drawing.Size(30, 13);
+            this.LABEL_DATE.TabIndex = 15;
+            this.LABEL_DATE.Text = "Date";
             // 
             // DP_Date
             // 
@@ -52,14 +56,14 @@
             this.DP_Date.Size = new System.Drawing.Size(376, 20);
             this.DP_Date.TabIndex = 14;
             // 
-            // label3
+            // LABEL_NOTES
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 64);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Notes";
+            this.LABEL_NOTES.AutoSize = true;
+            this.LABEL_NOTES.Location = new System.Drawing.Point(4, 64);
+            this.LABEL_NOTES.Name = "LABEL_NOTES";
+            this.LABEL_NOTES.Size = new System.Drawing.Size(35, 13);
+            this.LABEL_NOTES.TabIndex = 13;
+            this.LABEL_NOTES.Text = "Notes";
             // 
             // FIELD_NOTES
             // 
@@ -75,7 +79,7 @@
             this.btAccept.Name = "btAccept";
             this.btAccept.Size = new System.Drawing.Size(76, 44);
             this.btAccept.TabIndex = 16;
-            this.btAccept.Text = "CLOSE";
+            this.btAccept.Text = "ACCEPT";
             this.btAccept.UseVisualStyleBackColor = true;
             // 
             // btServiceItems
@@ -93,9 +97,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btServiceItems);
             this.Controls.Add(this.btAccept);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LABEL_DATE);
             this.Controls.Add(this.DP_Date);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LABEL_NOTES);
             this.Controls.Add(this.FIELD_NOTES);
             this.Name = "ServiceDetailsControl";
             this.Size = new System.Drawing.Size(423, 351);
@@ -106,11 +110,12 @@
 
         #endregion
 
-        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label LABEL_DATE;
         public System.Windows.Forms.DateTimePicker DP_Date;
-        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label LABEL_NOTES;
         public System.Windows.Forms.TextBox FIELD_NOTES;
         public System.Windows.Forms.Button btAccept;
         public System.Windows.Forms.Button btServiceItems;
+        public System.Windows.Forms.ToolTip ttServiceItems;
     }
 }

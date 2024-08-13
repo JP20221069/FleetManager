@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using Common.Localization;
 using FleetManager.Comms;
 using FleetManager.Controls;
 using FleetManager.Utils;
@@ -16,6 +17,7 @@ namespace FleetManager.GUIController
 {
     public class UserDetailsGUIController
     {
+        Langset l = Program.curr_lang;
         UserDetailsControl udc;
         private static UserDetailsGUIController instance;
         public static UserDetailsGUIController Instance
@@ -29,18 +31,29 @@ namespace FleetManager.GUIController
                 return instance;
             }
         }
+
+        void Localize()
+        {
+            udc.btAccept.Text = l.GetString("ACCEPT");
+            udc.LABEL_PASSWORD.Text = l.GetString("Password");
+            udc.LABEL_USERNAME.Text = l.GetString("Username");
+            udc.LABEL_ROLE.Text = l.GetString("Role");
+            udc.chkActive.Text = l.GetString("ENUM_ACTIVE");
+            udc.chkActive.Text = l.GetString("Logged_in");
+        }
         public Control CreateAddUser()
         {
             UserDetailsControl c = new UserDetailsControl();
             c.btAccept.Click += AddUser;
             List<CBObject> cbo = new List<CBObject>();
-            cbo.Add(new CBObject(0, "Korisnik"));
-            cbo.Add(new CBObject(1, "Admin"));
-            cbo.Add(new CBObject(2, "Moderator"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_USER")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_ADMIN")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_MOD")));
             c.CB_Role.DataSource = cbo;
             c.CB_Role.DisplayMember = "Name";
             c.CB_Role.ValueMember = "Value";
             udc = c;
+            Localize();
             c.chkLoggedin.Visible = false;
             return udc;
         }
@@ -50,9 +63,9 @@ namespace FleetManager.GUIController
             UserDetailsControl c = new UserDetailsControl();
             c.btAccept.Click += AlterUser;
             List<CBObject> cbo = new List<CBObject>();
-            cbo.Add(new CBObject(0, "Korisnik"));
-            cbo.Add(new CBObject(1, "Admin"));
-            cbo.Add(new CBObject(2, "Moderator"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_USER")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_ADMIN")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_MOD")));
             c.CB_Role.DataSource = cbo;
             c.CB_Role.SelectedItem = c.CB_Role.Items[cbo.FindIndex(x => (int)x.Value == (int)usr.Rola)];
             c.CB_Role.DisplayMember = "Name";
@@ -62,18 +75,18 @@ namespace FleetManager.GUIController
             udc = c;
             c.chkActive.Checked = (bool)usr.Aktivan;
             c.chkLoggedin.Visible = false;
+            Localize();
             return udc;
         }
 
         public Control CreateUserDetails(Korisnik usr)
         {
             UserDetailsControl c = new UserDetailsControl();
-            c.btAccept.Text = "CLOSE";
             c.btAccept.Click += (o,e)=> { c.ParentForm.Close(); };
             List<CBObject> cbo = new List<CBObject>();
-            cbo.Add(new CBObject(0, "Korisnik"));
-            cbo.Add(new CBObject(1, "Admin"));
-            cbo.Add(new CBObject(2, "Moderator"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_USER")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_ADMIN")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_MOD")));
             c.CB_Role.DataSource = cbo;
             c.CB_Role.SelectedItem = c.CB_Role.Items[cbo.FindIndex(x => (int)x.Value == (int)usr.Rola)];
             c.CB_Role.DisplayMember = "Name";
@@ -88,13 +101,15 @@ namespace FleetManager.GUIController
             c.chkActive.Checked = (bool)usr.Aktivan;
             c.chkLoggedin.Checked = (bool)usr.Ulogovan;
             udc = c;
+            Localize();
+            c.btAccept.Text = l.GetString("CLOSE");
             return udc;
         }
 
         public Control CreateSearchUser(bool mainform=false)
         {
             UserDetailsControl c = new UserDetailsControl();
-            c.btAccept.Text = "ACCEPT";
+            c.btAccept.Text = l.GetString("ACCEPT");
             if (mainform == true)
             {
                 c.btAccept.Click += SearchUserForMainForm;
@@ -104,22 +119,23 @@ namespace FleetManager.GUIController
                 c.btAccept.Click += SearchUser;
             }
             List<CBObject> cbo = new List<CBObject>();
-            cbo.Add(new CBObject(0, "Korisnik"));
-            cbo.Add(new CBObject(1, "Admin"));
-            cbo.Add(new CBObject(2, "Moderator"));
+            cbo.Add(new CBObject(0, l.GetString("ENUM_USER")));
+            cbo.Add(new CBObject(1, l.GetString("ENUM_ADMIN")));
+            cbo.Add(new CBObject(2, l.GetString("ENUM_MOD")));
             cbo.Add(new CBObject(3, "N/A"));
             c.CB_Role.DataSource = cbo;
             c.CB_Role.SelectedItem = c.CB_Role.Items[3];
             c.CB_Role.DisplayMember = "Name";
             c.CB_Role.ValueMember = "Value";
             c.FIELD_PASSWORD.Visible = false;
-            c.LB_PASSWORD.Visible = true;
+            c.LABEL_PASSWORD.Visible = false;
             c.chkLoggedin.Enabled = true;
             c.chkActive.ThreeState = true;
             c.chkLoggedin.ThreeState = true;
             c.chkActive.CheckState = CheckState.Indeterminate;
             c.chkLoggedin.CheckState = CheckState.Indeterminate;
             udc = c;
+            Localize();
             return udc;
         }
 
@@ -133,11 +149,11 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.AddUser(k);
             if (res.Exception == null)
             {
-                MessageBox.Show("Successfully added user.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_USR_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -151,11 +167,11 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.AlterUser(k);
             if (res.Exception == null)
             {
-                MessageBox.Show("Successfully altered user.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_USR_ALTER_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -190,16 +206,16 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.SearchUser(k);
             if (res.Exception == null)
             {
-                MessageBox.Show("User found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_USR_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ViewGUIController.Instance.SetDataSource((List<Korisnik>)res.Result);
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {
-                MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -234,16 +250,16 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.SearchUser(k);
             if (res.Exception == null)
             {
-                MessageBox.Show("User found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_USR_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ViewGUIController.Instance.ShowFrmUsersWithList((List<Korisnik>)res.Result);
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {
-                MessageBox.Show(res.Exception.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(l.GetString("MSG_USR_FND_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

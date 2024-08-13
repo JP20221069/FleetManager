@@ -1,4 +1,6 @@
-﻿namespace FleetManager.Controls
+﻿using Common.Localization;
+
+namespace FleetManager.Controls
 {
     partial class CheckInControl
     {
@@ -30,10 +32,10 @@
         {
             this.btAccept = new System.Windows.Forms.Button();
             this.FIELD_FINISH = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LABEL_FINISH = new System.Windows.Forms.Label();
             this.FIELD_START = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LABEL_START = new System.Windows.Forms.Label();
+            this.LABEL_NOTES = new System.Windows.Forms.Label();
             this.FIELD_NOTES = new System.Windows.Forms.TextBox();
             this.chkActive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -55,14 +57,14 @@
             this.FIELD_FINISH.Size = new System.Drawing.Size(262, 20);
             this.FIELD_FINISH.TabIndex = 16;
             // 
-            // label2
+            // LABEL_FINISH
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 86);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Finish";
+            this.LABEL_FINISH.AutoSize = true;
+            this.LABEL_FINISH.Location = new System.Drawing.Point(88, 86);
+            this.LABEL_FINISH.Name = "LABEL_FINISH";
+            this.LABEL_FINISH.Size = new System.Drawing.Size(34, 13);
+            this.LABEL_FINISH.TabIndex = 15;
+            this.LABEL_FINISH.Text = "Finish";
             // 
             // FIELD_START
             // 
@@ -71,23 +73,23 @@
             this.FIELD_START.Size = new System.Drawing.Size(262, 20);
             this.FIELD_START.TabIndex = 14;
             // 
-            // label1
+            // LABEL_START
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(88, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Start";
+            this.LABEL_START.AutoSize = true;
+            this.LABEL_START.Location = new System.Drawing.Point(88, 51);
+            this.LABEL_START.Name = "LABEL_START";
+            this.LABEL_START.Size = new System.Drawing.Size(29, 13);
+            this.LABEL_START.TabIndex = 13;
+            this.LABEL_START.Text = "Start";
             // 
-            // label3
+            // LABEL_NOTES
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(88, 119);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Notes";
+            this.LABEL_NOTES.AutoSize = true;
+            this.LABEL_NOTES.Location = new System.Drawing.Point(88, 119);
+            this.LABEL_NOTES.Name = "LABEL_NOTES";
+            this.LABEL_NOTES.Size = new System.Drawing.Size(35, 13);
+            this.LABEL_NOTES.TabIndex = 26;
+            this.LABEL_NOTES.Text = "Notes";
             // 
             // FIELD_NOTES
             // 
@@ -115,12 +117,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.chkActive);
             this.Controls.Add(this.FIELD_NOTES);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LABEL_NOTES);
             this.Controls.Add(this.btAccept);
             this.Controls.Add(this.FIELD_FINISH);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LABEL_FINISH);
             this.Controls.Add(this.FIELD_START);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LABEL_START);
             this.Name = "CheckInControl";
             this.Size = new System.Drawing.Size(476, 364);
             this.ResumeLayout(false);
@@ -132,11 +134,11 @@
 
         public System.Windows.Forms.Button btAccept;
         public System.Windows.Forms.TextBox FIELD_FINISH;
-        private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox FIELD_START;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox FIELD_NOTES;
         public System.Windows.Forms.CheckBox chkActive;
+        public System.Windows.Forms.Label LABEL_FINISH;
+        public System.Windows.Forms.Label LABEL_START;
+        public System.Windows.Forms.Label LABEL_NOTES;
     }
 }

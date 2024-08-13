@@ -1,10 +1,12 @@
 ﻿using Common.Domain;
+using Common.Localization;
 using FleetManager.Comms;
 using FleetManagerCommon.Communication;
 using FleetManagerCommon.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +15,10 @@ namespace FleetManager.GUIController
 {
     public class ViewGUIController
     {
-
-        FrmView frmView;
-        string type;
+        Langset l = Program.curr_lang;
+        public FrmView frmView { get; set; }
+        public string type { get; set; }
+        public string action { get; set; }
         object source;
         private static ViewGUIController instance;
         public static ViewGUIController Instance
@@ -35,76 +38,91 @@ namespace FleetManager.GUIController
         //}
         private ViewGUIController()
         {
-
+   
         }
 
-        private void SetupButtonActions()
+        public void Localize()
+        {
+            frmView.tsbSearch.Text = l.GetString("Search");
+            frmView.tsbNew.Text = l.GetString("New");
+            frmView.tsbShowAll.Text = l.GetString("ShowAll");
+            frmView.tsbAlter.Text = l.GetString("Alter");
+            frmView.tsbInspect.Text = l.GetString("Inspect_");
+            frmView.tsbDelete.Text = l.GetString("Delete");
+            frmView.tsbCheckin.Text = l.GetString("Check_in");
+            frmView.tsbCheckout.Text = l.GetString("Check_out");
+            frmView.tsbService.Text = l.GetString("Service");
+            frmView.groupBox2.Text = l.GetString("View");
+
+        }
+        public void SetupButtonActions()
         {
             if (type == "CHECKINS")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowCheckinSearchView(); };
-                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowUserCheckins(); };
+                frmView.tsbSearch.Click += (o, e) => { ShowCheckinSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ShowUserCheckins(); };
                 frmView.tsbCheckout.Click += (o, e) =>
                 {
-                    ViewGUIController.Instance.CheckOutVehicle();
+                    CheckOutVehicle();
                 };
             }
             else if (type == "FREEVEHICLES")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(true); };
-                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowFreeVehicles(); };
-                frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowVehDetailsView(); };
+                frmView.tsbSearch.Click += (o, e) => { ShowVehSearchView(true); };
+                frmView.tsbShowAll.Click += (o, e) => { ShowFreeVehicles(); };
+                frmView.tsbInspect.Click += (o, e) => { ShowVehDetailsView(); };
                 frmView.tsbCheckin.Click += (o, e) =>
                 {
-                    ViewGUIController.Instance.ShowCheckInView();
+                    ShowCheckInView();
                 };
             }
             else if (type == "SERVICE")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(); };
-                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllVehicles(); };
-                frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowVehDetailsView(); };
+                frmView.tsbSearch.Click += (o, e) => { ShowVehSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ShowAllVehicles(); };
+                frmView.tsbInspect.Click += (o, e) => { ShowVehDetailsView(); };
                 frmView.tsbService.Click += (o, e) =>
                 {
-                    ViewGUIController.Instance.ShowFrmService();
+                    ShowFrmService();
                 };
             }
             else if (type == "VEHICLES")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowVehSearchView(); };
-                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllVehicles(); };
+                frmView.tsbSearch.Click += (o, e) => { ShowVehSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ShowAllVehicles(); };
                 frmView.tsbDelete.Click += (o, e) =>
                 {
-                    DialogResult dr = MessageBox.Show("Are you sure?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    DialogResult dr = MessageBox.Show(l.GetString("QST_AREYOUSURE"), l.GetString("TTL_QST"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (dr == DialogResult.Yes)
                     {
-                        ViewGUIController.Instance.DeleteVehicle();
+                        DeleteVehicle();
                     }
                 };
-                frmView.tsbAlter.Click += (o, e) => { ViewGUIController.Instance.ShowVehAlterView(); };
-                frmView.tsbNew.Click += (o, e) => { ViewGUIController.Instance.ShowNewVehView(); };
-                frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowVehDetailsView(); };
+                frmView.tsbAlter.Click += (o, e) => { ShowVehAlterView(); };
+                frmView.tsbNew.Click += (o, e) => { ShowNewVehView(); };
+                frmView.tsbInspect.Click += (o, e) => { ShowVehDetailsView(); };
             }
             else if (type == "USERS")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowUserSearchView(); };
-                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllUsers(); };
-                frmView.tsbAlter.Click += (o, e) => { ViewGUIController.Instance.ShowUserAlterView(); };
-                frmView.tsbNew.Click += (o, e) => { ViewGUIController.Instance.ShowNewUserView(); };
-                frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowUserDetailsView(); };
+                frmView.tsbSearch.Click += (o, e) => { ShowUserSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ShowAllUsers(); };
+                frmView.tsbAlter.Click += (o, e) => { ShowUserAlterView(); };
+                frmView.tsbNew.Click += (o, e) => { ShowNewUserView(); };
+                frmView.tsbInspect.Click += (o, e) => { ShowUserDetailsView(); };
             }
             else if(type=="VEHCHECKINS")
             {
-                frmView.tsbSearch.Click += (o, e) => { ViewGUIController.Instance.ShowUserSearchView(); };
-                frmView.tsbShowAll.Click += (o, e) => { ViewGUIController.Instance.ShowAllUsers(); };
+                frmView.tsbSearch.Click += (o, e) => { ShowUserSearchView(); };
+                frmView.tsbShowAll.Click += (o, e) => { ShowAllUsers(); };
+                frmView.tsbInspect.Click += (o, e) => { ShowCheckinDetailsView(); };
             }
             else if(type=="VEHSERVICE")
             { 
-                frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowServiceDetailsView(); };
+                frmView.tsbInspect.Click += (o, e) => { ShowServiceDetailsView(); };
             }
             else if (type=="VEHSERVICEITEMS")
             {
-                frmView.tsbInspect.Click += (o, e) => { ViewGUIController.Instance.ShowServiceItemDetailsView(); };
+                frmView.tsbInspect.Click += (o, e) => { ShowServiceItemDetailsView(); };
             }
             else if (type=="VEHCHECKINS")
             {
@@ -112,8 +130,25 @@ namespace FleetManager.GUIController
             }
         }
 
+        internal void ShowCheckinDetailsView()
+        {
+            Zaduzenje z = GetSelectedRowCheckin();
+            if (z == null)
+            {
+                MessageBox.Show(l.GetString("MSG_CHKIN_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                FrmTool t = new FrmTool();
+                t.Text = l.GetString("TTL_CHKIN_VIEW");
+                t.AutoSize = true;
+                t.AutoSizeMode = AutoSizeMode.GrowOnly;
+                t.ChangePanel(CheckInGUIController.Instance.CreateCheckInDetails(z));
+                t.ShowDialog();
+            }
+        }
 
-        private void ShowHideButtons()
+        public void ShowHideButtons()
         {
             if (type != "VEHCHECKINS" && type != "VEHSERVICE" && type != "VEHSERVICEITEMS")
             {
@@ -138,10 +173,19 @@ namespace FleetManager.GUIController
             }
             else if (MainGUIController.current_user.Rola == (int)Rola.Moderator)
             {
-                frmView.tsbAlter.Visible = true;
-                frmView.tsbNew.Visible = true;
                 frmView.tsbInspect.Visible = true;
-                frmView.tsbDelete.Visible = true;
+                if(action=="ALTER" || action=="ALL")
+                {
+                    frmView.tsbAlter.Visible = true;
+                }
+                if(action=="NEW" || action == "ALL")
+                {
+                    frmView.tsbNew.Visible = true;
+                }
+                if(action=="DELETE" || action == "ALL")
+                {
+                    frmView.tsbDelete.Visible = true;
+                }
             }
             else if (MainGUIController.current_user.Rola == (int)Rola.Admin)
             {
@@ -151,131 +195,161 @@ namespace FleetManager.GUIController
                 }
                 else if (type == "USERS")
                 {
-                    frmView.tsbAlter.Visible = true;
-                    frmView.tsbNew.Visible = true;
                     frmView.tsbInspect.Visible = true;
+                    if (action == "ALTER" || action == "ALL")
+                    {
+                        frmView.tsbAlter.Visible = true;
+                    }
+                    if (action == "NEW" || action == "ALL")
+                    {
+                        frmView.tsbNew.Visible = true;
+                    }
                 }
             }
         }
 
-        public void ShowFrmVehicles()
+        public void ShowFrmVehicles(string act="ALL")
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Vehicles View";
-            type = "VEHICLES";
-            ShowHideButtons();
-            SetupButtonActions();
-            ShowAll();
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_VEH_VIEW");
+            vgc.type = "VEHICLES";
+            vgc.action = act;
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.ShowAll();
+            vgc.frmView.ShowDialog();
         }
 
         public void ShowFrmVehiclesService()
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Vehicles View";
-            type = "SERVICE";
-            ShowHideButtons();
-            SetupButtonActions();
-            ShowAll();
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_VEH_VIEW");
+            vgc.type = "SERVICE";
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.ShowAll();
+            vgc.frmView.ShowDialog();
         }
 
         public void ShowFrmCheckins()
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Check in View";
-            type = "CHECKINS";
-            ShowHideButtons();
-            SetupButtonActions();
-            ShowAll();
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_CHKIN_VIEW");
+            vgc.type = "CHECKINS";
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.ShowAll();
+            vgc.frmView.ShowDialog();
         }
 
         public void ShowFrmFreeVehs()
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Available vehicles";
-            type = "FREEVEHICLES";
-            ShowHideButtons();
-            SetupButtonActions();
-            ShowAll();
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_AVVEHS");
+            vgc.type = "FREEVEHICLES";
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.ShowAll();
+            vgc.frmView.ShowDialog();
         }
 
-        public void ShowFrmUsers()
+        public void ShowFrmUsers(string act="ALL")
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Users";
-            type = "USERS";
-            ShowHideButtons();
-            SetupButtonActions();
-            ShowAll();
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_USRS");
+            vgc.type = "USERS";
+            vgc.action = act;
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.ShowAll();
+            vgc.frmView.ShowDialog();
         }
 
-        internal void ShowFrmUsersWithList(List<Korisnik> result)
+        internal void ShowFrmUsersWithList(List<Korisnik> result,string act="ALL")
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Users View";
-            type = "USERS";
-            ShowHideButtons();
-            SetupButtonActions();
-            SetDataSource(result);
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_USR_VIEW");
+            vgc.type = "USERS";
+            vgc.action = act;
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.SetDataSource(result);
+            vgc.frmView.ShowDialog();
         }
 
-        internal void ShowFrmVehiclesWithList(List<Vozilo> result)
+        internal void ShowFrmVehiclesWithList(List<Vozilo> result,string act="ALL")
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Vehicles View";
-            type = "VEHICLES";
-            ShowHideButtons();
-            SetupButtonActions();
-            SetDataSource(result);
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_VEH_VIEW");
+            vgc.type = "VEHICLES";
+            vgc.action = act;
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.SetDataSource(result);
+            vgc.frmView.ShowDialog();
         }
 
         internal void ShowFrmServicings(List<Servisiranje> result)
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Vehicle servicings View";
-            type = "VEHSERVICE";
-            ShowHideButtons();
-            SetupButtonActions();
-            SetDataSource(result);
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_VEH_SER_VIEW");
+            vgc.type = "VEHSERVICE";
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.SetDataSource(result);
+            vgc.frmView.ShowDialog();
         }
 
         internal void ShowFrmServiceItems(List<StavkaServisiranja> result)
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Service items View";
-            type = "VEHSERVICEITEMS";
-            ShowHideButtons();
-            SetupButtonActions();
-            SetDataSource(result);
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_ITM_VIEW");
+            vgc.type = "VEHSERVICEITEMS";
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.SetDataSource(result);
+            vgc.frmView.ShowDialog();
         }
 
         internal void ShowFrmVehicleCheckins(List<Zaduzenje> result)
         {
-            frmView = new FrmView();
-            frmView.AutoSize = true;
-            frmView.Text = "Vehicle check-ins View";
-            type = "VEHCHECKINS";
-            ShowHideButtons();
-            SetupButtonActions();
-            SetDataSource(result);
-            frmView.ShowDialog();
+            ViewGUIController vgc = new ViewGUIController();
+            vgc.frmView = new FrmView();
+            vgc.frmView.AutoSize = true;
+            vgc.frmView.Text = l.GetString("TTL_VEH_CHKINS_VIEW");
+            vgc.type = "VEHCHECKINS";
+            vgc.Localize();
+            vgc.ShowHideButtons();
+            vgc.SetupButtonActions();
+            vgc.SetDataSource(result);
+            vgc.frmView.ShowDialog();
         }
 
         private void FrmView_Load(object sender, EventArgs e)
@@ -286,7 +360,7 @@ namespace FleetManager.GUIController
         public void ShowVehSearchView(bool activeonly = false)
         {
             FrmTool t = new FrmTool();
-            t.Text = "Search";
+            t.Text = l.GetString("Search");
             t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
             t.ChangePanel(VehicleGUIController.Instance.CreateSearchVehicle(true));
@@ -296,7 +370,7 @@ namespace FleetManager.GUIController
         public void ShowUserSearchView()
         {
             FrmTool t = new FrmTool();
-            t.Text = "Search";
+            t.Text = l.GetString("Search");
             t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
             t.ChangePanel(UserDetailsGUIController.Instance.CreateSearchUser());
@@ -306,7 +380,7 @@ namespace FleetManager.GUIController
         public void ShowCheckinSearchView()
         {
             FrmTool t = new FrmTool();
-            t.Text = "Search";
+            t.Text = l.GetString("Search");
             t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
             t.ChangePanel(VehicleGUIController.Instance.CreateSearchVehicleCheckins());
@@ -315,19 +389,19 @@ namespace FleetManager.GUIController
 
         public void ShowCheckInView()
         {
-            Vozilo v = ViewGUIController.Instance.GetSelectedRowVehicle();
+            Vozilo v = GetSelectedRowVehicle();
             if (v == null)
             {
-                MessageBox.Show("No vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_VEH_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if(v.Zaduzenja.Find(x=>x.Aktivno==true)!=null)
             {
-                MessageBox.Show("Vehicle already checked in.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_VEH_CHKIN_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 FrmTool t = new FrmTool();
-                t.Text = "Check in Vehicle";
+                t.Text = l.GetString("TTL_VEH_CHKIN");
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 CheckInGUIController.Instance.veh = v;
@@ -340,10 +414,10 @@ namespace FleetManager.GUIController
 
         public void ShowFrmService()
         {
-            Vozilo v = ViewGUIController.Instance.GetSelectedRowVehicle();
+            Vozilo v = GetSelectedRowVehicle();
             if (v == null)
             {
-                MessageBox.Show("No vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_VEH_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -354,16 +428,16 @@ namespace FleetManager.GUIController
 
         public void ShowVehAlterView()
         {
-            Vozilo v = ViewGUIController.Instance.GetSelectedRowVehicle();
+            Vozilo v = GetSelectedRowVehicle();
             if (v == null)
             {
-                MessageBox.Show("No vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_VEH_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 VehicleGUIController.Instance.CreateAlterVehicle(v);
                 FrmTool t = new FrmTool();
-                t.Text = "Alter";
+                t.Text = l.GetString("Alter");
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 VehicleGUIController vgc = new VehicleGUIController();
@@ -374,15 +448,15 @@ namespace FleetManager.GUIController
 
         public void ShowUserAlterView()
         {
-            Korisnik u = ViewGUIController.Instance.GetSelectedRowUser();
+            Korisnik u = GetSelectedRowUser();
             if (u == null)
             {
-                MessageBox.Show("No user selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_USR_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 FrmTool t = new FrmTool();
-                t.Text = "Alter Vehicle record";
+                t.Text = l.GetString("TTL_VEH_ALTER");
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 t.ChangePanel(UserDetailsGUIController.Instance.CreateAlterUser(u));
@@ -393,7 +467,7 @@ namespace FleetManager.GUIController
         public void ShowNewVehView()
         {
             FrmTool t = new FrmTool();
-            t.Text = "New Vehicle";
+            t.Text = l.GetString("TTL_VEH_NEW");
             t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
             t.ChangePanel(VehicleGUIController.Instance.CreateAddVehicle());
@@ -403,7 +477,7 @@ namespace FleetManager.GUIController
         public void ShowNewUserView()
         {
             FrmTool t = new FrmTool();
-            t.Text = "New User";
+            t.Text = l.GetString("TTL_USR_NEW");
             t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
             t.ChangePanel(UserDetailsGUIController.Instance.CreateAddUser());
@@ -412,16 +486,16 @@ namespace FleetManager.GUIController
 
         public void ShowVehDetailsView()
         {
-            Vozilo v = ViewGUIController.Instance.GetSelectedRowVehicle();
+            Vozilo v = GetSelectedRowVehicle();
             if (v == null)
             {
-                MessageBox.Show("No vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_VEH_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 VehicleGUIController.Instance.CreateAlterVehicle(v);
                 FrmTool t = new FrmTool();
-                t.Text = "Vehicle details";
+                t.Text = l.GetString("TTL_VEH_DETAILS");
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 VehicleGUIController vgc = new VehicleGUIController();
@@ -432,15 +506,15 @@ namespace FleetManager.GUIController
 
         public void ShowUserDetailsView()
         {
-            Korisnik u = ViewGUIController.Instance.GetSelectedRowUser();
+            Korisnik u = GetSelectedRowUser();
             if (u == null)
             {
-                MessageBox.Show("No user selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_USR_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 FrmTool t = new FrmTool();
-                t.Text = "User details";
+                t.Text = l.GetString("TTL_USR_DETAILS");
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 t.ChangePanel(UserDetailsGUIController.Instance.CreateUserDetails(u));
@@ -450,15 +524,15 @@ namespace FleetManager.GUIController
 
         public void ShowServiceDetailsView()
         {
-            Servisiranje s = ViewGUIController.instance.GetSelectedRowService();
+            Servisiranje s = GetSelectedRowService();
             if (s == null)
             {
-                MessageBox.Show("No servicing selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_SER_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 FrmTool t = new FrmTool();
-                t.Text = "Service details";
+                t.Text = l.GetString("TTL_SER_DETAILS");
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 t.ChangePanel(ServiceDetailsGUIController.Instance.CreateServiceDetailsControl(s));
@@ -468,15 +542,15 @@ namespace FleetManager.GUIController
 
         private void ShowServiceItemDetailsView()
         {
-            StavkaServisiranja s = ViewGUIController.instance.GetSelectedRowServiceItem();
+            StavkaServisiranja s = GetSelectedRowServiceItem();
             if (s == null)
             {
-                MessageBox.Show("No item selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_ITM_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 FrmTool t = new FrmTool();
-                t.Text = "Item details";
+                t.Text = l.GetString("TTL_ITM_DETAILS");
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 t.ChangePanel(AddServiceGUIController.Instance.CreateServiceItemDetails(s));
@@ -554,7 +628,8 @@ namespace FleetManager.GUIController
                 frmView.dgwView.Columns["ColumnNames"].Visible = false;
                 frmView.dgwView.Columns["Values"].Visible = false;*/
             }
-
+            Langset lang = Program.curr_lang;
+            //lang.LocalizeColumns(frmView.dgwView);
         }
 
         public void ShowAll()
@@ -616,7 +691,7 @@ namespace FleetManager.GUIController
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -629,7 +704,7 @@ namespace FleetManager.GUIController
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -642,7 +717,7 @@ namespace FleetManager.GUIController
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -664,7 +739,7 @@ namespace FleetManager.GUIController
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -673,19 +748,19 @@ namespace FleetManager.GUIController
             Vozilo v = GetSelectedRowVehicle();
             if (v == null)
             {
-                MessageBox.Show("No vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_VEH_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 Response res = CommunicationManager.Instance.DeleteVehicle(v);
                 if (res.Exception == null)
                 {
-                    MessageBox.Show("Successfully deleted vehicle.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ViewGUIController.Instance.ShowAllVehicles();
+                    MessageBox.Show(l.GetString("MSG_VEH_DEL_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowAllVehicles();
                 }
                 else
                 {
-                    MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -694,23 +769,23 @@ namespace FleetManager.GUIController
         public void CheckOutVehicle()
         {
 
-            Zaduzenje z = ViewGUIController.Instance.GetSelectedRowCheckin();
+            Zaduzenje z = GetSelectedRowCheckin();
             z.VremeRazduzenja = DateTime.Now;
             if (z == null)
             {
-                MessageBox.Show("No check-in or vehicle selected.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(l.GetString("MSG_CHKIN_SEL_FAIL"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 Response res = CommunicationManager.Instance.CheckoutVehicle(z);
                 if (res.Exception == null)
                 {
-                    MessageBox.Show("Successfully checked out vehicle.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ViewGUIController.Instance.ShowAll();
+                    MessageBox.Show(l.GetString("MSG_VEH_CHKOUT_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowAll();
                 }
                 else
                 {
-                    MessageBox.Show(res.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

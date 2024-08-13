@@ -1,4 +1,6 @@
-﻿namespace FleetManager.Controls
+﻿using Common.Localization;
+
+namespace FleetManager.Controls
 {
     partial class AddUserControl
     {
@@ -75,10 +77,10 @@
             // CB_Role
             // 
             this.CB_Role.FormattingEnabled = true;
-            this.CB_Role.Items.AddRange(new object[] {
-            "Korisnik",
-            "Moderator",
-            "Administrator"});
+         /*   this.CB_Role.Items.AddRange(new object[] {
+            l.GetString("ENUM_USER"),
+            l.GetString("ENUM_MOD"),
+            l.GetString("ENUM_ADMIN")});*/
             this.CB_Role.Location = new System.Drawing.Point(198, 184);
             this.CB_Role.Name = "CB_Role";
             this.CB_Role.Size = new System.Drawing.Size(190, 21);
@@ -100,6 +102,7 @@
             this.btAccept.Size = new System.Drawing.Size(76, 44);
             this.btAccept.TabIndex = 6;
             this.btAccept.Text = "ACCEPT";
+          //  this.btAccept.Text = l.GetString("ACCEPT");
             this.btAccept.UseVisualStyleBackColor = true;
             this.btAccept.Click += new System.EventHandler(this.btAccept_Click);
             // 

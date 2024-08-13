@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using Common.Localization;
 using FleetManager.Controls;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,18 @@ namespace FleetManager.GUIController
             }
         }
 
+        void Localize()
+        {
+            Langset l = Program.curr_lang;
+            sdc.LABEL_NOTES.Text = l.GetString("Notes");
+            sdc.LABEL_DATE.Text = l.GetString("Date");
+            sdc.btAccept.Text = l.GetString("CLOSE");
+        }
+
         public Control CreateServiceDetailsControl(Servisiranje s)
         {
+            Langset l = Program.curr_lang;
+
             ServiceDetailsControl c = new ServiceDetailsControl();
             c.FIELD_NOTES.Text = s.Napomena;
             c.FIELD_NOTES.ReadOnly = true;
@@ -34,7 +45,9 @@ namespace FleetManager.GUIController
             c.DP_Date.Enabled = false;
             c.btServiceItems.Click += (o, e) => { ViewGUIController.Instance.ShowFrmServiceItems(s.Stavke); };
             c.btAccept.Click += (o, e) => { c.ParentForm.Close(); };
+            c.ttServiceItems.SetToolTip(c.btServiceItems, l.GetString("ServiceItems"));
             sdc = c;
+            Localize();
             return sdc;
         }
     }

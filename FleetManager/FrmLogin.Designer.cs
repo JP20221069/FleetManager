@@ -34,8 +34,8 @@ namespace FleetManager
             this.FIELD_USERNAME = new System.Windows.Forms.TextBox();
             this.FIELD_PASSWORD = new System.Windows.Forms.TextBox();
             this.BT_LOGIN = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LB_USERNAME = new System.Windows.Forms.Label();
+            this.LB_PASSWORD = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -43,47 +43,47 @@ namespace FleetManager
             // 
             // FIELD_USERNAME
             // 
-            this.FIELD_USERNAME.Location = new System.Drawing.Point(73, 87);
+            this.FIELD_USERNAME.Location = new System.Drawing.Point(91, 87);
             this.FIELD_USERNAME.Name = "FIELD_USERNAME";
-            this.FIELD_USERNAME.Size = new System.Drawing.Size(237, 20);
+            this.FIELD_USERNAME.Size = new System.Drawing.Size(219, 20);
             this.FIELD_USERNAME.TabIndex = 0;
             // 
             // FIELD_PASSWORD
             // 
-            this.FIELD_PASSWORD.Location = new System.Drawing.Point(73, 123);
+            this.FIELD_PASSWORD.Location = new System.Drawing.Point(91, 123);
             this.FIELD_PASSWORD.Name = "FIELD_PASSWORD";
             this.FIELD_PASSWORD.PasswordChar = '*';
-            this.FIELD_PASSWORD.Size = new System.Drawing.Size(237, 20);
+            this.FIELD_PASSWORD.Size = new System.Drawing.Size(219, 20);
             this.FIELD_PASSWORD.TabIndex = 1;
             // 
             // BT_LOGIN
             // 
             this.BT_LOGIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_LOGIN.Location = new System.Drawing.Point(192, 217);
+            this.BT_LOGIN.Location = new System.Drawing.Point(170, 217);
             this.BT_LOGIN.Name = "BT_LOGIN";
-            this.BT_LOGIN.Size = new System.Drawing.Size(118, 54);
+            this.BT_LOGIN.Size = new System.Drawing.Size(140, 54);
             this.BT_LOGIN.TabIndex = 2;
             this.BT_LOGIN.Text = "Login";
             this.BT_LOGIN.UseVisualStyleBackColor = true;
             this.BT_LOGIN.Click += new System.EventHandler(this.BT_LOGIN_Click);
             // 
-            // label1
+            // LB_USERNAME
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 90);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Username";
+            this.LB_USERNAME.AutoSize = true;
+            this.LB_USERNAME.Location = new System.Drawing.Point(12, 90);
+            this.LB_USERNAME.Name = "LB_USERNAME";
+            this.LB_USERNAME.Size = new System.Drawing.Size(55, 13);
+            this.LB_USERNAME.TabIndex = 3;
+            this.LB_USERNAME.Text = "Username";
             // 
-            // label2
+            // LB_PASSWORD
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 126);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Password";
+            this.LB_PASSWORD.AutoSize = true;
+            this.LB_PASSWORD.Location = new System.Drawing.Point(12, 126);
+            this.LB_PASSWORD.Name = "LB_PASSWORD";
+            this.LB_PASSWORD.Size = new System.Drawing.Size(53, 13);
+            this.LB_PASSWORD.TabIndex = 4;
+            this.LB_PASSWORD.Text = "Password";
             // 
             // pictureBox1
             // 
@@ -113,8 +113,8 @@ namespace FleetManager
             this.ClientSize = new System.Drawing.Size(322, 283);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LB_PASSWORD);
+            this.Controls.Add(this.LB_USERNAME);
             this.Controls.Add(this.BT_LOGIN);
             this.Controls.Add(this.FIELD_PASSWORD);
             this.Controls.Add(this.FIELD_USERNAME);
@@ -134,12 +134,12 @@ namespace FleetManager
         }
 
         #endregion
-        private System.Windows.Forms.Button BT_LOGIN;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         public TextBox FIELD_USERNAME;
         public TextBox FIELD_PASSWORD;
         private PictureBox pictureBox1;
         private Label label3;
+        public Button BT_LOGIN;
+        public Label LB_USERNAME;
+        public Label LB_PASSWORD;
     }
 }
