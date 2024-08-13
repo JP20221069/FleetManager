@@ -121,6 +121,7 @@ Datum=Date
 Vozilo=Vehicle
 Napomena=Notes
 #Zaduzenje
+Rola=Role
 Korisnik=User
 Aktivno=Active
 RelacijaOd=Start

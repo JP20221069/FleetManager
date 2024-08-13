@@ -629,7 +629,7 @@ namespace FleetManager.GUIController
                 frmView.dgwView.Columns["Values"].Visible = false;*/
             }
             Langset lang = Program.curr_lang;
-            //lang.LocalizeColumns(frmView.dgwView);
+            lang.LocalizeColumns(frmView.dgwView);
         }
 
         public void ShowAll()

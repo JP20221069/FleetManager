@@ -17,7 +17,7 @@ Date=Datum
 Delete=Obriši
 Description=Opis
 Exit=Izlaz
-Finish=Kraj
+Finish=Relacija do
 Help=Pomoć
 Inspect_=Pregledaj ...
 License=Registarski br.
@@ -110,3 +110,29 @@ ENUM_MOD=Moderator
 ENUM_ACTIVE=Aktivno
 ENUM_INACTIVE=Neaktivno
 ENUM_CHECKEDIN=Zaduženo
+
+#DATA GRID VIEW COLUMNS
+#VOZILO
+ID=ID
+Tip=Tip
+Marka=Marka
+#Status already defined.
+RegBroj=Registarski Broj
+Naziv=Naziv
+Nosivost=Nosivost
+#Korisnik
+Ulogovan=Ulogovan
+Aktivan=Aktivan
+#Servisiranje
+Datum=Datum
+Vozilo=Vozilo
+Napomena=Napomena
+#Zaduzenje
+Rola=Role
+Korisnik=Korisnik
+Aktivno=Aktivno
+RelacijaOd=Relacija od
+RelacijaDo=Relacija do
+VremeZaduzenja=Vreme zaduženja
+VremeRazduzenja=Vreme razduženja
+RegistarskiBroj=Registarski Broj
