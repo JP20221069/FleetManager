@@ -29,10 +29,10 @@ namespace FleetManagerServer
 
         private void FrmLog_Load(object sender, EventArgs e)
         {
-            if(Logger.started)
-            {
-                timer1.Start();
-            }
+            //if(Logger.started)
+            //{
+            timer1.Start();
+            //}
             saveFileDialog1.InitialDirectory = "Logs";
             saveFileDialog1.DefaultExt = "txt";
             saveFileDialog1.Filter = "text files (*.txt)|*.txt|All files (*.*)|*.*";
@@ -130,6 +130,12 @@ namespace FleetManagerServer
             {
                 FIELD_CONSOLE.Font = fontDialog1.Font;
             }
+        }
+
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FindGUIController.Instance.frmLog = this;
+            FindGUIController.Instance.ShowFindDialog();
         }
     }
 }

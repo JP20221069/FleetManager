@@ -54,6 +54,12 @@
     <Compile Include="Controller.cs" />
     <Compile Include="DB\DatabaseBroker.cs" />
     <Compile Include="DB\DatabaseConnection.cs" />
+    <Compile Include="FindDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindDialog.Designer.cs">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmConnection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,7 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="GuiController\ConnectionGUIController.cs" />
+    <Compile Include="GuiController\FindGUIController.cs" />
     <Compile Include="GuiController\LogGUIController.cs" />
     <Compile Include="GuiController\MainGUIController.cs" />
     <Compile Include="Program.cs" />
@@ -102,6 +109,9 @@
     <Compile Include="Utils\UtilOps\GetLoggedInUsersUOP.cs" />
     <Compile Include="Utils\UtilOps\TestConnectionUOP.cs" />
     <Compile Include="Utils\UtilOps\UtilityOperation.cs" />
+    <EmbeddedResource Include="FindDialog.resx">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmConnection.resx">
       <DependentUpon>FrmConnection.cs</DependentUpon>
     </EmbeddedResource>

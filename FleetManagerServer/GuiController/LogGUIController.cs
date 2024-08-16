@@ -1,4 +1,5 @@
-﻿using FleetManagerServer.Utils;
+﻿using FleetManagerServer.Properties;
+using FleetManagerServer.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,16 +52,19 @@ namespace FleetManagerServer.GuiController
                 try
                 {
                     frmLog.FIELD_CONSOLE.Text = Logger.GetLog();
+                    frmLog.toolStripStatusLabel1.Image = Resources.tick;
+                    frmLog.toolStripStatusLabel1.ToolTipText = "Logger connected.";
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    frmLog.timer1.Stop();
                 }
             }
             else
             {
-                MessageBox.Show("Logger not started. Server might not have started yet.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                frmLog.toolStripStatusLabel1.Image = Resources.x;
+                frmLog.toolStripStatusLabel1.ToolTipText = "Logger not started. Server might not have started yet.";
             }
         }
 
