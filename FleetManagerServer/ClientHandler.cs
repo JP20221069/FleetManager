@@ -97,14 +97,14 @@ namespace FleetManagerServer
                 else if(req.Operation==Operation.AddUser)
                 {
                     Korisnik k = (Korisnik)req.Argument;
-                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " added a record to " + k.TableName + "."));
+                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " added a record to " + k.TableName + ".",this.client));
                     Controller.Instance.AddUser(k);
                     res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
                 }
                 else if(req.Operation==Operation.AddVehicle)
                 {
                     Vozilo v = (Vozilo)req.Argument;
-                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " added a record to " + v.TableName + "."));
+                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " added a record to " + v.TableName + ".", this.client));
                     Controller.Instance.AddVehicle(v);
                     res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
                 }
@@ -119,11 +119,13 @@ namespace FleetManagerServer
                 }
                 else if(req.Operation==Operation.DeleteVehicle)
                 {
+                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " deleted a record from " + ((Vozilo)req.Argument).TableName + ".", this.client));
                     Controller.Instance.DeleteVehicle((Vozilo)req.Argument);
                     res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
                 }
                 else if(req.Operation==Operation.AlterVehicle)
                 {
+                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " updated a record in " + ((Vozilo)req.Argument).TableName + ".", this.client));
                     Controller.Instance.UpdateVehicle((Vozilo)req.Argument);
                     res.Result = new FleetManagerCommon.Comms.Message(MessageType.Success);
                 }
@@ -160,6 +162,7 @@ namespace FleetManagerServer
                 }
                 else if(req.Operation==Operation.UpdateUser)
                 {
+                    Logger.LogEvent(new LogEvent(EventType.Info, "User " + client.user.Username + " updated a record in " + ((Korisnik)req.Argument).TableName + ".", this.client));
                     Controller.Instance.UpdateUser((Korisnik)req.Argument);
                 }
                 else if(req.Operation==Operation.SearchUsers)

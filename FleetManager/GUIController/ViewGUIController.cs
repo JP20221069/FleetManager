@@ -112,8 +112,8 @@ namespace FleetManager.GUIController
             }
             else if(type=="VEHCHECKINS")
             {
-                frmView.tsbSearch.Click += (o, e) => { ShowCheckinSearchView(frmView); };
-                frmView.tsbShowAll.Click += (o, e) => { /*ShowVehCheckins();*/ };
+                /*frmView.tsbSearch.Click += (o, e) => { ShowCheckinSearchView(frmView); };
+                frmView.tsbShowAll.Click += (o, e) => { ShowVehCheckins(zaduzenja); };*/
                 frmView.tsbInspect.Click += (o, e) => { ShowCheckinDetailsView(); };
             }
             else if(type=="VEHSERVICE")
@@ -345,6 +345,7 @@ namespace FleetManager.GUIController
             vgc.ShowHideButtons();
             vgc.SetupButtonActions();
             vgc.SetDataSource(result);
+            vgc.zaduzenja = result;
             vgc.frmView.ShowDialog();
         }
 
@@ -717,9 +718,9 @@ namespace FleetManager.GUIController
             }
         }
 
-        public void ShowVehCheckins(Vozilo v)
+        public void ShowVehCheckins(List<Zaduzenje> zaduzenja)
         {
-            SetDataSource(v.Zaduzenja);
+            SetDataSource(zaduzenja);
         }
         public void ShowVehServicings(Vozilo v)
         {

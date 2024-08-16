@@ -55,6 +55,7 @@
     <Compile Include="Domain\Zaduzenje.cs" />
     <Compile Include="Exceptions\ClientLimitException.cs" />
     <Compile Include="Exceptions\UnableToCheckInException.cs" />
+    <Compile Include="Exceptions\UnableToDeleteException.cs" />
     <Compile Include="Exceptions\UnableToDisconnectException.cs" />
     <Compile Include="Exceptions\UpdateDeniedUserLoggedIn.cs" />
     <Compile Include="Exceptions\UserAlreadyExistsException.cs" />

@@ -1,4 +1,5 @@
 ﻿using Common.Domain;
+using Common.Exceptions;
 using FleetManagerCommon.Domain;
 using FleetManagerCommon.Exceptions;
 using FleetManagerServer.SysOps;
@@ -795,10 +796,18 @@ namespace FleetManagerServer.DB
 
         public void DeleteVehicle(int id)
         {
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "DELETE FROM VOZILO WHERE ID=" + id + ";";
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
+            Vozilo v = GetVehicleByID(id);
+            if (v.Status == StatusVozila.Zaduzeno)
+            {
+                throw new UnableToDeleteException();
+            }
+            else
+            {
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "DELETE FROM VOZILO WHERE ID=" + id + ";";
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
         }
 
         public void CheckoutVehicle(Zaduzenje z)
