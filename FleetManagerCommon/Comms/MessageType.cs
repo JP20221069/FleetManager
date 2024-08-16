@@ -7,6 +7,7 @@ namespace FleetManagerCommon.Comms
     {
         Text,
         Error,
-        Success
+        Success,
+        Poll
     }
 }

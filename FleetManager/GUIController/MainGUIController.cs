@@ -17,7 +17,7 @@ namespace FleetManager.GUIController
 {
     public class MainGUIController
     {
-        Langset l = Program.curr_lang;
+
         public static Korisnik current_user;
         public static bool isexitclose = false;
 
@@ -79,6 +79,7 @@ namespace FleetManager.GUIController
                 frmMain.viewAllToolStripMenuItem.Visible = true;
                 frmMain.vehicleSearchToolStripMenuItem.Visible = true;
                 frmMain.userSearchToolStripMenuItem.Visible = true;
+                frmMain.alterUserToolStripMenuItem.Visible = true;
 
             }
             frmMain.AutoSize = true;
@@ -88,6 +89,7 @@ namespace FleetManager.GUIController
 
         internal void Localize()
         {
+            Langset l = Program.curr_lang;
             frmMain.Text = l.GetString("TTL_MAIN");
             frmMain.programToolStripMenuItem.Text = l.GetString("Program");
             frmMain.aboutToolStripMenuItem.Text = l.GetString("About");
@@ -115,10 +117,14 @@ namespace FleetManager.GUIController
             frmMain.alterUserToolStripMenuItem.Text = l.GetString("Alter");
             frmMain.alterVehToolStripMenuItem.Text = l.GetString("Alter");
             frmMain.deleteToolStripMenuItem.Text = l.GetString("Delete");
+
+            frmMain.preferencesToolStripMenuItem.Text = l.GetString("Preferences");
+            frmMain.languageToolStripMenuItem.Text = l.GetString("Language");
         }
 
         internal void Logout()
         {
+            Langset l = Program.curr_lang;
             Response res = CommunicationManager.Instance.Logout(current_user);
             if(res.Exception==null)
             {
@@ -135,6 +141,7 @@ namespace FleetManager.GUIController
 
         internal void LogoutAndExit(bool closeform=true)
         {
+            Langset l = Program.curr_lang;
             Response res = CommunicationManager.Instance.Logout(current_user);
             if (res.Exception == null)
             {

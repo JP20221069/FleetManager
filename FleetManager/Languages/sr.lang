@@ -20,6 +20,7 @@ Exit=Izlaz
 Finish=Relacija do
 Help=Pomoć
 Inspect_=Pregledaj ...
+Language=Jezik
 License=Registarski br.
 Logged_in=Ulogovan
 Login=Uloguj se
@@ -29,6 +30,7 @@ New=Novi
 New_=Novi ...
 Notes=Napomena
 Password=Lozinka
+Preferences=Opcije
 Program=Program
 Record=Zapis
 Role=Rola
@@ -110,32 +112,6 @@ ENUM_MOD=Moderator
 ENUM_ACTIVE=Aktivno
 ENUM_INACTIVE=Neaktivno
 ENUM_CHECKEDIN=Zaduženo
-
-#DATA GRID VIEW COLUMNS
-#VOZILO
-ID=ID
-Tip=Tip
-Marka=Marka
-#Status already defined.
-RegBroj=Registarski Broj
-Naziv=Naziv
-Nosivost=Nosivost
-#Korisnik
-Ulogovan=Ulogovan
-Aktivan=Aktivan
-#Servisiranje
-Datum=Datum
-Vozilo=Vozilo
-Napomena=Napomena
-#Zaduzenje
-Rola=Rola
-Korisnik=Korisnik
-Aktivno=Aktivno
-RelacijaOd=Relacija od
-RelacijaDo=Relacija do
-VremeZaduzenja=Vreme zaduženja
-VremeRazduzenja=Vreme razduženja
-RegistarskiBroj=Registarski Broj
 
 #DATA GRID VIEW COLUMNS
 #VOZILO

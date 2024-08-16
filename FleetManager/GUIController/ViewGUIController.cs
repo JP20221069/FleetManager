@@ -584,6 +584,7 @@ namespace FleetManager.GUIController
                 frmView.dgwView.Columns["TableName"].Visible = false;
                 frmView.dgwView.Columns["Values"].Visible = false;
                 frmView.dgwView.Columns["ColumnNames"].Visible = false;
+                frmView.dgwView.Columns["Password"].Visible=false;
             }
             else if (type == "CHECKINS")
             {
