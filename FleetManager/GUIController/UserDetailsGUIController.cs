@@ -19,6 +19,7 @@ namespace FleetManager.GUIController
     {
         Langset l = Program.curr_lang;
         UserDetailsControl udc;
+        ViewGUIController caller;
         private static UserDetailsGUIController instance;
         public static UserDetailsGUIController Instance
         {
@@ -106,8 +107,16 @@ namespace FleetManager.GUIController
             return udc;
         }
 
-        public Control CreateSearchUser(bool mainform=false)
+        public Control CreateSearchUser(bool mainform=false,ViewGUIController caller=null)
         {
+            if (caller != null)
+            {
+                this.caller = caller;
+            }
+            else
+            {
+                caller = ViewGUIController.Instance;
+            }
             UserDetailsControl c = new UserDetailsControl();
             c.btAccept.Text = l.GetString("ACCEPT");
             if (mainform == true)
@@ -207,7 +216,7 @@ namespace FleetManager.GUIController
             if (res.Exception == null)
             {
                 MessageBox.Show(l.GetString("MSG_USR_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ViewGUIController.Instance.SetDataSource((List<Korisnik>)res.Result);
+                caller.SetDataSource((List<Korisnik>)res.Result);
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {

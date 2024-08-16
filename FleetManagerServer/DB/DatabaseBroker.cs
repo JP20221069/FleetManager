@@ -450,7 +450,7 @@ namespace FleetManagerServer.DB
             }
             if (k.Rola!=Rola.Default)
             {
-                search_options.Add("Rola="+k.Rola);
+                search_options.Add("Rola="+Convert.ToInt32(k.Rola));
             }
             if(k.Aktivan!=null)
             {

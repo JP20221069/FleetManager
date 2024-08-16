@@ -20,6 +20,7 @@ namespace FleetManager.GUIController
         Langset l = Program.curr_lang;
         private VehicleControl awc;
         private Vozilo veh;
+        private ViewGUIController caller;
         private static VehicleGUIController instance;
         public static VehicleGUIController Instance
         {
@@ -100,9 +101,17 @@ namespace FleetManager.GUIController
             return awc;
         }
 
-        internal Control CreateSearchVehicle(bool activeonly=false,bool mainform=false)
+        internal Control CreateSearchVehicle(bool activeonly=false,bool mainform=false, ViewGUIController caller = null)
         {
             VehicleControl c = new VehicleControl();
+            if(caller!=null)
+            {
+                this.caller = caller;
+            }
+            else
+            {
+                caller = ViewGUIController.Instance;
+            }
             if (mainform == true)
             {
                 c.btAccept.Click += SearchVehicleForMainForm;
@@ -119,6 +128,7 @@ namespace FleetManager.GUIController
             c.CB_STATUS.DataSource = cbo;
             c.CB_STATUS.DisplayMember = "Name";
             c.CB_STATUS.ValueMember = "Value";
+            c.CB_STATUS.Enabled = true;
             if(activeonly)
             {
                 c.CB_STATUS.SelectedIndex = 0;
@@ -129,8 +139,16 @@ namespace FleetManager.GUIController
             return awc;
         }
 
-        internal Control CreateSearchVehicleCheckins()
+        internal Control CreateSearchVehicleCheckins(ViewGUIController caller=null)
         {
+            if (caller != null)
+            {
+                this.caller = caller;
+            }
+            else
+            {
+                caller = ViewGUIController.Instance;
+            }
             VehicleControl c = new VehicleControl();
             c.btAccept.Click += SearchVehicleCheckins;
             List<CBObject> cbo = new List<CBObject>();
@@ -215,7 +233,7 @@ namespace FleetManager.GUIController
             if (res.Exception == null)
             {
                 MessageBox.Show(l.GetString("MSG_VEH_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ViewGUIController.Instance.SetDataSource((List<Vozilo>)res.Result);
+                caller.SetDataSource((List<Vozilo>)res.Result);
             }
             else if(res.Exception.GetType()==typeof(RecordNotFoundException))
             {
@@ -287,7 +305,7 @@ namespace FleetManager.GUIController
                 {
                     datasource.AddRange(name.Zaduzenja.FindAll(x => x.Aktivno == true));
                 }
-                ViewGUIController.Instance.SetDataSource(datasource);
+                caller.SetDataSource(datasource);
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {

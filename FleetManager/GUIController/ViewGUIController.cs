@@ -59,7 +59,7 @@ namespace FleetManager.GUIController
         {
             if (type == "CHECKINS")
             {
-                frmView.tsbSearch.Click += (o, e) => { ShowCheckinSearchView(); };
+                frmView.tsbSearch.Click += (o, e) => { ShowCheckinSearchView(frmView); };
                 frmView.tsbShowAll.Click += (o, e) => { ShowUserCheckins(); };
                 frmView.tsbCheckout.Click += (o, e) =>
                 {
@@ -112,8 +112,8 @@ namespace FleetManager.GUIController
             }
             else if(type=="VEHCHECKINS")
             {
-                frmView.tsbSearch.Click += (o, e) => { ShowUserSearchView(); };
-                frmView.tsbShowAll.Click += (o, e) => { ShowAllUsers(); };
+                frmView.tsbSearch.Click += (o, e) => { ShowCheckinSearchView(frmView); };
+                frmView.tsbShowAll.Click += (o, e) => { /*ShowVehCheckins();*/ };
                 frmView.tsbInspect.Click += (o, e) => { ShowCheckinDetailsView(); };
             }
             else if(type=="VEHSERVICE")
@@ -123,10 +123,6 @@ namespace FleetManager.GUIController
             else if (type=="VEHSERVICEITEMS")
             {
                 frmView.tsbInspect.Click += (o, e) => { ShowServiceItemDetailsView(); };
-            }
-            else if (type=="VEHCHECKINS")
-            {
-                frmView.tsbInspect.Click += (o, e) => { };
             }
         }
 
@@ -363,7 +359,7 @@ namespace FleetManager.GUIController
             t.Text = l.GetString("Search");
             t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
-            t.ChangePanel(VehicleGUIController.Instance.CreateSearchVehicle(true));
+            t.ChangePanel(VehicleGUIController.Instance.CreateSearchVehicle(activeonly,caller:this));
             t.ShowDialog();
         }
 
@@ -373,11 +369,11 @@ namespace FleetManager.GUIController
             t.Text = l.GetString("Search");
             t.AutoSize = true;
             t.AutoSizeMode = AutoSizeMode.GrowOnly;
-            t.ChangePanel(UserDetailsGUIController.Instance.CreateSearchUser());
+            t.ChangePanel(UserDetailsGUIController.Instance.CreateSearchUser(caller:this));
             t.ShowDialog();
         }
 
-        public void ShowCheckinSearchView()
+        public void ShowCheckinSearchView(FrmView frmView)
         {
             FrmTool t = new FrmTool();
             t.Text = l.GetString("Search");

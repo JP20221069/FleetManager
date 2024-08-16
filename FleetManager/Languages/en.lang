@@ -19,7 +19,7 @@ Description=Description
 Exit=Exit
 Finish=Finish
 Help=Help
-Inspect_=Inpect ...
+Inspect_=Inspect ...
 License=License
 Logged_in=Logged in
 Login=Login
@@ -65,6 +65,7 @@ MSG_VEH_FND_SUCCESS = Vehicle found.
 MSG_VEH_FND_FAIL = Could not find vehicle.
 MSG_VEH_SEL_FAIL=No vehicle selected.
 MSG_VEH_UPD_SUCCESS = Successfully updated vehicle.
+QST_AREYOUSURE=Are you sure?
 
 #TOOLTIPS
 
@@ -81,6 +82,7 @@ TTL_ITM_DETAILS = Item details
 TTL_ITM_VIEW = Service items View
 TTL_LOGIN=Fleet Manager - Login
 TTL_MAIN = Fleet Manager
+TTL_QST = Question
 TTL_SER_DETAILS = Service details
 TTL_USRS = Users
 TTL_USR_DETAILS = User details

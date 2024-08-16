@@ -136,3 +136,29 @@ RelacijaDo=Relacija do
 VremeZaduzenja=Vreme zaduženja
 VremeRazduzenja=Vreme razduženja
 RegistarskiBroj=Registarski Broj
+
+#DATA GRID VIEW COLUMNS
+#VOZILO
+ID=ID
+Tip=Tip
+Marka=Marka
+#Status already defined.
+RegBroj=Registarski broj
+Naziv=Naziv
+Nosivost=Nosivnost
+#Korisnik
+Ulogovan=Ulogovan
+Aktivan=Aktivan
+#Servisiranje
+Datum=Datum
+Vozilo=Vozilo
+Napomena=Notes
+#Zaduzenje
+Rola=Rola
+Korisnik=Korisnik
+Aktivno=Aktivno
+RelacijaOd=Relacija Od
+RelacijaDo=Relacija Do
+VremeZaduzenja=Vreme zaduženja
+VremeRazduzenja=Vreme razduženja
+RegistarskiBroj=Registarski broj
