@@ -67,7 +67,7 @@ namespace FleetManagerServer.DB
         public Korisnik Login(Korisnik user)
         {
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='"+user.Username+"' AND Password = '"+user.Password+"' AND Ulogovan=0 AND Aktivan=1;";
+            comm.CommandText = "SELECT * FROM KORISNIK WHERE Username ='"+user.Username+"' AND Password = '"+user.Password+"' AND Aktivan=1;";
             SqlDataReader reader = comm.ExecuteReader();
             bool success = false;
             try
@@ -82,7 +82,7 @@ namespace FleetManagerServer.DB
                 }
                 else
                 {
-                    throw new UserAlreadyLoggedInException();
+                    throw new UserNotFoundException();
                 }
             }
             finally
@@ -90,7 +90,14 @@ namespace FleetManagerServer.DB
                 reader.Close();
                 if(success==true)
                 {
-                    SetLoggedIn(user, true);
+                    if (ChkLoggedIn(user) == false)
+                    {
+                        SetLoggedIn(user, true);
+                    }
+                    else
+                    {
+                        throw new UserAlreadyLoggedInException();
+                    }
                 }
             }
             return user;

@@ -345,7 +345,6 @@ namespace FleetManager.GUIController
             vgc.ShowHideButtons();
             vgc.SetupButtonActions();
             vgc.SetDataSource(result);
-            vgc.zaduzenja = result;
             vgc.frmView.ShowDialog();
         }
 
