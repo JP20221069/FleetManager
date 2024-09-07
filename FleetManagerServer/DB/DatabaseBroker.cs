@@ -793,6 +793,20 @@ namespace FleetManagerServer.DB
             }
         }
 
+        public bool ActiveVehicleExists(Vozilo v)
+        {
+            SqlCommand comm = connection.CreateCommand();
+            comm.CommandText = "SELECT COUNT(*) FROM VOZILO WHERE RegBroj='" + v.RegBroj + "' AND Status <> " + (int)StatusVozila.Neaktivno+";";
+            int x = Convert.ToInt32(comm.ExecuteScalar());
+            if(x>0)
+            {
+                return true; 
+            }
+            else
+            {
+                return false;
+            }
+        }
         public void UpdateVehicle(Vozilo veh)
         {
             SqlCommand cmd = connection.CreateCommand();

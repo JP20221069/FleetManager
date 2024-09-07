@@ -1,5 +1,6 @@
 ﻿using Common.Localization;
 using FleetManager.Comms;
+using FleetManager.Controls;
 using FleetManager.GuiController;
 using FleetManager.GUIController;
 using FleetManager.Properties;
@@ -168,6 +169,11 @@ namespace FleetManager
             configfile.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection(configfile.AppSettings.SectionInformation.Name);
             MainGUIController.Instance.Localize();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainGUIController.Instance.ShowAboutWindow();
         }
     }
 }

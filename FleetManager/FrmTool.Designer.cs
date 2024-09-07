@@ -37,14 +37,14 @@
             this.pnlTool.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTool.Location = new System.Drawing.Point(0, 0);
             this.pnlTool.Name = "pnlTool";
-            this.pnlTool.Size = new System.Drawing.Size(500, 405);
+            this.pnlTool.Size = new System.Drawing.Size(727, 488);
             this.pnlTool.TabIndex = 0;
             // 
             // FrmTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 405);
+            this.ClientSize = new System.Drawing.Size(727, 488);
             this.Controls.Add(this.pnlTool);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;

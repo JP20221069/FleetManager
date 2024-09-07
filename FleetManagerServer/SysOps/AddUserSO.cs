@@ -1,4 +1,5 @@
 ﻿using FleetManagerCommon.Domain;
+using FleetManagerCommon.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,15 @@ namespace FleetManagerServer.SysOps
 
         protected override void ExecuteConcreteOperation()
         {
-            broker.AddUser(user);
+            if (broker.ChkUsername(user)==false)
+            {
+                broker.AddUser(user);
+            }
+            else
+            {
+                throw new UserAlreadyExistsException();
+            }
+            
         }
     }
 }

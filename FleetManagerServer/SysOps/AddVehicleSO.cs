@@ -1,7 +1,9 @@
 ﻿using Common.Domain;
+using Common.Exceptions;
 using FleetManagerCommon.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +22,14 @@ namespace FleetManagerServer.SysOps
 
         protected override void ExecuteConcreteOperation()
         {
-            broker.AddVehicle(veh);
+            if (broker.ActiveVehicleExists(veh) == false)
+            {
+                broker.AddVehicle(veh);
+            }
+            else
+            {
+                throw new ActiveVehicleExistsException();
+            }    
         }
     }
 }

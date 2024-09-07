@@ -93,6 +93,26 @@ namespace FleetManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FleetManager_Icon1 {
+            get {
+                object obj = ResourceManager.GetObject("FleetManager_Icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FleetManager_Icon2 {
+            get {
+                object obj = ResourceManager.GetObject("FleetManager_Icon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gears_tweakui_b {
             get {
                 object obj = ResourceManager.GetObject("gears_tweakui_b", resourceCulture);

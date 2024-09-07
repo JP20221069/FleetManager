@@ -40,7 +40,7 @@ namespace FleetManager.GUIController
             udc.LABEL_USERNAME.Text = l.GetString("Username");
             udc.LABEL_ROLE.Text = l.GetString("Role");
             udc.chkActive.Text = l.GetString("ENUM_ACTIVE");
-            udc.chkActive.Text = l.GetString("Logged_in");
+            udc.chkLoggedin.Text = l.GetString("Logged_in");
         }
         public Control CreateAddUser()
         {

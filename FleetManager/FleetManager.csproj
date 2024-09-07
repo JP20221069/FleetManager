@@ -64,6 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comms\CommunicationManager.cs" />
+    <Compile Include="Controls\AboutProgramControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AboutProgramControl.Designer.cs">
+      <DependentUpon>AboutProgramControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\AddServiceItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -99,18 +105,6 @@
     </Compile>
     <Compile Include="Controls\VehicleControl.Designer.cs">
       <DependentUpon>VehicleControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\UsersViewControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\UsersViewControl.Designer.cs">
-      <DependentUpon>UsersViewControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\VehiclesViewControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\VehiclesViewControl.Designer.cs">
-      <DependentUpon>VehiclesViewControl.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -155,6 +149,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\CBObject.cs" />
+    <EmbeddedResource Include="Controls\AboutProgramControl.resx">
+      <DependentUpon>AboutProgramControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\AddServiceItemControl.resx">
       <DependentUpon>AddServiceItemControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,6 +258,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FleetManager_Icon.ico" />
+    <None Include="Resources\FleetManager_Icon2.png" />
+    <None Include="Resources\FleetManager_Icon1.png" />
     <None Include="Resources\address_book-0.png" />
     <None Include="Resources\gears_tweakui_b.png" />
     <None Include="Resources\registration-1.png" />

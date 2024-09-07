@@ -34,6 +34,10 @@
             this.programToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishENToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.srpskiSRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehicleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,10 +61,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.englishENToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.srpskiSRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +102,38 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // preferencesToolStripMenuItem
+            // 
+            this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.languageToolStripMenuItem});
+            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.preferencesToolStripMenuItem.Text = "Preferences";
+            // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishENToolStripMenuItem,
+            this.srpskiSRToolStripMenuItem});
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.languageToolStripMenuItem.Text = "Language";
+            // 
+            // englishENToolStripMenuItem
+            // 
+            this.englishENToolStripMenuItem.Name = "englishENToolStripMenuItem";
+            this.englishENToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.englishENToolStripMenuItem.Text = "English (EN)";
+            this.englishENToolStripMenuItem.Click += new System.EventHandler(this.englishENToolStripMenuItem_Click);
+            // 
+            // srpskiSRToolStripMenuItem
+            // 
+            this.srpskiSRToolStripMenuItem.Name = "srpskiSRToolStripMenuItem";
+            this.srpskiSRToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.srpskiSRToolStripMenuItem.Text = "Srpski (SR)";
+            this.srpskiSRToolStripMenuItem.Click += new System.EventHandler(this.srpskiSRToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -293,37 +325,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // preferencesToolStripMenuItem
-            // 
-            this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.languageToolStripMenuItem});
-            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.preferencesToolStripMenuItem.Text = "Preferences";
-            // 
-            // languageToolStripMenuItem
-            // 
-            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.englishENToolStripMenuItem,
-            this.srpskiSRToolStripMenuItem});
-            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.languageToolStripMenuItem.Text = "Language";
-            // 
-            // englishENToolStripMenuItem
-            // 
-            this.englishENToolStripMenuItem.Name = "englishENToolStripMenuItem";
-            this.englishENToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.englishENToolStripMenuItem.Text = "English (EN)";
-            this.englishENToolStripMenuItem.Click += new System.EventHandler(this.englishENToolStripMenuItem_Click);
-            // 
-            // srpskiSRToolStripMenuItem
-            // 
-            this.srpskiSRToolStripMenuItem.Name = "srpskiSRToolStripMenuItem";
-            this.srpskiSRToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.srpskiSRToolStripMenuItem.Text = "Srpski (SR)";
-            this.srpskiSRToolStripMenuItem.Click += new System.EventHandler(this.srpskiSRToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

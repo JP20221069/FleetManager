@@ -204,7 +204,7 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.AddVehicle(v);
             if (res.Exception == null)
             {
-                MessageBox.Show(l.GetString("VEH_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(l.GetString("MSG_VEH_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

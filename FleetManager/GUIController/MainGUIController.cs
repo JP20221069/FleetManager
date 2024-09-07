@@ -1,6 +1,7 @@
 ﻿using Common.Domain;
 using Common.Localization;
 using FleetManager.Comms;
+using FleetManager.Controls;
 using FleetManager.GuiController;
 using FleetManager.Properties;
 using FleetManagerCommon.Communication;
@@ -192,6 +193,17 @@ namespace FleetManager.GUIController
                 frmMain.toolStripStatusLabel1.ToolTipText = "There has been an error.";
                 frmMain.toolStripStatusLabel1.AutoToolTip = false;
             }
+        }
+
+        internal void ShowAboutWindow()
+        {
+            Langset l = Program.curr_lang;
+            FrmTool t = new FrmTool();
+            t.Text = l.GetString("About");
+            t.AutoSize = true;
+            t.AutoSizeMode = AutoSizeMode.GrowOnly;
+            t.ChangePanel(new AboutProgramControl());
+            t.ShowDialog();
         }
 
     }
