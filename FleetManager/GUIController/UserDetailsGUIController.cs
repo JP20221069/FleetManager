@@ -162,7 +162,7 @@ namespace FleetManager.GUIController
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -180,7 +180,7 @@ namespace FleetManager.GUIController
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -220,11 +220,11 @@ namespace FleetManager.GUIController
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {
-                MessageBox.Show(res.Exception.Message, l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -268,7 +268,7 @@ namespace FleetManager.GUIController
             }
             else
             {
-                MessageBox.Show(res.Exception.Message, l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

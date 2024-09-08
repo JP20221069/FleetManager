@@ -137,3 +137,16 @@ RelacijaDo=Finish
 VremeZaduzenja=Check-out time
 VremeRazduzenja=Check-in time
 RegistarskiBroj=License plate
+
+#EXCEPTIONS
+#Only localizable exceptions are shown
+EXC_AVE=An active vehicle with this license plate already exists.
+EXC_CLE=Unable to connect, maximum number of clients reached.
+EXC_RNF=Specified record not found.
+EXC_UCI=Unable to check vehicle in/out. Vehicle is already checked out or has not yet been checked out.
+EXC_UDE=Unable to delete the object because it is currently in use.
+EXC_UDC=Client was unable to disconnect due to a server error.
+EXC_UPD_DDUL=Update operation has been denied, user is currently logged in. Log out the user first.
+EXC_UAE=User with same data already exists.
+EXC_UAL=User is already logged in.
+EXC_UNF=Username or password is incorrect.

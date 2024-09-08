@@ -138,3 +138,16 @@ RelacijaDo=Relacija Do
 VremeZaduzenja=Vreme zaduženja
 VremeRazduzenja=Vreme razduženja
 RegistarskiBroj=Registarski broj
+
+#EXCEPTIONS
+#Samo exception-i koji se prevode su prikazani
+EXC_AVE=Aktivno vozilo sa ovim registarskim brojem već postoji.
+EXC_CLE=Nemoguće je povezati se na server zbog prekoračenja maksimalnog broja klijenata.
+EXC_RNF=Sistem ne može da pronađe traženi zapis.
+EXC_UCI=Sistem ne može da zaduži/razduži vozilo.\nVozilo je već zaduženo ili još uvek nije zaduženo.
+EXC_UDE=Sistem ne može da obriše objekat jer je trenutno u upotrebi.
+EXC_UDC=Klijent nije mogao da se odjavi zbog serverske greške.
+EXC_UPD_DDUL=Operacija ažuriranja je odbijena jer je korisnik trenutno prijavljen na sistem. Prvo odjavite korisnika.
+EXC_UAE=Sistem ne može da zapamti korisnika. Korisnik sa istim podacima već postoji.
+EXC_UAL=Korisnik je već ulogovan.
+EXC_UNF=Korisničko ime ili lozinka su neispravni.
