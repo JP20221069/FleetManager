@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,6 +23,7 @@ namespace FleetManagerServer
         private Socket socket;
         public Client client { get; set; }
         private bool flag_disconnect = false;
+        public Thread client_thread;
 
         public ClientHandler()
         {

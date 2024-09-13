@@ -51,10 +51,10 @@ namespace FleetManager
 
         private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-           /* if (this.DialogResult == DialogResult.Cancel)
+            if (this.DialogResult == DialogResult.Cancel)
             {
                 LoginGUIController.Instance.DisconnectCl();
-            }*/
+            }
         }
     }
 }

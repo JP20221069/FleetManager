@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -147,14 +148,7 @@ namespace FleetManagerServer.DB
 
         public void AddUser(Korisnik user)
         {
-            if (ChkUsername(user))
-            {
                 Add(user);
-            }
-            else
-            {
-                throw new UserAlreadyExistsException();
-            }
         }
 
         public Korisnik GetUserByUsername(string username)
@@ -250,9 +244,9 @@ namespace FleetManagerServer.DB
         public bool ChkUsername(Korisnik user)
         {
             SqlCommand comm = connection.CreateCommand();
-            comm.CommandText = "SELECT COUNT(*) FROM KORISNIK WHERE ID =" + user.ID + ";";
+            comm.CommandText = "SELECT COUNT(*) FROM KORISNIK WHERE USERNAME ='" + user.Username+ "';";
             int cnt = Convert.ToInt32(comm.ExecuteScalar());
-            if (cnt > 0)
+            if (cnt == 0)
             {
                 return false;
             }
@@ -810,7 +804,7 @@ namespace FleetManagerServer.DB
         public void UpdateVehicle(Vozilo veh)
         {
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "UPDATE VOZILO SET Naziv='"+veh.Naziv+"',Marka='"+veh.Marka+"',Tip='"+veh.Tip+"',Status="+(int)veh.Status+",Nosivost="+veh.Nosivost+",RegBroj='"+veh.RegBroj+"' WHERE ID="+veh.ID+";";
+            cmd.CommandText = "UPDATE VOZILO SET Naziv='"+veh.Naziv+"',Marka='"+veh.Marka+"',Tip='"+veh.Tip+"',Status="+(int)veh.Status+",Nosivost="+veh.Nosivost.ToString(CultureInfo.InvariantCulture)+",RegBroj='"+veh.RegBroj+"' WHERE ID="+veh.ID+";";
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }

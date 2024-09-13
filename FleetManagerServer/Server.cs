@@ -83,6 +83,7 @@ namespace FleetManagerServer
                         handler.client = c;
                         handler.InitHandler();
                         ct.Start();
+                        handler.client_thread = ct;
                         active_clients.Add(c);
                         active_handlers.Add(handler);
                         Logger.LogEvent(new LogEvent(EventType.Info, "Successfully connected.", c));
@@ -125,6 +126,7 @@ namespace FleetManagerServer
                 logout.Argument = name.client.user;
                 name.ProcessRequest(logout);
                 name.ProcessRequest(disconnect);
+                name.client_thread.Abort();
             }
             active_handlers.Clear();
             Logger.LogEvent(new LogEvent(EventType.Info, "Server stopped.", null, true));

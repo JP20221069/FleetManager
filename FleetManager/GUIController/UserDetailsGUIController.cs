@@ -17,6 +17,7 @@ namespace FleetManager.GUIController
 {
     public class UserDetailsGUIController
     {
+        Korisnik use;
         Langset l = Program.curr_lang;
         UserDetailsControl udc;
         ViewGUIController caller;
@@ -42,6 +43,22 @@ namespace FleetManager.GUIController
             udc.chkActive.Text = l.GetString("ENUM_ACTIVE");
             udc.chkLoggedin.Text = l.GetString("Logged_in");
         }
+
+        private bool Validate()
+        {
+            bool ret = true;
+            if (string.IsNullOrWhiteSpace(udc.FIELD_USERNAME.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_USR_NAME_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(udc.FIELD_PASSWORD.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_USR_PWD_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return ret;
+        }
         public Control CreateAddUser()
         {
             UserDetailsControl c = new UserDetailsControl();
@@ -61,6 +78,7 @@ namespace FleetManager.GUIController
 
         public Control CreateAlterUser(Korisnik usr)
         {
+            use = usr;
             UserDetailsControl c = new UserDetailsControl();
             c.btAccept.Click += AlterUser;
             List<CBObject> cbo = new List<CBObject>();
@@ -150,37 +168,43 @@ namespace FleetManager.GUIController
 
         private void AddUser(object sender, EventArgs e)
         {
-            Korisnik k = new Korisnik();
-            k.Username = udc.FIELD_USERNAME.Text;
-            k.Password = udc.FIELD_PASSWORD.Text;
-            k.Aktivan = udc.chkActive.Checked;
-            k.Ulogovan = false;
-            Response res = CommunicationManager.Instance.AddUser(k);
-            if (res.Exception == null)
+            if (Validate())
             {
-                MessageBox.Show(l.GetString("MSG_USR_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Korisnik k = new Korisnik();
+                k.Username = udc.FIELD_USERNAME.Text;
+                k.Password = udc.FIELD_PASSWORD.Text;
+                k.Aktivan = udc.chkActive.Checked;
+                k.Ulogovan = false;
+                Response res = CommunicationManager.Instance.AddUser(k);
+                if (res.Exception == null)
+                {
+                    MessageBox.Show(l.GetString("MSG_USR_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void AlterUser(object sender, EventArgs e)
         {
-            Korisnik k = new Korisnik();
-            k.Username = udc.FIELD_USERNAME.Text;
-            k.Password = udc.FIELD_PASSWORD.Text;
-            k.Aktivan = udc.chkLoggedin.Checked;
-            k.Ulogovan = false;
-            Response res = CommunicationManager.Instance.AlterUser(k);
-            if (res.Exception == null)
+            if (Validate())
             {
-                MessageBox.Show(l.GetString("MSG_USR_ALTER_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Korisnik k = use;
+                k.Username = udc.FIELD_USERNAME.Text;
+                k.Password = udc.FIELD_PASSWORD.Text;
+                k.Aktivan = udc.chkLoggedin.Checked;
+                k.Ulogovan = false;
+                Response res = CommunicationManager.Instance.AlterUser(k);
+                if (res.Exception == null)
+                {
+                    MessageBox.Show(l.GetString("MSG_USR_ALTER_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -216,7 +240,7 @@ namespace FleetManager.GUIController
             if (res.Exception == null)
             {
                 MessageBox.Show(l.GetString("MSG_USR_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                caller.SetDataSource((List<Korisnik>)res.Result);
+                caller.SetDataSource((List<Korisnik>)res.Result,false);
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {

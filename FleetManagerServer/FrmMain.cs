@@ -57,7 +57,7 @@ namespace FleetManagerServer
             lblStatus.Text = "OFF";
             lblStatus.ForeColor = Color.Firebrick;
             timer1.Stop();
-            s.Stop();
+            s.StopAndDisconnect();
             btStart.Enabled = true;
             btStop.Enabled = false;
 

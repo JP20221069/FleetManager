@@ -287,7 +287,7 @@ namespace FleetManager.GUIController
             vgc.Localize();
             vgc.ShowHideButtons();
             vgc.SetupButtonActions();
-            vgc.SetDataSource(result);
+            vgc.SetDataSource(result,true);
             vgc.frmView.ShowDialog();
         }
 
@@ -302,7 +302,7 @@ namespace FleetManager.GUIController
             vgc.Localize();
             vgc.ShowHideButtons();
             vgc.SetupButtonActions();
-            vgc.SetDataSource(result);
+            vgc.SetDataSource(result,true);
             vgc.frmView.ShowDialog();
         }
 
@@ -316,7 +316,7 @@ namespace FleetManager.GUIController
             vgc.Localize();
             vgc.ShowHideButtons();
             vgc.SetupButtonActions();
-            vgc.SetDataSource(result);
+            vgc.SetDataSource(result,true);
             vgc.frmView.ShowDialog();
         }
 
@@ -330,7 +330,7 @@ namespace FleetManager.GUIController
             vgc.Localize();
             vgc.ShowHideButtons();
             vgc.SetupButtonActions();
-            vgc.SetDataSource(result);
+            vgc.SetDataSource(result,true);
             vgc.frmView.ShowDialog();
         }
 
@@ -344,7 +344,7 @@ namespace FleetManager.GUIController
             vgc.Localize();
             vgc.ShowHideButtons();
             vgc.SetupButtonActions();
-            vgc.SetDataSource(result);
+            vgc.SetDataSource(result,true);
             vgc.frmView.ShowDialog();
         }
 
@@ -403,6 +403,7 @@ namespace FleetManager.GUIController
                 CheckInGUIController.Instance.veh = v;
                 CheckInGUIController.Instance.veh = v;
                 CheckInGUIController.Instance.usr = MainGUIController.current_user;
+                CheckInGUIController.Instance.caller = this;
                 t.ChangePanel(CheckInGUIController.Instance.CreateCheckIn());
                 t.ShowDialog();
             }
@@ -437,6 +438,7 @@ namespace FleetManager.GUIController
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 VehicleGUIController vgc = new VehicleGUIController();
+                vgc.caller = this;
                 t.ChangePanel(vgc.CreateAlterVehicle(v));
                 t.ShowDialog();
             }
@@ -452,7 +454,7 @@ namespace FleetManager.GUIController
             else
             {
                 FrmTool t = new FrmTool();
-                t.Text = l.GetString("TTL_VEH_ALTER");
+                t.Text = l.GetString("TTL_USR_ALTER");
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 t.ChangePanel(UserDetailsGUIController.Instance.CreateAlterUser(u));
@@ -495,6 +497,7 @@ namespace FleetManager.GUIController
                 t.AutoSize = true;
                 t.AutoSizeMode = AutoSizeMode.GrowOnly;
                 VehicleGUIController vgc = new VehicleGUIController();
+                vgc.caller = this;
                 t.ChangePanel(vgc.CreateVehicleDetails(v));
                 t.ShowDialog();
             }
@@ -555,7 +558,7 @@ namespace FleetManager.GUIController
         }
 
 
-        public void SetDataSource(object l)
+        public void SetDataSource(object l,bool localizecolumns)
         {
             var source = new BindingSource();
             if (type == "VEHICLES" || type == "SERVICE")
@@ -625,8 +628,11 @@ namespace FleetManager.GUIController
                 frmView.dgwView.Columns["ColumnNames"].Visible = false;
                 frmView.dgwView.Columns["Values"].Visible = false;*/
             }
-            Langset lang = Program.curr_lang;
-            lang.LocalizeColumns(frmView.dgwView);
+            if (localizecolumns)
+            {
+                Langset lang = Program.curr_lang;
+                lang.LocalizeColumns(frmView.dgwView);
+            }
         }
 
         public void ShowAll()
@@ -684,7 +690,7 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.GetAllVehicles();
             if (res.Exception == null)
             {
-                SetDataSource(res.Result);
+                SetDataSource(res.Result,false);
             }
             else
             {
@@ -697,7 +703,7 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.GetFreeVehicles();
             if (res.Exception == null)
             {
-                SetDataSource(res.Result);
+                SetDataSource(res.Result,false);
             }
             else
             {
@@ -710,7 +716,7 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.GetUserCheckins(MainGUIController.current_user);
             if (res.Exception == null)
             {
-                SetDataSource(res.Result);
+                SetDataSource(res.Result,false);
             }
             else
             {
@@ -720,11 +726,11 @@ namespace FleetManager.GUIController
 
         public void ShowVehCheckins(List<Zaduzenje> zaduzenja)
         {
-            SetDataSource(zaduzenja);
+            SetDataSource(zaduzenja,false);
         }
         public void ShowVehServicings(Vozilo v)
         {
-            SetDataSource(v.Servisiranja);
+            SetDataSource(v.Servisiranja,false);
         }
 
         public void ShowAllUsers()
@@ -732,7 +738,7 @@ namespace FleetManager.GUIController
             Response res = CommunicationManager.Instance.GetAllUsers();
             if (res.Exception == null)
             {
-                SetDataSource(res.Result);
+                SetDataSource(res.Result,false);
             }
             else
             {

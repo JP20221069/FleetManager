@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace Common.Domain
 
         public string ColumnNames => "Tip,Marka,Status,RegBroj,Naziv,Nosivost";
 
-        public string Values => $"'{Tip}'" + $",'{Marka}'" + $",{(int)Status}" + $",'{RegBroj}'" + $",'{Naziv}'" + $",{Nosivost}";
+        public string Values => $"'{Tip}'" + $",'{Marka}'" + $",{(int)Status}" + $",'{RegBroj}'" + $",'{Naziv}'" + $",{Nosivost.ToString(CultureInfo.InvariantCulture)}";
 
         List<IEntity> IEntity.GetReaderList(SqlDataReader reader)
         {

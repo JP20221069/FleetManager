@@ -52,9 +52,9 @@ namespace FleetManager.Controls
             // 
             // FIELD_FINISH
             // 
-            this.FIELD_FINISH.Location = new System.Drawing.Point(138, 83);
+            this.FIELD_FINISH.Location = new System.Drawing.Point(161, 83);
             this.FIELD_FINISH.Name = "FIELD_FINISH";
-            this.FIELD_FINISH.Size = new System.Drawing.Size(262, 20);
+            this.FIELD_FINISH.Size = new System.Drawing.Size(239, 20);
             this.FIELD_FINISH.TabIndex = 16;
             // 
             // LABEL_FINISH
@@ -68,9 +68,9 @@ namespace FleetManager.Controls
             // 
             // FIELD_START
             // 
-            this.FIELD_START.Location = new System.Drawing.Point(138, 48);
+            this.FIELD_START.Location = new System.Drawing.Point(161, 48);
             this.FIELD_START.Name = "FIELD_START";
-            this.FIELD_START.Size = new System.Drawing.Size(262, 20);
+            this.FIELD_START.Size = new System.Drawing.Size(239, 20);
             this.FIELD_START.TabIndex = 14;
             // 
             // LABEL_START

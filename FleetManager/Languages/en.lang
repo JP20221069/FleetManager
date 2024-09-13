@@ -16,6 +16,7 @@ Checkout=Check-out
 Date=Date
 Delete=Delete
 Description=Description
+DESCRIPTION=Description
 Exit=Exit
 Finish=Finish
 Help=Help
@@ -26,6 +27,7 @@ Logged_in=Logged in
 Login=Login
 Log_off=Log off
 Name=Name
+NAME=Name
 New=New
 New_=New...
 Notes=Notes
@@ -36,6 +38,7 @@ Record=Record
 Role=Role
 Search=Search
 Service=Service
+SERVICE=Servis
 Servicings=Servicings
 ServiceItems=Service Items
 ShowAll=Show All
@@ -66,11 +69,35 @@ MSG_VEH_ADD_SUCCESS = Successfully added vehicle.
 MSG_VEH_CHKIN_FAIL=Vehicle is already checked in.
 MSG_VEH_CHKIN_SUCCESS=Successfully checked in vehicle.
 MSG_VEH_CHKOUT_SUCCESS=Successfully checked out vehicle.
-MSG_VEH_DEL_SUCCESSS = Successfully deleted vehicle.
+MSG_VEH_DEL_SUCCESS = Successfully deleted vehicle.
 MSG_VEH_FND_FAIL = Could not find vehicle.
 MSG_VEH_FND_SUCCESS = Vehicle found.
 MSG_VEH_SEL_FAIL=No vehicle selected.
 MSG_VEH_UPD_SUCCESS = Successfully updated vehicle.
+
+#Validation messages (Vehicle)
+MSG_VEH_NAME_REQUIRED = Vehicle name required.
+MSG_VEH_BRAND_REQUIRED = Vehicle brand required.
+MSG_VEH_TYPE_REQUIRED = Vehicle type required.
+MSG_VEH_STAT_REQUIRED = Vehicle status required.
+MSG_VEH_LP_REQUIRED = Vehicle license plate required.
+MSG_VEH_CW_REQUIRED = Vehicle carry weight required.
+MSG_VEH_CW_BADFORMAT = Carryweight in wrong format.
+
+#Validation messages (User)
+MSG_USR_NAME_REQUIRED = Username is required.
+MSG_USR_PWD_REQUIRED = Password is required.
+MSG_USR_ROLE_REQUIRED = Role is required.
+MSG_USR_ACTIVE_REQUIRED = Activity status is required.
+
+#Validation messages (Service & Service item)
+MSG_ITM_NAME_REQUIRED = Item name is required.
+MSG_ITM_SER_REQUIRED = Service is required.
+
+#Validaation messages (Checkin)
+MSG_CHKIN_START_REQUIRED = Start position required.
+MSG_CHKIN_FINISH_REQUIRED = Finish destination required.
+
 QST_AREYOUSURE=Are you sure?
 
 #TOOLTIPS
@@ -94,6 +121,7 @@ TTL_USRS = Users
 TTL_USR_DETAILS = User details
 TTL_USR_NEW = New User
 TTL_USR_VIEW = Users View
+TTL_USR_ALTER = Alter User record
 TTL_VEH_ALTER = Alter Vehicle record
 TTL_VEH_CHKIN = Check in Vehicle
 TTL_VEH_CHKINS_VIEW = Vehicle check-ins View

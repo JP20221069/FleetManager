@@ -16,6 +16,7 @@ namespace FleetManager.GUIController
     public class CheckInGUIController
     {
         Langset l = Program.curr_lang;
+        public ViewGUIController caller;
 
         private CheckInControl chc;
         public Vozilo veh { get; set; }
@@ -78,22 +79,48 @@ namespace FleetManager.GUIController
 
         private void CheckinVehicle(object sender, EventArgs e)
         {
-            string relacijaod = chc.FIELD_START.Text;
-            string relacijado = chc.FIELD_FINISH.Text;
-            string notes = chc.FIELD_NOTES.Text;
-            Zaduzenje z = new Zaduzenje(-1, veh, usr, true, relacijaod, relacijado, DateTime.Now, DateTime.Now, notes);
-            Response res = CommunicationManager.Instance.CheckinVehicle(z);
-            if (res.Exception == null)
+            if (Validate())
             {
-                MessageBox.Show(l.GetString("MSG_VEH_CHKIN_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ViewGUIController.Instance.ShowFreeVehicles();
-                chc.ParentForm.Close();
-            }
-            else
-            {
-                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (caller != null)
+                {
+                    this.caller = caller;
+                }
+                else
+                {
+                    caller = ViewGUIController.Instance;
+                }
+                string relacijaod = chc.FIELD_START.Text;
+                string relacijado = chc.FIELD_FINISH.Text;
+                string notes = chc.FIELD_NOTES.Text;
+                Zaduzenje z = new Zaduzenje(-1, veh, usr, true, relacijaod, relacijado, DateTime.Now, DateTime.Now, notes);
+                Response res = CommunicationManager.Instance.CheckinVehicle(z);
+                if (res.Exception == null)
+                {
+                    MessageBox.Show(l.GetString("MSG_VEH_CHKIN_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    caller.ShowFreeVehicles();
+                    chc.ParentForm.Close();
+                }
+                else
+                {
+                    MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
+        private bool Validate()
+        {
+            bool ret = true;
+            if (string.IsNullOrWhiteSpace(chc.FIELD_START.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_CHKIN_START_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(chc.FIELD_FINISH.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_CHKIN_FINISH_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return ret;
+        }
     }
 }

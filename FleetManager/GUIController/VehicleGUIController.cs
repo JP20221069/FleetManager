@@ -8,6 +8,7 @@ using FleetManagerCommon.Domain;
 using FleetManagerCommon.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace FleetManager.GUIController
         Langset l = Program.curr_lang;
         private VehicleControl awc;
         private Vozilo veh;
-        private ViewGUIController caller;
+        public ViewGUIController caller;
         private static VehicleGUIController instance;
         public static VehicleGUIController Instance
         {
@@ -191,24 +192,67 @@ namespace FleetManager.GUIController
             return awc;
         }
 
+        internal bool Validate()
+        {
+            bool ret = true;
+            if (string.IsNullOrWhiteSpace(awc.FIELD_NAME.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_VEH_NAME_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if(string.IsNullOrWhiteSpace(awc.FIELD_Brand.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_VEH_BRAND_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if(string.IsNullOrWhiteSpace(awc.FIELD_TYPE.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_VEH_TYPE_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if(string.IsNullOrWhiteSpace(awc.FIELD_LICENSE.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_VEH_LP_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if(string.IsNullOrEmpty(awc.FIELD_CARRYWEIGHT.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_VEH_CW_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            float x = 0.0f;
+            string xx = awc.FIELD_CARRYWEIGHT.Text;
+            xx = xx.Replace(',', '.');
+            if (float.TryParse(xx, NumberStyles.Float, CultureInfo.InvariantCulture, out x)==false)
+            {
+                MessageBox.Show(l.GetString("MSG_VEH_CW_BADFORMAT"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return ret;
+        }
         private void AddVehicle(object sender, EventArgs e)
         {
-            Vozilo v = new Vozilo();
-            v.ID = -1;
-            v.Naziv = awc.FIELD_NAME.Text;
-            v.Marka = awc.FIELD_Brand.Text;
-            v.RegBroj = awc.FIELD_LICENSE.Text;
-            v.Nosivost = (float)Convert.ToDouble(awc.FIELD_CARRYWEIGHT.Text);
-            v.Status = (StatusVozila)Convert.ToInt32(awc.CB_STATUS.SelectedValue);
-            v.Tip = awc.FIELD_TYPE.Text;
-            Response res = CommunicationManager.Instance.AddVehicle(v);
-            if (res.Exception == null)
+            if (Validate())
             {
-                MessageBox.Show(l.GetString("MSG_VEH_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Vozilo v = new Vozilo();
+                v.ID = -1;
+                v.Naziv = awc.FIELD_NAME.Text;
+                v.Marka = awc.FIELD_Brand.Text;
+                v.RegBroj = awc.FIELD_LICENSE.Text;
+                string cw = awc.FIELD_CARRYWEIGHT.Text;
+                cw=cw.Replace(',', '.');
+                v.Nosivost = float.Parse(cw,CultureInfo.InvariantCulture);
+                v.Status = (StatusVozila)Convert.ToInt32(awc.CB_STATUS.SelectedValue);
+                v.Tip = awc.FIELD_TYPE.Text;
+                Response res = CommunicationManager.Instance.AddVehicle(v);
+                if (res.Exception == null)
+                {
+                    MessageBox.Show(l.GetString("MSG_VEH_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -233,7 +277,7 @@ namespace FleetManager.GUIController
             if (res.Exception == null)
             {
                 MessageBox.Show(l.GetString("MSG_VEH_FND_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                caller.SetDataSource((List<Vozilo>)res.Result);
+                caller.SetDataSource((List<Vozilo>)res.Result,false);
             }
             else if(res.Exception.GetType()==typeof(RecordNotFoundException))
             {
@@ -305,7 +349,7 @@ namespace FleetManager.GUIController
                 {
                     datasource.AddRange(name.Zaduzenja.FindAll(x => x.Aktivno == true));
                 }
-                caller.SetDataSource(datasource);
+                caller.SetDataSource(datasource,false);
             }
             else if (res.Exception.GetType() == typeof(RecordNotFoundException))
             {
@@ -328,7 +372,7 @@ namespace FleetManager.GUIController
             v.Status = (StatusVozila)Convert.ToInt32(awc.CB_STATUS.SelectedValue);
             v.Tip = awc.FIELD_TYPE.Text;
             Response res = CommunicationManager.Instance.AlterVehicle(v);
-            ViewGUIController.Instance.ShowAllVehicles();
+            caller.ShowAllVehicles();
             if (res.Exception == null)
             {
                 MessageBox.Show(l.GetString("MSG_VEH_UPD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);

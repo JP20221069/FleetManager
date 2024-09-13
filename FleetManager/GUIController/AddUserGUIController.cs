@@ -8,6 +8,7 @@ using FleetManagerCommon.Domain;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,20 +37,39 @@ namespace FleetManager.GUIController
 
         private void AddUser(object sender, EventArgs e)
         {
-            Korisnik k = new Korisnik();
-            k.Username = auc.FIELD_USERNAME.Text;
-            k.Password = auc.FIELD_PASSWORD.Text;
-            k.Aktivan = false;
-            k.Ulogovan = false;
-            Response res = CommunicationManager.Instance.AddUser(k);
-            if (res.Exception == null)
+            if (Validate())
             {
-                MessageBox.Show(l.GetString("MSG_USR_ADD_SUCCESS"), l.GetString("TTL_INFO"),MessageBoxButtons.OK,MessageBoxIcon.Information);
+                Korisnik k = new Korisnik();
+                k.Username = auc.FIELD_USERNAME.Text;
+                k.Password = auc.FIELD_PASSWORD.Text;
+                k.Aktivan = false;
+                k.Ulogovan = false;
+                Response res = CommunicationManager.Instance.AddUser(k);
+                if (res.Exception == null)
+                {
+                    MessageBox.Show(l.GetString("MSG_USR_ADD_SUCCESS"), l.GetString("TTL_INFO"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception), l.GetString("TTL_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+        }
+
+        private bool Validate()
+        {
+            bool ret = true;
+            if (string.IsNullOrWhiteSpace(auc.FIELD_USERNAME.Text))
             {
-                MessageBox.Show(new ExceptionLocalization(Program.curr_lang).LocalizeException(res.Exception),l.GetString("TTL_ERROR"),MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(l.GetString("MSG_USR_NAME_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
+            if (string.IsNullOrWhiteSpace(auc.FIELD_PASSWORD.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_USR_PWD_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return ret;
         }
     }
 }

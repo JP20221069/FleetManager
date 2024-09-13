@@ -16,6 +16,7 @@ Checkout=Razduženje
 Date=Datum
 Delete=Obriši
 Description=Opis
+DESCRIPTION=Opis
 Exit=Izlaz
 Finish=Relacija do
 Help=Pomoć
@@ -26,6 +27,7 @@ Logged_in=Ulogovan
 Login=Uloguj se
 Log_off=Izloguj se
 Name=Ime
+NAME=Ime
 New=Novi
 New_=Novi ...
 Notes=Napomena
@@ -36,6 +38,7 @@ Record=Zapis
 Role=Rola
 Search=Pretraga
 Service=Servis
+SERVICE=Servis
 Servicings=Servisiranja
 ServiceItems=Stavke servisiranja
 ShowAll=Prikaži sve
@@ -64,7 +67,7 @@ MSG_VEH_ADD_SUCCESS = Uspešno dodato vozilo.
 MSG_VEH_CHKIN_SUCCESS=Uspešno zaduženo vozilo.
 MSG_VEH_CHKIN_FAIL=Vozilo je već zaduženo.
 MSG_VEH_CHKOUT_SUCCESS=Uspešno razduženo vozilo.
-MSG_VEH_DEL_SUCCESSS = Uspešno obrisano vozilo.
+MSG_VEH_DEL_SUCCESS = Uspešno obrisano vozilo.
 MSG_VEH_FND_SUCCESS = Vozilo pronađeno.
 MSG_VEH_FND_FAIL = Sistem nije mogao da pronađe vozilo.
 MSG_VEH_SEL_FAIL=Niste izabrali vozilo.
@@ -73,6 +76,29 @@ QST_AREYOUSURE=Da li ste sigurni?
 
 MSG_USERNAMEREQUIRED=Korisničko ime je obavezno.
 MSG_PWDREQUIRED=Lozinka je obavezna.
+
+#Validation messages (Vehicle)
+MSG_VEH_NAME_REQUIRED = Ime vozila je obavezno.
+MSG_VEH_BRAND_REQUIRED = Marka vozila je obavezna.
+MSG_VEH_TYPE_REQUIRED = Tip vozila je obavezan.
+MSG_VEH_STAT_REQUIRED = Status vozila je obavezan.
+MSG_VEH_LP_REQUIRED = Registarski broj je obavezan.
+MSG_VEH_CW_REQUIRED = Nosivost vozila je obavezna.
+MSG_VEH_CW_BADFORMAT = Nosivost je u pogrešnom formatu.
+
+#Validation messages (User)
+MSG_USR_NAME_REQUIRED = Korisničko ime je obavezno.
+MSG_USR_PWD_REQUIRED = Lozinka je obavezna.
+MSG_USR_ROLE_REQUIRED = Rola je obavezna.
+MSG_USR_ACTIVE_REQUIRED = Status aktivnosti je obavezan.
+
+#Validation messages (Service & Service item)
+MSG_ITM_NAME_REQUIRED = Naziv stavke je obavezan.
+MSG_ITM_SER_REQUIRED = Servis je obavezan.
+
+#Validation messages (Checkin)
+MSG_CHKIN_START_REQUIRED = Početna pozicija je obavezna.
+MSG_CHKIN_FINISH_REQUIRED = Odredište je obavezno.
 
 #TOOLTIPS
 
@@ -95,6 +121,7 @@ TTL_USRS = Korisnici
 TTL_USR_DETAILS = Detalji korisnika
 TTL_USR_NEW = Novi Korisnik
 TTL_USR_VIEW = Pregled korisnika
+TTL_USR_ALTER = Izmeni zapis korisnika
 TTL_VEH_ALTER = Izmeni zapis vozila
 TTL_VEH_CHKIN = Zaduži vozilo
 TTL_VEH_CHKINS_VIEW = Pregled zaduženja vozila

@@ -6,6 +6,7 @@ using FleetManager.Utils;
 using FleetManagerCommon.Communication;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,14 +92,26 @@ namespace FleetManager.GUIController
 
         private void AddService(object sender,EventArgs e)
         {
-            string naziv = asi.FIELD_NAME.Text;
-            string opis = asi.FIELD_DESCRIPTION.Text;
-            StavkaServisiranja ss = new StavkaServisiranja(-1, servisi[asi.CB_SERVICE.SelectedIndex], veh, naziv, opis);
-            ss.Servisiranje = ServiceGUIController.Instance.Servisiranje;
-            ServiceGUIController.Instance.Servisiranje.Stavke.Add(ss);
-            asi.ParentForm.Close();
+            if (Validate())
+            {
+                string naziv = asi.FIELD_NAME.Text;
+                string opis = asi.FIELD_DESCRIPTION.Text;
+                StavkaServisiranja ss = new StavkaServisiranja(-1, servisi[asi.CB_SERVICE.SelectedIndex], veh, naziv, opis);
+                ss.Servisiranje = ServiceGUIController.Instance.Servisiranje;
+                ServiceGUIController.Instance.Servisiranje.Stavke.Add(ss);
+                asi.ParentForm.Close();
+            }
         }
 
-
+        private bool Validate()
+        {
+            bool ret = true;
+            if (string.IsNullOrWhiteSpace(asi.FIELD_NAME.Text))
+            {
+                MessageBox.Show(l.GetString("MSG_ITM_NAME_REQUIRED"), l.GetString("TTL_WARNING"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return ret;
+        }
     }
 }
